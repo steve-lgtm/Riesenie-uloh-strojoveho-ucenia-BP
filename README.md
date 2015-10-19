@@ -2,6 +2,8 @@
 
 Šablóna pre písanie záverečných prác na TUKE. 
 
+Pozor! Kódovanie všetkých dokumentov je nastavené na UTF-8!
+
 Aktuálna verzia vychádza z oficiálnej verzie dostupnej aj na stránkach univerzitnej knižnice. Tá je však už nejaký čas neaktulizovaná, takže tento projekt je snahou o udržiavanie aktuálnej verzie tohto projektu v súčinnosti so študentami. Upozorňujem však, že táto verzia je silne vo vývoji a odporúčam sledovať kvôli zmenám aj Changelog.
 
 # Install
@@ -46,3 +48,6 @@ alebo si projekt načítajte v prostredí _TeX Studia_
 # TODO
 
 - upraviť šablonu tak, aby používala literatúru vo formáte BibTex
+- rozčleniť prácu na viac častí (kapitol)
+- urobiť ju univerzálnejšou (jednotný typ práce - bakalárska/diplomová/dizertačná)
+- vložiť do práce odporúčania pre písanie záverečných prác KPI
