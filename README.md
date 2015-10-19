@@ -21,6 +21,7 @@ sudo dnf install texlive-cslatex texlive-hyphen-slovak latexmk texstudio texlive
 ### algorithm2e
 
 Balíček pre písanie zdrojových kódov.
+Domovská stránka projektu: https://www.ctan.org/pkg/algorithm2e
 
 ```bash
 sudo dnf install texlive-algorithm2e
@@ -29,6 +30,7 @@ sudo dnf install texlive-algorithm2e
 ### tikz-pgf
 
 Balíček pre tvorbu grafiky. Príklady, z ktorých sa dá inšpirovať aj pre potreby vašej práce sa nachádzajú na adrese http://www.texample.net/tikz/examples/
+Domovská stránka projektu: https://www.ctan.org/pkg/pgf
 
 
 # Running
@@ -40,3 +42,7 @@ latexmk -pdf thesis
 ```
 
 alebo si projekt načítajte v prostredí _TeX Studia_
+
+# TODO
+
+- upraviť šablonu tak, aby používala literatúru vo formáte BibTex
