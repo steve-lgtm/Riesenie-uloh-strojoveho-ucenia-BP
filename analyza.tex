@@ -73,3 +73,27 @@ Cauchyho začiatočnú úlohu.
 Podkapitoly záverečnej práce majú za úlohu členenie textu záverečnej
 práce s~cieľom, čo najväčšej prehľadnosti. Kapitol môže byť viacero
 a~v~ich názvoch sa používa desatinné číslovanie.
+
+
+
+\subsection{Vkladanie obrázkov}
+
+Všetky obrázky, ktoré budete chcieť v dokumente použiť, ukladajte do priečinku {\tt figures/}. Následne obrázok vložte v prostredí \verb!figure! pomocou príkazu \verb!\includegraphics! bez uvedenia jeho prípony. Napríklad takto:
+
+\begin{minted}{latex}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{tugboat}
+	\caption{\LaTeX{} priateľská zóna \label{o:latex\_friendly\_zone}}
+\end{figure}
+
+	\caption{Vloženie obrázku do textu dokumentu}
+\end{minted}
+
+
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{tugboat}
+	\caption{\LaTeX{} priateľská zóna \label{o:latex_friendly_zone}}
+\end{figure}

@@ -52,9 +52,12 @@
 
 %% Ďalšie (špeciálne) balíčky
 %% Prostredie pre zdrojové kódy
-\usepackage[slovak]{algorithm2e}
+\usepackage[slovak,linesnumbered,lined,algoruled]{algorithm2e}
+\usepackage{minted}
 %% Prostredie pre tvorbu vlastnej grafiky, príklady na http://www.texample.net/tikz/examples/
 \usepackage{tikz}
+
+
 
 % -----------------------------------------------------------------
 %% tlač !!!
@@ -218,6 +221,11 @@ o~hlavných metódach, ktoré pri spracovaní záverečnej práce použil.
 %\addcontentsline{toc}{section}{\numberline{}Slovník termínov}
 \slovnikterminov
 
+% odsadzovanie prveho riadku odstavca
+\setlength{\parindent}{1cm}
+% medzera medzi odstavcami
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
 \begin{description}
 	\item[Dizertácia] je rozsiahla vedecká rozprava, v~ktorej sa na
 základe vedeckého výskumu a~s~použitím (využitím) bohatého dokladového
@@ -242,6 +250,8 @@ determinácii nasledujúcej udalosti.
 \end{description}
 
 \kslovnikterminov
+%
+\include{instalacia}
 %
 \include{uvod}
 %
