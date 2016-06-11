@@ -11,17 +11,18 @@
 % pouzite balicky
 \usepackage[slovak]{babel}
 
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{latexsym}
+
+\usepackage[pdftex]{hyperref}
+
 % popisky ku obrazkom a tabulkam
 \def\figurename{Obrázok}
 \def\tabname{Tabuľka}
 \def\refname{Zoznam použitej literatúry}
-
-\usepackage{latexsym}
-% \usepackage{ucs,slovak}
-\usepackage[utf8]{inputenc}
-
-
-\usepackage[pdftex]{hyperref}
 
 
 %% Citácie
@@ -31,7 +32,6 @@
 %% Citovanie podľa mena autora a roku
 % \usepackage{natbib} \citestyle{chicago}
 
-%\usepackage[T1]{fontenc}
 \usepackage{lmodern,textcase}
 \usepackage{dcolumn} % zarovnanie cisiel v tabulke podla des. ciarky
 \usepackage{hhline}
@@ -52,7 +52,7 @@
 
 %% Ďalšie (špeciálne) balíčky
 %% Prostredie pre zdrojové kódy
-\usepackage[slovak,linesnumbered,lined,algoruled]{algorithm2e}
+%\usepackage[slovak,linesnumbered,lined,algoruled]{algorithm2e}
 \usepackage{minted}
 %% Prostredie pre tvorbu vlastnej grafiky, príklady na http://www.texample.net/tikz/examples/
 \usepackage{tikz}
@@ -253,25 +253,25 @@ determinácii nasledujúcej udalosti.
 %
 \include{instalacia}
 %
-\include{uvod}
-%
-\include{formulacia}
-%
-\include{analyza}
-%
-\include{jadroprace}
-%
-\include{zaver}
-%
-\include{literatura}
-%
-\include{prilohy}
-%
-\include{prilohaa}
-%
-\include{prilohab}
-%
-\include{prilohac}
+%\include{uvod}
+%%
+%\include{formulacia}
+%%
+%\include{analyza}
+%%
+%\include{jadroprace}
+%%
+%\include{zaver}
+%%
+%\include{literatura}
+%%
+%\include{prilohy}
+%%
+%\include{prilohaa}
+%%
+%\include{prilohab}
+%%
+%\include{prilohac}
 %
 % zivotopis autora
 \curriculumvitae\protect\label{page:posledna}
