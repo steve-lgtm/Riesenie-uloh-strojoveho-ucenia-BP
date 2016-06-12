@@ -40,10 +40,12 @@ Domovská stránka projektu: https://www.ctan.org/pkg/pgf
 Z príkazového riadku napíšte
 
 ```bash
-latexmk -pdf thesis
+latexmk -pdf -bibtex -pvc -shell-escape thesis
 ```
 
-alebo si projekt načítajte v prostredí _TeX Studia_
+vďaka čomu dôjde k vytvoreniu výsledného dokumentu vo formáte _PDF_, pričom nástroj sa neukončí, ale bude sledovať zmeny a pri každej zmene (uložení niektorého _.tex_ súboru) dôjde k opätovnému preloženiu.
+
+Projekt si samozrejme môžete otvoriť v ktoromkoľvek _LaTeX_ editore alebo IDE, ako je napr. _TeX Studio_
 
 # TODO
 
@@ -51,3 +53,6 @@ alebo si projekt načítajte v prostredí _TeX Studia_
 - rozčleniť prácu na viac častí (kapitol)
 - urobiť ju univerzálnejšou (jednotný typ práce - bakalárska/diplomová/dizertačná)
 - vložiť do práce odporúčania pre písanie záverečných prác KPI
+- generovanie bibtex-u na zaklade isbn: http://www.ottobib.com/
+- ukazat vsetky pouzivane formy citacii vratane online citacii
+- ukazky stylov pre bibtex: https://verbosus.com/bibtex-style-examples.html
