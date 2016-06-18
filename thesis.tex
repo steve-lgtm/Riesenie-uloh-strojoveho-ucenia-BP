@@ -2,11 +2,9 @@
 %% -----------------------------------------------------------------
 %% tento subor ma kodovanie utf-8
 %%
-%% na kompilaciu pouzivajte format pdfcslatex 
+%% na kompilaciu pouzivajte prikaz:
+%% latexmk -pdf -pvc -bibtex --shell-escape thesis
 %%
-%% vytvorene distribuciou texlive 2009-14, OS GNU/Linux
-%% vytvorene distribuciou TeXLive 2010, OS Win XP
-%% 
 %% -----------------------------------------------------------------
 % pouzite balicky
 \usepackage[slovak]{babel}
@@ -32,6 +30,7 @@
 %% Citovanie podľa mena autora a roku
 % \usepackage{natbib} \citestyle{chicago}
 
+
 \usepackage{lmodern,textcase}
 \usepackage{dcolumn} % zarovnanie cisiel v tabulke podla des. ciarky
 \usepackage{hhline}
@@ -39,8 +38,7 @@
 \usepackage{nicefrac} % pekne zlomky
 \usepackage{upgreek} % napr. $\upmu\mathrm{m}$ pre mikrometer ...
 \usepackage[final]{showkeys}%color%notref%notcite%final
-\usepackage[slovak,noprefix]{nomencl}
-\makeglossary % prikaz na vytvorenie suboru .glo
+
 \usepackage{parskip}% 'zhusti' polozky obsahu
 
 %% Obrázky a grafika
@@ -58,6 +56,7 @@
 
 %% Vlastná hlavička
 \usepackage{fancyhdr}
+\setlength{\headheight}{15pt} 
 
 
 
@@ -94,45 +93,52 @@
    bookmarksnumbered,
    pdfkeywords = {\LaTeX},
    pdfcreator = {\LaTeX\ with package \flqq hyperref\frqq},
-   pdftitle={Optimaliz\'acia, diplomov\'a pr\'aca, p\'isanie},
-   pdfauthor={Janko Hra\v{s}ko},
-   pdfsubject={Bakal\'arska pr\'aca}, % Diplomov\'a, Dizerta\v{c}n\'a
+   pdftitle={Odporúčania pre písanie záverečných prác},
+   pdfauthor={Mr. Manager},
+   pdfsubject={Záverečná práca}, % Diplomov\'a, Dizerta\v{c}n\'a
    baseurl={http://www.tuke.sk}
 }
+
+\usepackage[toc,nonumberlist,noredefwarn]{glossaries}  % slovnik terminov a skratiek
+\makeglossaries % prikaz na vytvorenie suboru .glo
 
 
 
 %% nehodiace zakomentujte !
-%\dippraca{Diplomová práca}
+\dippraca{Diplomová práca}
 \bakpraca{Bakalárska práca}
 %%
 \nazov{Optimalizácia písania diplomových prác}
 %% ked praca nema 'podnazov' zakomentujte nasledujuci riadok
 %% alebo polozku nechajte prazdnu
 \podnazov{}
-\autor{Ján Zelenka-Košický}
+\autor{Mr. Manager}
 \veduciprace{doc.~Ing.~Vojtech~Čierny, CSc.}
-\konzultanta{Ing.~Matej~Biely, PhD.}
-\konzultantb{RNDr.~Marián~Čierny, DrSc.}
+\konzultanta{Leslie B. Lamport}
+\konzultantb{Donald E. Knuth}
 \univerzita{Technická univerzita v~Košiciach}
 \fakulta{Fakulta elektrotechniky a informatiky}
 \skratkafakulty{FEI}
-\katedra{Katedra umelej inteligencie}
+\katedra{Katedra počítačov a informatiky}
 \skratkakatedry{KPI}
-\odbor{Experimentálna fyzika (pozri zadávací list)}
-\specializacia{Fyzika nízkych teplôt}
+\odbor{Informatika}  % pozri zadávací list
+\specializacia{Informatika}
+\datumodovzdania{11. 4. 2016}
+\mesto{Košice}
+
 \abstrakt{Abstrakt je povinnou súčasťou každej práce. Je výstižnou charakteristikou obsahu dokumentu. Nevyjadruje hodnotiace stanovisko autora. Má byť\/ taký informatívny, ako to povoľuje podstata práce. Text abstraktu sa píše ako jeden odstavec. Abstrakt neobsahuje odkazy na samotný text práce. Mal by mať\/ rozsah 250 až 500 slov. Pri štylizácii sa používajú celé vety, slovesá v činnom rode a tretej osobe. Používa sa odborná terminológia, menej zvyčajné termíny, skratky a~symboly sa pri prvom výskyte v texte definujú.}
 \klucoveslova{Optimalizácia, diplomová práca, písanie}
+
 \abstrakte{Text abstraktu v~svetovom jazyku je potrebný pre integráciu
 do medzinárodných informačných systémov. Ak nie je možné cudzojazyčnú
 verziu abstraktu umiestniť na jednej strane so slovenským abstraktom,
 je potrebné umiestniť ju na samostatnú stranu (cudzojazyčný abstrakt
 nemožno deliť a~uvádzať na dvoch strabách).}
 \keywords{Optimization, diploma, writing}
-\datumodovzdania{11. 4. 2013}
-\mesto{Košice}
+
 
 \begin{document}
+\pagenumbering{roman}
 \renewcommand\theHfigure{\theHsection.\arabic{figure}}
 \renewcommand\theHtable{\theHsection.\arabic{table}}
 \bibliographystyle{dcu}
@@ -141,14 +147,13 @@ nemožno deliť a~uvádzať na dvoch strabách).}
 
 \titulnastrana
 
-\pagenumbering{roman}
 
 \errata % zaciatok erraty
 Ak je potrebné, autor na tomto mieste opraví chyby, ktoré našiel po
 vytlačení práce. Opravy sa uvádzajú takým písmom, akým je napísaná
 práca. Ak zistíme chyby až po vytlačení a zviazaní práce, napíšeme
 erráta na samostatný lístok, ktorý vložíme na toto miesto. Najlepšie je
-lístok prilepiť\/ \citep{kat}.
+lístok prilepiť\/ kat.
 
 Forma:
 
@@ -196,14 +201,13 @@ vypracovaní diplomovej práce.
 
 \predhovor
 Predhovor je povinnou náležitosťou záverečnej práce, pozri
-\citep{gonda}. V~predhovore autor uvedie základné charakteristiky
+gonda. V~predhovore autor uvedie základné charakteristiky
 svojej záverečnej práce a~okolnosti jej vzniku. Vysvetlí dôvody, ktoré
 ho viedli k~voľbe témy, cieľ a~účel práce a~stručne informuje
 o~hlavných metódach, ktoré pri spracovaní záverečnej práce použil.
 \kpredhovoru
 
 \thispagestyle{plain}
-\cfoot{xx}
 \tableofcontents
 \newpage
 
@@ -220,11 +224,13 @@ o~hlavných metódach, ktoré pri spracovaní záverečnej práce použil.
 \thispagestyle{plain}
 %\addcontentsline{toc}{section}{\numberline{}Zoznam symbolov a
 %skratiek}
-\printglossary % vlozenie zoznamu skratiek a symbolov
+\input{glossary.tex}
+\printglossaries % vlozenie zoznamu skratiek a symbolov
 \newpage
 
 %\addcontentsline{toc}{section}{\numberline{}Slovník termínov}
-\slovnikterminov
+%\slovnikterminov
+%\printglossary
 
 % odsadzovanie prveho riadku odstavca
 \setlength{\parindent}{1cm}
@@ -252,6 +258,7 @@ tromi rozmermi -- oblasťou, obtiažnosťou a veľkosťou.
 	\item[Proces] je postupnonosť\/ či rad časovo usporiadaných
 udalostí tak, že každá predchádzajúca udalosť\/ sa zúčastňuje na
 determinácii nasledujúcej udalosti.
+	\item[\LaTeX] mocny \gls{latex}
 \end{description}
 
 \kslovnikterminov
