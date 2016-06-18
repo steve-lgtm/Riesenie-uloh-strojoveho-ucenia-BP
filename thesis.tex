@@ -44,7 +44,6 @@
 \usepackage{parskip}% 'zhusti' polozky obsahu
 
 %% Obrázky a grafika
-%\usepackage[dvips]{graphicx}
 \usepackage[pdftex]{graphicx}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg,.mps}
 \graphicspath{{figures/}} % priecinok na obrazky
@@ -56,6 +55,9 @@
 \usepackage{minted}
 %% Prostredie pre tvorbu vlastnej grafiky, príklady na http://www.texample.net/tikz/examples/
 \usepackage{tikz}
+
+%% Vlastná hlavička
+\usepackage{fancyhdr}
 
 
 
@@ -116,7 +118,7 @@
 \fakulta{Fakulta elektrotechniky a informatiky}
 \skratkafakulty{FEI}
 \katedra{Katedra umelej inteligencie}
-\skratkakatedry{KUI}
+\skratkakatedry{KPI}
 \odbor{Experimentálna fyzika (pozri zadávací list)}
 \specializacia{Fyzika nízkych teplôt}
 \abstrakt{Abstrakt je povinnou súčasťou každej práce. Je výstižnou charakteristikou obsahu dokumentu. Nevyjadruje hodnotiace stanovisko autora. Má byť\/ taký informatívny, ako to povoľuje podstata práce. Text abstraktu sa píše ako jeden odstavec. Abstrakt neobsahuje odkazy na samotný text práce. Mal by mať\/ rozsah 250 až 500 slov. Pri štylizácii sa používajú celé vety, slovesá v činnom rode a tretej osobe. Používa sa odborná terminológia, menej zvyčajné termíny, skratky a~symboly sa pri prvom výskyte v texte definujú.}
@@ -138,6 +140,8 @@ nemožno deliť a~uvádzať na dvoch strabách).}
 \prvastrana
 
 \titulnastrana
+
+\pagenumbering{roman}
 
 \errata % zaciatok erraty
 Ak je potrebné, autor na tomto mieste opraví chyby, ktoré našiel po
@@ -198,21 +202,22 @@ ho viedli k~voľbe témy, cieľ a~účel práce a~stručne informuje
 o~hlavných metódach, ktoré pri spracovaní záverečnej práce použil.
 \kpredhovoru
 
-\thispagestyle{empty}
+\thispagestyle{plain}
+\cfoot{xx}
 \tableofcontents
 \newpage
 
-\thispagestyle{empty}
+\thispagestyle{plain}
 %\addcontentsline{toc}{section}{\numberline{}Zoznam obrázkov}
 \listoffigures
 \newpage
 
-\thispagestyle{empty}
+\thispagestyle{plain}
 %\addcontentsline{toc}{section}{\numberline{}Zoznam tabuliek}
 \listoftables
 \newpage
 
-\thispagestyle{empty}
+\thispagestyle{plain}
 %\addcontentsline{toc}{section}{\numberline{}Zoznam symbolov a
 %skratiek}
 \printglossary % vlozenie zoznamu skratiek a symbolov
@@ -250,10 +255,20 @@ determinácii nasledujúcej udalosti.
 \end{description}
 
 \kslovnikterminov
+
+% nastavenie hlavičky pre hlavnú časť práce
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markboth{\chaptername\ \thesection.\ #1}{}}
+\fancyhf{}
+\lhead{\slshape \nouppercase{\leftmark}}
+\rhead{\thepage}
+\renewcommand{\headrulewidth}{0.7pt}
+
+\pagenumbering{arabic}
 %
 \include{instalacia}
 %
-%\include{uvod}
+\include{struktura}
 %%
 %\include{formulacia}
 %%
