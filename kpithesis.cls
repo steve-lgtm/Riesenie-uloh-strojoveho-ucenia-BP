@@ -16,7 +16,7 @@
 %% Using article class as base.
 %%
 %%%%%
-\PassOptionsToClass{a4paper,10pt,oneside}{article}
+\PassOptionsToClass{a4paper,12pt,oneside}{article}
 \LoadClass{article}
 
 
@@ -239,6 +239,7 @@
     \newpage
 
     \pagenumbering{arabic}
+    \pagestyle{fancy}
 }
 
 
