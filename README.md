@@ -47,6 +47,12 @@ vďaka čomu dôjde k vytvoreniu výsledného dokumentu vo formáte _PDF_, prič
 
 Projekt si samozrejme môžete otvoriť v ktoromkoľvek _LaTeX_ editore alebo IDE, ako je napr. _TeX Studio_
 
+# Troubleshooting
+
+## Q1: Našiel som v šablóne chybu. Kde ju môžem reportovať?
+
+Buď mailom na miroslav.binas@tuke.sk alebo priamo tu gitlab-e.
+
 # TODO
 
 - upraviť šablonu tak, aby používala literatúru vo formáte BibTex
