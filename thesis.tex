@@ -1,277 +1,62 @@
-\documentclass[a4paper,helvetica]{tukediphc}
 %% -----------------------------------------------------------------
-%% tento subor ma kodovanie utf-8
+%% This file uses UTF-8 encoding
 %%
-%% na kompilaciu pouzivajte prikaz:
+%% For compilation use following command:
 %% latexmk -pdf -pvc -bibtex --shell-escape thesis
-%%
 %% -----------------------------------------------------------------
-% pouzite balicky
+\documentclass{kpithesis}
+
+% balicky
 \usepackage[slovak]{babel}
+\usepackage{minted}  % zvyraznovanie zdrojovych kodov
+\usepackage{blindtext}  % lorem ipsum
+\usepackage{nicefrac}  % pekne zlomky
 
+% premenne
+\title{Moja diplomová práca\\
+	s názvom cez dva riadky}
 
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+\author{Janko Hraško}
+\supervisor{Leslie Lamport} %veduciprace
+\consultant{Donald E. Knuth} %konzultant
+%\college{Žilinská univerzita}{Žilina} %univerzita
+%\faculty{Fakulta elektrotechniky a informatiky} %fakulta
+\department{Katedra počítačov a informatiky}{KPI} %katedra
+%\thesis{Diplomová práca} %typprace
+\submissiondate{13}{5}{2016}
+%\fieldofstudy{9.2.1 Informatika}
+%\studyprogramme{Informatika}
+%\city{Košice} %mesto
+\keywords{\LaTeX, programming, typesetting}{\LaTeX, programovanie, sadzba textu}
+%\declaration{som nepodvadzal}
 
-\usepackage{latexsym}
-
-\usepackage[pdftex]{hyperref}
-
-% popisky ku obrazkom a tabulkam
-\def\figurename{Obrázok}
-\def\tabname{Tabuľka}
-\def\refname{Zoznam použitej literatúry}
-
-
-%% Citácie
-%% Cislovane citovanie
-\usepackage[numbers]{natbib}
-%%
-%% Citovanie podľa mena autora a roku
-% \usepackage{natbib} \citestyle{chicago}
-
-
-\usepackage{lmodern,textcase}
-\usepackage{dcolumn} % zarovnanie cisiel v tabulke podla des. ciarky
-\usepackage{hhline}
-\usepackage{amsmath}
-\usepackage{nicefrac} % pekne zlomky
-\usepackage{upgreek} % napr. $\upmu\mathrm{m}$ pre mikrometer ...
-\usepackage[final]{showkeys}%color%notref%notcite%final
-
-\usepackage{parskip}% 'zhusti' polozky obsahu
-
-%% Obrázky a grafika
-\usepackage[pdftex]{graphicx}
-\DeclareGraphicsExtensions{.pdf,.png,.jpg,.mps}
-\graphicspath{{figures/}} % priecinok na obrazky
-%%
-
-%% Ďalšie (špeciálne) balíčky
-%% Prostredie pre zdrojové kódy
-%\usepackage[slovak,linesnumbered,lined,algoruled]{algorithm2e}
-\usepackage{minted}
-%% Prostredie pre tvorbu vlastnej grafiky, príklady na http://www.texample.net/tikz/examples/
-\usepackage{tikz}
-
-%% Vlastná hlavička
-\usepackage{fancyhdr}
-\setlength{\headheight}{15pt} 
-
-
-
-% -----------------------------------------------------------------
-%% tlač !!!
-% \usepackage[pdftex,unicode=true,bookmarksnumbered=true,
-% bookmarksopen=true,pdfmenubar=true,pdfview=Fit,linktocpage=true,
-% pageanchor=true,bookmarkstype=toc,pdfpagemode=UseOutlines,
-% pdfstartpage=1]{hyperref}
-
-% \hypersetup{%
-% baseurl={http://www.tuke.sk/sevcovic},
-% pdfcreator={pdfcsLaTeX},
-% pdfkeywords={Optimaliz\'acia, diplomov\'a pr\'aca, p\'isanie},
-% pdftitle={Optimalizácia písania diplomových prác},
-% pdfauthor={J\'an Zelen\'y},
-% pdfsubject={Bakalárska práca}
-% } 
-
-
-% pre tlac treba hypersetup zakomentovat
-\hypersetup{
-   unicode,
-   backref,
-   pdftoolbar=true,
-   pdfmenubar=true,
-   pdfwindowui=true,
-   bookmarksopenlevel={0},
-   bookmarksnumbered,
-   bookmarksopen,
-   pdfhighlight={/P},
-   colorlinks,
-   citecolor=magenta,
-   bookmarksnumbered,
-   pdfkeywords = {\LaTeX},
-   pdfcreator = {\LaTeX\ with package \flqq hyperref\frqq},
-   pdftitle={Odporúčania pre písanie záverečných prác},
-   pdfauthor={Mr. Manager},
-   pdfsubject={Záverečná práca}, % Diplomov\'a, Dizerta\v{c}n\'a
-   baseurl={http://www.tuke.sk}
+\abstract{%
+    anglicky \LaTeX \blindtext
+}{%
+    slovensky \blindtext
 }
 
-\usepackage[toc,nonumberlist,noredefwarn]{glossaries}  % slovnik terminov a skratiek
-\makeglossaries % prikaz na vytvorenie suboru .glo
+%\acknowledgment{Ta díky more}
+\addbibresource{bibliography.bib}
 
 
-
-%% nehodiace zakomentujte !
-\dippraca{Diplomová práca}
-\bakpraca{Bakalárska práca}
-%%
-\nazov{Optimalizácia písania diplomových prác}
-%% ked praca nema 'podnazov' zakomentujte nasledujuci riadok
-%% alebo polozku nechajte prazdnu
-\podnazov{}
-\autor{Mr. Manager}
-\veduciprace{doc.~Ing.~Vojtech~Čierny, CSc.}
-\konzultanta{Leslie B. Lamport}
-\konzultantb{Donald E. Knuth}
-\univerzita{Technická univerzita v~Košiciach}
-\fakulta{Fakulta elektrotechniky a informatiky}
-\skratkafakulty{FEI}
-\katedra{Katedra počítačov a informatiky}
-\skratkakatedry{KPI}
-\odbor{Informatika}  % pozri zadávací list
-\specializacia{Informatika}
-\datumodovzdania{11. 4. 2016}
-\mesto{Košice}
-
-\abstrakt{Abstrakt je povinnou súčasťou každej práce. Je výstižnou charakteristikou obsahu dokumentu. Nevyjadruje hodnotiace stanovisko autora. Má byť\/ taký informatívny, ako to povoľuje podstata práce. Text abstraktu sa píše ako jeden odstavec. Abstrakt neobsahuje odkazy na samotný text práce. Mal by mať\/ rozsah 250 až 500 slov. Pri štylizácii sa používajú celé vety, slovesá v činnom rode a tretej osobe. Používa sa odborná terminológia, menej zvyčajné termíny, skratky a~symboly sa pri prvom výskyte v texte definujú.}
-\klucoveslova{Optimalizácia, diplomová práca, písanie}
-
-\abstrakte{Text abstraktu v~svetovom jazyku je potrebný pre integráciu
-do medzinárodných informačných systémov. Ak nie je možné cudzojazyčnú
-verziu abstraktu umiestniť na jednej strane so slovenským abstraktom,
-je potrebné umiestniť ju na samostatnú stranu (cudzojazyčný abstrakt
-nemožno deliť a~uvádzať na dvoch strabách).}
-\keywords{Optimization, diploma, writing}
-
-
+% if you want to work only on selected chapters
+\includeonly{instalacia,struktura}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\pagenumbering{roman}
-\renewcommand\theHfigure{\theHsection.\arabic{figure}}
-\renewcommand\theHtable{\theHsection.\arabic{table}}
-\bibliographystyle{dcu}
 
-\prvastrana
+%% Title page, abstract, declaration etc.:
+\frontmatter{}
 
-\titulnastrana
-
-
-\errata % zaciatok erraty
-Ak je potrebné, autor na tomto mieste opraví chyby, ktoré našiel po
-vytlačení práce. Opravy sa uvádzajú takým písmom, akým je napísaná
-práca. Ak zistíme chyby až po vytlačení a zviazaní práce, napíšeme
-erráta na samostatný lístok, ktorý vložíme na toto miesto. Najlepšie je
-lístok prilepiť\/ kat.
-
-Forma:
-
-\tabcolsep=10pt
-\begin{table}[!hb]
-	\centering
-	\begin{tabular}{|c|c|c|c|}\hline
-Strana & Riadok & Chybne & Správne \\\hline\hline
-12 & 6 & publikácia & prezentácia \\\hline
-22 & 23 & internet & intranet \\\hline
-& & & \\\hline
-& & & \\\hline
-	\end{tabular}
-\end{table}
-\kerrata % koniec erraty
-
-\abstraktsk % abstrakt v SK 
-
-\abstrakteng % abstrakt v ENG
-
-\kabstrakt % koniec abstraktov, nova strana
-
-% Na tomto mieste bude vložené zadanie diplomovej práce
-\zadanieprace
-
-\cestnevyhlasenie
-% Niektorí autori metodických príručiek o~záverečných prácach sa
-% nazdávajú, že takéto vyhlásenie je zbytočné, nakoľko povinnosť
-% vypracovať záverečnú prácu samostatne, vyplýva študentovi zo zákona a
-% na autora práce sa vzťahuje autorský zákon.
-
-\podakovanie
-Na tomto mieste môže byť\/ vyjadrenie poďakovania napr. vedúcemu
-diplomovej práce, resp. konzultantom, za pripomienky a~odbornú pomoc
-pri vypracovaní diplomovej práce.
-
-Na tomto mieste môže byť\/ vyjadrenie poďakovania napr. vedúcemu
-diplomovej práce, respektíve konzultantom, za pripomienky a~odbornú
-pomoc pri vypracovaní diplomovej práce.
-
-Na tomto mieste môže byť\/ vyjadrenie poďakovania napr. vedúcemu
-diplomovej práce alebo konzultantom za pripomienky a~odbornú pomoc pri
-vypracovaní diplomovej práce.
-\kpodakovania
-
-\predhovor
-Predhovor je povinnou náležitosťou záverečnej práce, pozri
-gonda. V~predhovore autor uvedie základné charakteristiky
-svojej záverečnej práce a~okolnosti jej vzniku. Vysvetlí dôvody, ktoré
-ho viedli k~voľbe témy, cieľ a~účel práce a~stručne informuje
-o~hlavných metódach, ktoré pri spracovaní záverečnej práce použil.
-\kpredhovoru
-
-\thispagestyle{plain}
-\tableofcontents
+% list of acronyms
+\thispagestyle{empty}
+\input{acronyms.tex}
+\printglossary[type=\acronymtype,title={\acrlistname}]
 \newpage
-
-\thispagestyle{plain}
-%\addcontentsline{toc}{section}{\numberline{}Zoznam obrázkov}
-\listoffigures
-\newpage
-
-\thispagestyle{plain}
-%\addcontentsline{toc}{section}{\numberline{}Zoznam tabuliek}
-\listoftables
-\newpage
-
-\thispagestyle{plain}
-%\addcontentsline{toc}{section}{\numberline{}Zoznam symbolov a
-%skratiek}
-\input{glossary.tex}
-\printglossaries % vlozenie zoznamu skratiek a symbolov
-\newpage
-
-%\addcontentsline{toc}{section}{\numberline{}Slovník termínov}
-\slovnikterminov
-\printglossary
-
-% odsadzovanie prveho riadku odstavca
-\setlength{\parindent}{1cm}
-% medzera medzi odstavcami
-\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
-
-\begin{description}
-	\item[Dizertácia] je rozsiahla vedecká rozprava, v~ktorej sa na
-základe vedeckého výskumu a~s~použitím (využitím) bohatého dokladového
-materiálu  ako i~vedeckých metód rieši zložitý odborný problém.
-	\item[Font] je súbor, obsahujúci predpisy na zobrazenie textu
-v~danom písme, napr. na tlačiarni. To čo vidíme je písmo; font je súbor
-a~nevidíme ho.
-	\item[Kritika] je odborne vyhrotený, prísny pohľad na hodnotenú
-vec. Medzi recenziou a kritikou je taký pomer ako medzi diskusiou a
-polemikou. Pri kritike treba prísnosť\/ chápať\/ v~tom zmysle, že sa
-v~nej okrem iného navrhuje, ako hodnotené dielo skvalitniť\/.
-	\item[Meter (m)] je vzdialenosť, ktorú svetlo vo vákuu prejde
-za čas. interval~$\nicefrac{1}{299\,792\,458}$ sekundy.
-	\item[Písmom] rozumieme vlastný vzhľad znakov.
-	\item[Problém] termín používaný vo všeobecnom zmysle vo vzťahu
-k~akejkoľvek duševnej aktivite, ktorá má nejaký rozoznateľný cieľ.
-Samotný cieľ nemusí byť\/ v~dohľadne. Problémy možno charakterizovať\/
-tromi rozmermi -- oblasťou, obtiažnosťou a veľkosťou.
-	\item[Proces] je postupnonosť\/ či rad časovo usporiadaných
-udalostí tak, že každá predchádzajúca udalosť\/ sa zúčastňuje na
-determinácii nasledujúcej udalosti.
-	\item[\LaTeX] mocny \gls{latex}
-\end{description}
-
-\kslovnikterminov
-
-% nastavenie hlavičky pre hlavnú časť práce
-\pagestyle{fancy}
-\renewcommand{\sectionmark}[1]{\markboth{\chaptername\ \thesection.\ #1}{}}
-\fancyhf{}
-\lhead{\slshape \nouppercase{\leftmark}}
-\rhead{\thepage}
-\renewcommand{\headrulewidth}{0.7pt}
 
 \pagenumbering{arabic}
+
+
 %
 \include{instalacia}
 %
@@ -287,7 +72,8 @@ determinácii nasledujúcej udalosti.
 %%
 %\include{literatura}
 %\bibliographystyle{dcu}
-\bibliography{bibliography}{}
+%\bibliography{bibliography}{}
+\printbibliography[title={Literatúra}]
 %%
 %\include{prilohy}
 %%
@@ -298,12 +84,11 @@ determinácii nasledujúcej udalosti.
 %\include{prilohac}
 %
 % zivotopis autora
-\curriculumvitae\protect\label{page:posledna}
-Táto časť\/ je nepovinná. Autor tu môže uviesť\/ svoje biografické
-údaje, údaje o~záujmoch, účasti na~projektoch, účasti na~súťažiach,
-získané ocenenia, zahraničné pobyty na~praxi, domácu prax, publikácie
-a~pod.
-\kcurriculumvitae
+%\curriculumvitae\protect
+%\label{page:posledna}
+%Táto časť\/ je nepovinná. Autor tu môže uviesť\/ svoje biografické
+%údaje, údaje o~záujmoch, účasti na~projektoch, účasti na~súťažiach,
+%získané ocenenia, zahraničné pobyty na~praxi, domácu prax, publikácie
+%a~pod.
 
 \end{document}
-%%
