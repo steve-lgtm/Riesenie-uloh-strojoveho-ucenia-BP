@@ -28,8 +28,9 @@
 
 % titlesec for modification of chapters and sections
 \RequirePackage{titlesec}
-\titleformat{\chapter}{\huge}{\textbf\thechapter.}{20pt}{\huge\textbf}
+\titleformat{\chapter}{\huge}{\textbf\thechapter}{20pt}{\huge\textbf}
 
+% sets the document geometry
 \RequirePackage[
 	a4paper,
 	width=150mm,
