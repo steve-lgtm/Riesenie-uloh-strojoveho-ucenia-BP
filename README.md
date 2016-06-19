@@ -55,9 +55,6 @@ Buď mailom na miroslav.binas@tuke.sk alebo priamo tu gitlab-e.
 
 # TODO
 
-- upraviť šablonu tak, aby používala literatúru vo formáte BibTex
-- rozčleniť prácu na viac častí (kapitol)
-- urobiť ju univerzálnejšou (jednotný typ práce - bakalárska/diplomová/dizertačná)
 - vložiť do práce odporúčania pre písanie záverečných prác KPI
 - generovanie bibtex-u na zaklade isbn: http://www.ottobib.com/
 - ukazat vsetky pouzivane formy citacii vratane online citacii
