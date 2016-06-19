@@ -263,7 +263,7 @@
 
 		{\Large \textbf{\@faculty}}
 
-		\vspace*{14em}
+		\vfill
 
   		{\LARGE \textbf{\@title}}
 
