@@ -27,9 +27,10 @@
 %%%%%
 \RequirePackage[
 	a4paper,
-	%textwidth=10cm,
-	%textheight=10cm,
-	%footskip=2cm
+	width=150mm,
+    top=25mm,
+    bottom=25mm,
+    bindingoffset=6mm
 ]{geometry}
 
 \RequirePackage{graphicx}
@@ -232,11 +233,6 @@
         \listoftables%
         \newpage%
     \fi
-
-    % list of acronyms
-    \input{acronyms.tex}
-    \printglossary[type=\acronymtype,title={\acrlistname}]
-    \newpage
 
     \pagenumbering{arabic}
     \pagestyle{fancy}
