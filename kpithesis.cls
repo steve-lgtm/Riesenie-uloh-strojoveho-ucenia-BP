@@ -16,8 +16,8 @@
 %% Using article class as base.
 %%
 %%%%%
-\PassOptionsToClass{a4paper,12pt,oneside}{article}
-\LoadClass{article}
+\PassOptionsToClass{a4paper,12pt,oneside}{report}
+\LoadClass{report}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -25,6 +25,11 @@
 %% Additional packages, and their options.
 %%
 %%%%%
+
+% titlesec for modification of chapters and sections
+\RequirePackage{titlesec}
+\titleformat{\chapter}{\huge}{\textbf\thechapter.}{20pt}{\huge\textbf}
+
 \RequirePackage[
 	a4paper,
 	width=150mm,
@@ -43,15 +48,18 @@
     figure,
     table]{totalcount}
 
-%% Cislovane citovanie
-\RequirePackage[numbers]{natbib}
+%% Numeric citations and sorting by year (descending), name and title
+\RequirePackage[style=numeric,sorting=ydnt]{biblatex}
+%\DefineBibliographyStrings{slovak}{%
+    %bibliography = {Literatúra}
+%}
 
 % 'zhusti' polozky obsahu
 \RequirePackage{parskip}
 
 \RequirePackage[
    unicode,
-   backref,
+   %backref,
    pdfusetitle,
    %pdfusekeywords,
    pdftoolbar=true,
@@ -86,7 +94,7 @@
 
 % nastavenie hlavičky pre hlavnú časť práce
 \pagestyle{fancy}
-\renewcommand{\sectionmark}[1]{\markboth{\chaptername\ \thesection.\ #1}{}}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
 \fancyhf{}
 \lhead{\slshape \nouppercase{\leftmark}}
 \rhead{\thepage}
@@ -185,7 +193,7 @@
 }
 
 % DOCVAR: thesis (type of the thesis)
-\newcommand{\@acknowledgment}{Na tomto mieste by som sa rád poďakoval svojmu vedúcemu záverečnej práce \@supervisor{} za pripomienky a~odbornú pomoc.}
+\newcommand{\@acknowledgment}{Na tomto mieste by som sa rád poďakoval svojmu vedúcemu záverečnej práce za pripomienky a~odbornú pomoc.}
 \newcommand{\acknowledgment}[1]{\renewcommand{\@acknowledgment}{#1}}
 
 
@@ -373,7 +381,7 @@
 
 		\vspace{2\baselineskip}
 
-		{\Large \textbf{\@college@city\, \@submissionyear}} \hfill {\Large \textbf{\@author}}
+		{\Large \textbf{\@college@city{} \@submissionyear}} \hfill {\Large \textbf{\@author}}
 	}
 
 	\newpage
