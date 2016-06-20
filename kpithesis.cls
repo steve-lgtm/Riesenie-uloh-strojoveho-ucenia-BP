@@ -395,12 +395,13 @@
 %%
 %%%%%
 
-% Font recommended by the Computer Laboratory (Adobe Sabon).
+% Font used for thesis is TeX Gyre Pagella.
 % Note: You might need to install it first.
-% \renewcommand\rmdefault{psb}
+%\renewcommand\rmdefault{psb}
 
-%\RequirePackage{times}
-\RequirePackage{lmodern,textcase}
+%\RequirePackage{lmodern,textcase}
+%\RequirePackage{palatino}
+\RequirePackage{tgpagella}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
