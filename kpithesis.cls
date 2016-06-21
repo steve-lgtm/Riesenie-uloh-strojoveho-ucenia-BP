@@ -28,7 +28,8 @@
 
 % titlesec for modification of chapters and sections
 \RequirePackage{titlesec}
-\titleformat{\chapter}{\huge}{\textbf\thechapter}{20pt}{\huge\textbf}
+\titleformat{\chapter}
+    {\huge}{\textbf\thechapter}{20pt}{\huge\textbf}[{\titlerule[0.8pt]}]
 
 % sets the document geometry
 \RequirePackage[
@@ -399,8 +400,7 @@
 % Note: You might need to install it first.
 %\renewcommand\rmdefault{psb}
 
-%\RequirePackage{lmodern,textcase}
-%\RequirePackage{palatino}
+%\RequirePackage{lmodern} %,textcase}
 \RequirePackage{tgpagella}
 
 
@@ -413,3 +413,4 @@
 % One-and-a-half spacing (required by board of graduate studies).
 % (Should remove this for Computer Laboratory technical report.)
 %\onehalfspacing
+\linespread{1.3}

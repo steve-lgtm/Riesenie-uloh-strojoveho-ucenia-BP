@@ -1,0 +1,89 @@
+\chapter{Formátovanie dokumentu}
+
+\section{Štruktúra projektu}
+
+Projekt záverečnej práce má nasledovnú štruktúru:
+
+\begin{verbatim}
+.
+|-- bibliography.bib
+|-- CHANGELOG.md
+|-- chapters
+|   |-- formatovanie.tex
+|   |-- instalacia.tex
+|   `-- struktura.tex
+|-- figures
+|   |-- foto.png
+|   `-- tugboat.png
+|-- kpithesis.cls
+`-- thesis.tex
+\end{verbatim}
+
+Význam jednotlivých súborov a priečinkov je nasledovný:
+
+\begin{itemize}
+    \item súbor {\tt \bf{bibliography.bib}} obsahuje zoznam literatúry vo formáte \emph{BibTeX}
+    \item priečinok {\tt \bf{chapters/}} obsahuje {\tt .tex} súbory reprezentujúce samostatné kapitoly záverečnej práce
+    \item priečinok {\tt \bf{figures/}} obsahuje zoznam obrázkov, ktoré boli v práci použité
+    \item v súbore {\tt \bf{kpithesis.cls}} sa nachádza samotná šablóna \emph{kpithesis}
+    \item súbor {\tt \bf{thesis.tex}} predstavuje hlavný súbor záverečnej práce
+\end{itemize}
+
+
+\section{Vkladanie obrázkov}
+
+Všetky obrázky, ktoré budete chcieť v dokumente použiť, ukladajte do priečinku {\tt figures/}. Následne obrázok vložte do dokumentu pomocou prostredia \verb!figure! pomocou príkazu \verb!\includegraphics! bez uvedenia jeho prípony. Napríklad takto:
+
+\begin{minted}{latex}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{figures/tugboat}
+    \caption{\LaTeX{} Friendly Zone \label{o:latex_friendly_zone}}
+\end{figure}
+\end{minted}
+
+Výsledok tohto fragmentu kódu sa nachádza na obrázku \ref{o:latex_friendly_zone}.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{figures/tugboat}
+    \caption{\LaTeX{} Friendly Zone \label{o:latex_friendly_zone}}
+\end{figure}
+
+Ak chcete obrázok vložiť do dokumentu otočený o $90$, môžete použiť voľbu {\tt angle=90}, ktorú poskytuje balík {\tt graphicx}:
+
+\begin{minted}{latex}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[angle=90,width=\textwidth]{figures/tugboat}
+    \caption{\LaTeX{} Friendly Zone \label{o:latex_friendly_zone_90}}
+\end{figure}
+\end{minted}
+
+Výsledkom tejto úpravy je obrázok \ref{o:latex_friendly_zone_90}.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[angle=90,width=\textwidth]{figures/tugboat}
+    \caption{\LaTeX{} Friendly Zone \label{o:latex_friendly_zone_90}}
+\end{figure}
+
+V prípade, ak chcete otočiť obrázok spolu s popiskom, použite balíček {\tt rotating}, ktorý poskytuje prostredie {\tt sidewaysfigure} nasledovným spôsobom:
+
+\begin{minted}{latex}
+\begin{sidewaysfigure}
+    \centering
+    \includegraphics[width=.7\textheight]{figures/tugboat}
+    \caption{\LaTeX{} Friendly Zone \label{o:latex_friendly_zone_rotating}}
+\end{sidewaysfigure}
+\end{minted}
+
+Výsledok tohto fragmentu kódu sa nachádza na obrázku \ref{o:latex_friendly_zone_rotating}.
+
+\begin{sidewaysfigure}
+    \centering
+    \includegraphics[width=.7\textheight]{figures/tugboat}
+    \caption{\LaTeX{} Friendly Zone \label{o:latex_friendly_zone_rotating}}
+\end{sidewaysfigure}
+
+\section{Vkladanie tabuliek}

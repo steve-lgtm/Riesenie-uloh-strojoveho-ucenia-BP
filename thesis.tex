@@ -9,8 +9,11 @@
 % balicky
 \usepackage[slovak]{babel}
 \usepackage{minted}  % zvyraznovanie zdrojovych kodov
+\usemintedstyle{tango}
 \usepackage{blindtext}  % lorem ipsum
 \usepackage{nicefrac}  % pekne zlomky
+\usepackage{rotating}  % umoznuje otacat obrazky spolu s popiskami
+\usepackage{csquotes}
 
 % premenne
 \title{Moja diplomová práca\\
@@ -40,7 +43,7 @@
 \addbibresource{bibliography.bib}
 
 % if you want to work only on selected chapters
-\includeonly{struktura,formatovanie}
+%\includeonly{chapters/struktura,chapters/formatovanie}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
@@ -57,9 +60,9 @@
 
 
 %
-\include{instalacia}
-\include{struktura}
-\include{formatovanie}
+\include{chapters/instalacia}
+\include{chapters/struktura}
+\include{chapters/formatovanie}
 %%
 %\include{formulacia}
 %%
