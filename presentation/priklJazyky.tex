@@ -1,0 +1,51 @@
+\subsection{Vyjadrenie funkcie v informatike}
+\frame{
+	\frametitle{Jazyky}
+	\begin{block}{Funkcia \alert{$vyp(n,v)$} v paradigmách programovania}
+	\alert{Jazyk C}\hspace{3.7cm}\alert{Jazyk Ocaml}	
+		\begin{columns}
+			\begin{column}{0.37\textwidth}
+				\footnotesize
+				\begin{semiverbatim}
+
+					int vypocet(int n) \{
+	
+					\hspace{0.3cm}int v =1;
+	
+					\hspace{0.3cm}while (n > 0) \{
+	
+					\hspace{0.57cm}v = v * (n \% 10);
+	
+					\hspace{0.57cm}n = n / 10;
+	
+					\hspace{0.3cm}\}
+	
+					\hspace{0.3cm}return v;
+			
+					\}
+	
+		\end{semiverbatim}
+
+			\end{column}
+			\begin{column}{0.64\textwidth}
+				\footnotesize
+				\begin{semiverbatim}
+
+					let rec vypocet n v =
+	
+					\hspace{0.3cm}if n == 0 then
+	
+					\hspace{0.57cm}v
+
+					\hspace{0.3cm}else
+		
+					\hspace{0.45cm}vypocet (n/10) (v * (n mod 10));;
+
+				\end{semiverbatim}
+			\end{column}
+		\end{columns}
+			
+	\end{block}
+} 
+
+% Tu je demonštrované, že obidva modely vypočítateľnosti funkcie definované na začiatku 20. storočia p. Turingom (turingovho stroja) a p. Churchom (lambda kalkulu) môžu definovať rovnakú triedu vypočítateľných funkcií.

@@ -1,0 +1,105 @@
+\documentclass{beamer}
+\usepackage[slovak]{babel}
+
+% Pokus o latex-beamerovu prezentaciu by Daniello ;)
+% pripadne konzultacie: Daniel.Mihalyi@tuke.sk
+
+%\usetheme{Dresden}
+%\usetheme{default}
+\usetheme{Montpellier}
+
+% Ďalšie témy napr. na http://www.pletscher.org/writings/latex/beamerthemes.php
+
+\usefonttheme{professionalfonts}
+\usepackage{lmodern}
+
+%\usepackage{slovak}
+%\usepackage[cp1250]{inputenc}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{pgf}
+\usepackage{colortbl}
+\usepackage{times}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{stmaryrd}
+\usepackage{diagrams}
+\usepackage{proof}
+\usepackage{url}
+\usepackage{wasysym}	%% Smajliky :-)
+
+\setbeamercovered{dynamic}
+
+\usepackage{hyperref}
+\hypersetup{%
+unicode=true,
+pdfsubject = {Slajdy prezentácie práce s \LaTeX om},
+pdfkeywords = {\LaTeX, \TeX, záverečné práce, prezentácia},
+pdfcreator = {TexLive 2014 použitím balíčka \flqq hyperref\frqq},
+pdfproducer = {pdfeTeX-0.\the\pdftexversion\pdftexrevision},
+}
+\pdfinfo{/CreationDate (D:20140228150000-01'00')}
+
+
+\title{Formálny popis vnútornej a vonkajšej štruktúry programov}
+\author{Ing. Daniel Mihályi, PhD., Ing.Paed.IGIP }
+
+\institute[Technická univerzita v Košiciach]{%
+  Katedra počítačov a informatiky \\
+  Fakulta elektrotechniky a informatiky\\
+  Technická univerzita v Košiciach\\
+  \vspace{0.2cm}\pgfuseimage{kpi-logo}\hspace{0.1cm}\pgfuseimage{fei-logo}\hspace{0.1cm}\pgfuseimage{tuke-logo}}
+\date{{\scriptsize Písomná práca k dizertačnej skúške}\\ 
+{\scriptsize \today}}
+
+%\pgfdeclareimage[width=4.5cm,height=4.5cm]{sign}{pics/beamer-tuke-sign}
+%\pgfdeclareimage[width=6.7cm,height=6.7cm]{class}{pics/beamer-tuke-class}
+\pgfdeclareimage[height=1.37cm]{model}{pics/beamer-tuke-model}
+%\pgfdeclareimage[height=3.37cm]{inter}{pics/beamer-tuke-inter}
+\pgfdeclareimage[height=3.37cm]{behta}{pics/beamer-tuke-behta}
+\pgfdeclareimage[height=5.27cm]{fpl}{pics/beamer-tuke-fpl}
+\pgfdeclareimage[height=4.37cm]{mutex}{pics/beamer-tuke-mutex}
+\pgfdeclareimage[height=3.00cm]{eilenberg}{pics/beamer-tuke-eilenberg}
+\pgfdeclareimage[height=3.00cm]{maclane}{pics/beamer-tuke-maclane}
+\pgfdeclareimage[height=3.00cm]{girard1}{pics/beamer-tuke-girard1}
+\pgfdeclareimage[height=3.00cm]{girard2}{pics/beamer-tuke-girard2}
+\pgfdeclareimage[height=3.00cm]{girard3}{pics/beamer-tuke-girard3}
+\pgfdeclareimage[height=3.17cm]{prikl1}{pics/beamer-tuke-prikl1}
+\pgfdeclareimage[height=4.07cm]{purity}{pics/beamer-tuke-purity}
+\pgfdeclareimage[height=4.07cm]{happy}{pics/beamer-tuke-happy}
+
+% Loga
+\pgfdeclareimage[width=0.6cm]{tuke-logo}{pics/loga/beamer-tuke-logo}
+\pgfdeclareimage[width=0.6cm]{fei-logo}{pics/loga/beamer-fei-logo}
+\pgfdeclareimage[width=0.6cm]{kpi-logo}{pics/loga/beamer-kpi-logo}
+\pgfdeclareimage[width=1.3cm]{kpi-logo-velke}{pics/loga/beamer-kpi-logo}
+
+% Farbicky
+\definecolor{biela}{rgb}{1,1,1}
+\definecolor{zlta}{rgb}{1,1,0.5}
+\definecolor{cervena}{rgb}{1,0,0}
+\definecolor{fialova}{rgb}{1,0,1}
+\definecolor{azurova}{rgb}{0,1,1}
+\definecolor{modra}{rgb}{0,0,1}
+\definecolor{navy}{rgb}{0.5,0,0.5}
+\definecolor{limetka}{rgb}{0,1,0}
+\definecolor{zelena}{rgb}{0,0.5,0}
+\definecolor{cierna}{rgb}{0,0,0}
+
+\begin{document}
+
+\frame{\titlepage}
+
+%\section*{Outline}
+\part{Main Part}
+%\frame{\frametitle{Outline}\tableofcontents[part=1]}
+
+\section{Teória kategórií}
+	\input{katZakl}
+	\input{natTrans}
+\section{Príklady}
+	\input{priklMat}
+	\input{priklJazyky}
+	\input{priklKatSig}
+\section{Conclusio}
+	\input{conclusio} 
+\end{document}

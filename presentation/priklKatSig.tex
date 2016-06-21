@@ -1,0 +1,37 @@
+\subsection{Fukncia vyp}
+\frame{
+	\frametitle{Funkcia v kategórii}
+	\begin{block}{Fukncia $vyp(n,v)$ z pohľadu Teórie kategórií}
+		
+		\begin{columns}
+			\begin{column}{0.4\textwidth}
+			Tvar klasifikujúcej kategórie:
+			\vspace{2.0cm}
+			
+			Signatúra \alert{$\Sigma=(T,F)$} \\
+		
+			\end{column}
+			
+			\begin{column}{0.6\textwidth}
+					\structure{\begin{center}
+						\pgfuseimage{prikl1}
+					\end{center}}
+			\end{column}
+	\end{columns}	
+
+	    	\structure{\begin{tabular}{l}
+						$\alert{T}=\{int\}$ \\
+						$\alert{F}=\{\dots vyp: int \rightarrow int \rightarrow int \dots\}$ \\
+		    \end{tabular}}
+
+			\vspace{0.3cm}
+
+		Term:
+		
+		\alert{$\scriptstyle{n:int,~v:int~\vdash~if~n=0~then~v~else~vyp~(n~div~10)~(v~mult~(n~mod~10)):int}$}
+		
+	\end{block}
+} 
+
+% \scriptstyle{n:int, v:int, \vdash if(n=0,v,f(div(n,10),mult(v,mod(n,10)))):int}
+%			\scriptstyle{n:int,~v:int \vdash if~n=0~then~v~else~vyp~(n~div~10)~(v~mult~(n~mod~10))}
