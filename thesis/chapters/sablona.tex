@@ -148,7 +148,7 @@ Pomocou tohto príkazu je možné nastaviť meno a priezvisko vedúceho závere�
 
 Pomocou tohto príkazu je možné nastaviť meno a priezvisko konzultanta záverečnej práce. Jeho použitie je ilustrované v nasledovnom výpise kódu:
 
-\begin{listing}[ht]
+\begin{listing}[ht!]
 \begin{minted}[frame=lines]{latex}
 \consultant{Donald E. Knuth}
 \end{minted}
@@ -157,13 +157,38 @@ Pomocou tohto príkazu je možné nastaviť meno a priezvisko konzultanta záver
 
 
 \subsection{Príkaz {\tt \textbackslash{}fieldofstudy}}
+
+Pomocou tohto príkazu je možné nastaviť štúdijný odbor. Jeho použitie je ilustrované v nasledovnom výpise kódu:
+
+\begin{listing}[ht!]
+\begin{minted}[frame=lines]{latex}
+\fieldofstudy{1.2.3 Programovanie}
+\end{minted}
+\caption{Príklad použitia príkazu {\tt \textbackslash{}fieldofstudy} pre nastavenie štúdijného oboru}
+\end{listing}
+
+Ak typ štúdijného oboru nenastavíte, použije sa predvolená hodnota {\it 9.2.1. Informatika}.
+
+
 \subsection{Príkaz {\tt \textbackslash{}studyprogramme}}
+
+Pomocou tohto príkazu je možné nastaviť štúdijný program. Jeho použitie je ilustrované v nasledovnom výpise kódu:
+
+\begin{listing}[ht!]
+\begin{minted}[frame=lines]{latex}
+\studyprogramme{Programovanie}
+\end{minted}
+\caption{Príklad použitia príkazu {\tt \textbackslash{}studyprogramme} pre nastavenie štúdijného programu}
+\end{listing}
+
+Ak štúdijný program nenastavíte, použije sa predvolená hodnota {\it Informatika}.
+
 
 \subsection{Príkaz {\tt \textbackslash{}thesis}}
 
 Pomocou tohto príkazu je možné nastaviť typ záverečnej práce, ako napr. {\it Bakalárska práca} alebo {\it Dizertačná práca}. Jeho použitie je ilustrované v nasledovnom výpise kódu:
 
-\begin{listing}[ht]
+\begin{listing}[ht!]
 \begin{minted}[frame=lines]{latex}
 \thesis{Diplomova praca}
 \end{minted}
@@ -172,7 +197,16 @@ Pomocou tohto príkazu je možné nastaviť typ záverečnej práce, ako napr. {
 
 Ak typ záverečnej práce nešpecifikujete, použije sa automaticky hodnota {\it Bakalárska práca}.
 
+
 \subsection{Príkaz {\tt \textbackslash{}declaration}}
+
+Pomocou tohto príkazu je možné nastaviť text čestného vyhlásenia autora záverečnej práce. Príklad nastavenia vlastného textu čestného vyhlásenia je nasledovný:
+
+\mint{latex}|\declaration{Cestne skautske, ze som celu pracu napisal sam.}|
+
+Ak text čestného vyhlásenia nenastavíte, použije sa automaticky hodnota {\it Vyhlasujem, že som záverečnú prácu vypracoval(a) samostatne s~použitím uvedenej odbornej literatúry.}
+
+
 \subsection{Príkaz {\tt \textbackslash{}submissiondate}}
 \subsection{Príkaz {\tt \textbackslash{}abstract}}
 \subsection{Príkaz {\tt \textbackslash{}keywords}}
