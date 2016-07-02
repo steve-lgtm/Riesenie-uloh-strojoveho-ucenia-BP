@@ -4,12 +4,18 @@
 %% For compilation use following command:
 %% latexmk -pdf -pvc -bibtex --shell-escape thesis
 %% -----------------------------------------------------------------
-\documentclass{kpithesis}
+\documentclass{kithesis}
 
 % balicky
 \usepackage[slovak]{babel}
-\usepackage{minted}  % zvyraznovanie zdrojovych kodov
+
+% syntax higlighting and it's configuration
+\usepackage{minted}  
+\renewcommand\listoflistingscaption{Zoznam zdrojových kódov}
+\renewcommand\listingscaption{Výpis}
+\newminted{latex}{frame=lines,framerule=2pt}
 \usemintedstyle{tango}
+
 \usepackage{blindtext}  % lorem ipsum
 \usepackage{nicefrac}  % pekne zlomky
 \usepackage{rotating}  % umoznuje otacat obrazky spolu s popiskami
@@ -39,7 +45,12 @@
     slovensky \blindtext
 }
 
-%\acknowledgment{Ta díky more}
+\acknowledgment{Na tomto mieste by som rád poďakoval svojmu vedúcemu práce za jeho čas a odborné vedenie počas riešenia mojej záverečnej práce.
+
+Rovnako by som sa rád poďakoval svojim rodičom a priateľom za ich podporu a povzbudzovanie počas celého môjho štúdia.
+    
+V neposlednom rade by som sa rád poďakoval pánom {\it Donaldovi E. Knuthovi} a {\it Leslie Lamportovi} za ich typografický systém \LaTeX, s ktorým som strávil množstvo nezabudnuteľných večerov.}
+
 \addbibresource{thesis.bib}
 
 % if you want to work only on selected chapters
@@ -49,6 +60,9 @@
 
 %% Title page, abstract, declaration etc.:
 \frontmatter{}
+
+%% List of code listings
+\listoflistings
 
 % list of acronyms
 \thispagestyle{empty}
