@@ -1,10 +1,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%% Class identification.
+%% KI Thesis Class.
+%%
+%% Class for writing bachelor/master/phd thesis at Computer Science department
+%% at Faculty of Electrotechnics and Informatics and Technical university 
+%% of Košice.
+%%
+%% http://kpi.fei.tuke.sk
 %%
 %%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{kpithesis}[2016/06/18 KPI thesis class, v 0.1]
+\ProvidesClass{kpithesis}[2016/06/21 KI Thesis Class, v2016.1]
 
 \typeout{}
 \typeout{***********************************************}
@@ -51,7 +57,10 @@
     table]{totalcount}
 
 %% Numeric citations and sorting by year (descending), name and title
-\RequirePackage[style=numeric,sorting=ydnt]{biblatex}
+\RequirePackage[
+    style=numeric,
+    sorting=ydnt,
+    isbn=true]{biblatex}
 %\DefineBibliographyStrings{slovak}{%
     %bibliography = {Literatúra}
 %}
@@ -289,12 +298,12 @@
 \newcommand{\abstractpage}{
     \thispagestyle{empty}
 
-	\noindent\textbf{Abstrakt v SJ}\par\@abstract@sk\\[5mm]
+	\noindent\textbf{Abstrakt}\par\@abstract@sk\\[5mm]
 	\noindent\textbf{Kľúčové slová}\\
 	\@keywords@sk
 
-	\noindent\textbf{Abstrakt v AJ}\par\@abstract@en\\[5mm]
-	\noindent\textbf{Kľúčové slová}\\
+	\noindent\textbf{Abstract}\par\@abstract@en\\[5mm]
+	\noindent\textbf{Keywords}\\
 	\@keywords@en
 
     \newpage
@@ -373,7 +382,7 @@
 
 	{\normalsize
 		\noindent
-		\begin{tabular}{p{.24\textwidth}p{.66\textwidth}}
+		\begin{tabular}{p{.25\textwidth}p{.65\textwidth}}
 			Štúdijný program:& \@studyprogramme \\
 			Štúdijný odbor:& \@fieldofstudy \\
 			Školiace pracovisko:& \@department~(\@department@shortcut) \\
@@ -400,7 +409,6 @@
 % Note: You might need to install it first.
 %\renewcommand\rmdefault{psb}
 
-%\RequirePackage{lmodern} %,textcase}
 \RequirePackage{tgpagella}
 
 
@@ -410,7 +418,4 @@
 %%
 %%%%%
 
-% One-and-a-half spacing (required by board of graduate studies).
-% (Should remove this for Computer Laboratory technical report.)
-%\onehalfspacing
 \linespread{1.3}

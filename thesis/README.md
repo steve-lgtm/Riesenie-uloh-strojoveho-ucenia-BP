@@ -1,6 +1,6 @@
 # About
 
-Šablóna pre písanie záverečných prác na TUKE. 
+Šablóna pre písanie záverečných prác na KI FEI TUKE. 
 
 Pozor! Kódovanie všetkých dokumentov je nastavené na UTF-8!
 

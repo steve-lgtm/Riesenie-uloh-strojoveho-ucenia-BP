@@ -6,26 +6,29 @@ Projekt záverečnej práce má nasledovnú štruktúru:
 
 \begin{verbatim}
 .
-|-- bibliography.bib
 |-- CHANGELOG.md
 |-- chapters
-|   |-- formatovanie.tex
-|   |-- instalacia.tex
-|   `-- struktura.tex
+|   |-- motivacia.tex
+|   |-- analyza.tex
+|   |-- navrh.tex
+|   |-- implementacia.tex
+|   |-- vyhodnotenie.tex
+|   `-- zaver.tex
 |-- figures
 |   |-- foto.png
 |   `-- tugboat.png
-|-- kpithesis.cls
+|-- kithesis.cls
+|-- thesis.bib
 `-- thesis.tex
 \end{verbatim}
 
 Význam jednotlivých súborov a priečinkov je nasledovný:
 
 \begin{itemize}
-    \item súbor {\tt \bf{bibliography.bib}} obsahuje zoznam literatúry vo formáte \emph{BibTeX}
-    \item priečinok {\tt \bf{chapters/}} obsahuje {\tt .tex} súbory reprezentujúce samostatné kapitoly záverečnej práce
+    \item priečinok {\tt \bf{chapters/}} obsahuje {\tt .tex} súbory reprezentujúce samostatné kapitoly záverečnej práce. Ak niektorú z nich chcete do práce vložiť, môžete použiť príkaz \mint{latex}|\include{chapters/nazov.kapitoly}| V prípade, že chcete pracovať len na jednej alebo niektorých kapitolách a nechcete znovu generovať celú prácu, môžete využiť príkaz \mint{latex}|\includeonly{kapitola1,kapitola2}|
     \item priečinok {\tt \bf{figures/}} obsahuje zoznam obrázkov, ktoré boli v práci použité
-    \item v súbore {\tt \bf{kpithesis.cls}} sa nachádza samotná šablóna \emph{kpithesis}
+    \item v súbore {\tt \bf{kithesis.cls}} sa nachádza samotná šablóna \emph{kpithesis}
+    \item súbor {\tt \bf{thesis.bib}} obsahuje zoznam literatúry vo formáte \emph{BibTeX}
     \item súbor {\tt \bf{thesis.tex}} predstavuje hlavný súbor záverečnej práce
 \end{itemize}
 
@@ -37,8 +40,8 @@ Všetky obrázky, ktoré budete chcieť v dokumente použiť, ukladajte do prie�
 \begin{minted}{latex}
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\textwidth]{figures/tugboat}
-    \caption{\LaTeX{} Friendly Zone \label{o:latex_friendly_zone}}
+    \includegraphics[width=.6\textwidth]{figures/tugboat}
+    \caption{\LaTeX{} Friendly Zone}
 \end{figure}
 \end{minted}
 
@@ -46,17 +49,18 @@ Výsledok tohto fragmentu kódu sa nachádza na obrázku \ref{o:latex_friendly_z
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\textwidth]{figures/tugboat}
+    \includegraphics[width=.6\textwidth]{figures/tugboat}
     \caption{\LaTeX{} Friendly Zone \label{o:latex_friendly_zone}}
 \end{figure}
+
 
 Ak chcete obrázok vložiť do dokumentu otočený o $90$, môžete použiť voľbu {\tt angle=90}, ktorú poskytuje balík {\tt graphicx}:
 
 \begin{minted}{latex}
 \begin{figure}[!ht]
     \centering
-    \includegraphics[angle=90,width=\textwidth]{figures/tugboat}
-    \caption{\LaTeX{} Friendly Zone \label{o:latex_friendly_zone_90}}
+    \includegraphics[angle=90,width=.6\textwidth]{figures/tugboat}
+    \caption{\LaTeX{} Friendly Zone (with angle)}
 \end{figure}
 \end{minted}
 
@@ -64,26 +68,65 @@ Výsledkom tejto úpravy je obrázok \ref{o:latex_friendly_zone_90}.
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[angle=90,width=\textwidth]{figures/tugboat}
-    \caption{\LaTeX{} Friendly Zone \label{o:latex_friendly_zone_90}}
+    \includegraphics[angle=90,width=.6\textwidth]{figures/tugboat}
+    \caption{\LaTeX{} Friendly Zone (with angle)\label{o:latex_friendly_zone_90}}
 \end{figure}
 
 V prípade, ak chcete otočiť obrázok spolu s popiskom, použite balíček {\tt rotating}, ktorý poskytuje prostredie {\tt sidewaysfigure} nasledovným spôsobom:
 
-\begin{minted}{latex}
+\begin{listing}[ht]
+\begin{minted}[frame=lines]{latex}
 \begin{sidewaysfigure}
     \centering
-    \includegraphics[width=.7\textheight]{figures/tugboat}
-    \caption{\LaTeX{} Friendly Zone \label{o:latex_friendly_zone_rotating}}
+    \includegraphics[width=.6\textheight]{figures/tugboat}
+    \caption{\LaTeX{} Friendly Zone (with rotating)}
 \end{sidewaysfigure}
 \end{minted}
+\caption{Zobrazenie obrázku na šírku pomocou balíčka \tt{rotating}}
+\end{listing}
 
 Výsledok tohto fragmentu kódu sa nachádza na obrázku \ref{o:latex_friendly_zone_rotating}.
 
 \begin{sidewaysfigure}
     \centering
-    \includegraphics[width=.7\textheight]{figures/tugboat}
-    \caption{\LaTeX{} Friendly Zone \label{o:latex_friendly_zone_rotating}}
+    \includegraphics[width=.6\textheight]{figures/tugboat}
+    \caption{\LaTeX{} Friendly Zone (with rotating)\label{o:latex_friendly_zone_rotating}}
 \end{sidewaysfigure}
 
+
 \section{Vkladanie tabuliek}
+
+\section{Vkladanie fragmentov kódov}
+
+Fragment kódu, alebo vo všeobecnosti - výpis programu, je reprezentovaný ako text. Preto kódy do práce nikdy nevkladajte ako obrázky! Je veľmi pravdepodobné, že ak tak urobíte, bude takto vložený obrázok rozmazaný, čo neprispieva ku celkovému dobrému dojmu z výsledku.
+
+Pre vkladanie fragmentov zdrojových kódov môžete použiť balíček {\bf\tt minted}, ktorý umožňuje do textu vkladať celé fragmenty kódu, ale rovnako tiež len jednoriadkové kódy. 
+
+Príklad vloženia fragmentu kódu do textu sa nachádza vo výpise \ref{source:hello}.
+
+
+\begin{listing}[ht]
+\inputminted[frame=lines]{latex}{examples/hello.world.tex}
+\caption{Použitie balíka {\tt\bf minted} na zobrazenie fragmentu zdrojového kódu}\label{source:hello}
+\end{listing}
+
+Po preložení sa výsledok v texte zobrazí nasledovne:
+
+\begin{minted}{c}
+#include <stdio.h>
+
+int main(){
+    printf("Hello world\n");
+    return 0;
+}
+\end{minted}
+
+Pokiaľ potrebujete do textu vložiť len jednoriadkový fragment kódu, môžete použiť príkaz {\tt\textbackslash{mint}}. Ukážka použitia tohto príkazu sa nachádza vo výpise \ref{source:mint}.
+
+
+\section{Literatúra a jej citovanie}
+
+Pre prácu so zdrojmi sa používa systém balík {\tt \bf BibLaTeX}.
+\inputminted{latex}{chapters/bibliography.bib}
+
+
