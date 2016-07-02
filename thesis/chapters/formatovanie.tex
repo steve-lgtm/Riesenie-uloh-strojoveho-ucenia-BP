@@ -1,38 +1,4 @@
 \chapter{Formátovanie dokumentu}
-
-\section{Štruktúra projektu}
-
-Projekt záverečnej práce má nasledovnú štruktúru:
-
-\begin{verbatim}
-.
-|-- CHANGELOG.md
-|-- chapters
-|   |-- motivacia.tex
-|   |-- analyza.tex
-|   |-- navrh.tex
-|   |-- implementacia.tex
-|   |-- vyhodnotenie.tex
-|   `-- zaver.tex
-|-- figures
-|   |-- foto.png
-|   `-- tugboat.png
-|-- kithesis.cls
-|-- thesis.bib
-`-- thesis.tex
-\end{verbatim}
-
-Význam jednotlivých súborov a priečinkov je nasledovný:
-
-\begin{itemize}
-    \item priečinok {\tt \bf{chapters/}} obsahuje {\tt .tex} súbory reprezentujúce samostatné kapitoly záverečnej práce. Ak niektorú z nich chcete do práce vložiť, môžete použiť príkaz \mint{latex}|\include{chapters/nazov.kapitoly}| V prípade, že chcete pracovať len na jednej alebo niektorých kapitolách a nechcete znovu generovať celú prácu, môžete využiť príkaz \mint{latex}|\includeonly{kapitola1,kapitola2}|
-    \item priečinok {\tt \bf{figures/}} obsahuje zoznam obrázkov, ktoré boli v práci použité
-    \item v súbore {\tt \bf{kithesis.cls}} sa nachádza samotná šablóna \emph{kpithesis}
-    \item súbor {\tt \bf{thesis.bib}} obsahuje zoznam literatúry vo formáte \emph{BibTeX}
-    \item súbor {\tt \bf{thesis.tex}} predstavuje hlavný súbor záverečnej práce
-\end{itemize}
-
-
 \section{Vkladanie obrázkov}
 
 Všetky obrázky, ktoré budete chcieť v dokumente použiť, ukladajte do priečinku {\tt figures/}. Následne obrázok vložte do dokumentu pomocou prostredia \verb!figure! pomocou príkazu \verb!\includegraphics! bez uvedenia jeho prípony. Napríklad takto:
@@ -94,8 +60,13 @@ Výsledok tohto fragmentu kódu sa nachádza na obrázku \ref{o:latex_friendly_z
 \end{sidewaysfigure}
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Vkladanie tabuliek}
 
+\subsection{Vytvorenie tabuľky z CSV súboru}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Vkladanie fragmentov kódov}
 
 Fragment kódu, alebo vo všeobecnosti - výpis programu, je reprezentovaný ako text. Preto kódy do práce nikdy nevkladajte ako obrázky! Je veľmi pravdepodobné, že ak tak urobíte, bude takto vložený obrázok rozmazaný, čo neprispieva ku celkovému dobrému dojmu z výsledku.
