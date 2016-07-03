@@ -208,20 +208,202 @@ Ak text čestného vyhlásenia nenastavíte, použije sa automaticky hodnota {\i
 
 
 \subsection{Príkaz {\tt \textbackslash{}submissiondate}}
+
+Pomocou tohto príkazu je možné nastaviť dátum odovzdania práce. Tento príkaz má tri pozičné parametre:
+
+\begin{enumerate}
+    \item {\it deň}
+    \item {\it mesiac}
+    \item {\it rok}
+\end{enumerate}
+
+Príklad nastavenia dátumu odovzdania je nasledovný:
+
+\mint{latex}|\submissiondate{24}{12}{2016}|
+
+
 \subsection{Príkaz {\tt \textbackslash{}abstract}}
+
+Pomocou tohto príkazu je možné napísať abstrakt záverečnej práce v slovenskom a anglickom jazyku. Príkaz má dva pozičné parametre:
+
+\begin{enumerate}
+    \item {\it znenie abstraktu v slovenskom jazyku}
+    \item {\it znenie abstraktu v anglickom jazyku}
+\end{enumerate}
+
+Príklad použitia tohto príkazu ilustruje nasledovný výpis:
+
+\begin{listing}[ht!]
+\begin{minted}[frame=lines]{latex}
+\abstract{%
+    Tato bakalarska praca sa venuje navrhu a implementacii telepor-
+    tovacieho systemu, vdaka ktoremu je mozne prekonavat obrovske 
+    vzdialenosti v realnom case. System bol otestovany a neskor na-
+    sadeny na \emph{U.S.S. Enterprise}, kde sa s uspechom pouziva 
+    dodnes.
+}{%
+    This bachelor thesis is dedicated to the design and implementa-
+    tion of teleportation system, which can be used to travel over
+    huge distances in real-time. System was tested and later 
+    installed at \emph{U.S.S. Enterprise}, where it is successfully
+    used till today.
+}
+\end{minted}
+\caption{Zadanie abstraktu záverečnej práce}
+\end{listing}
+
+
 \subsection{Príkaz {\tt \textbackslash{}keywords}}
+
+Pomocou tohto príkazu je možné zadať kľúčové slová charakterizujúce záverečnú prácu v slovenskom a anglickom jazyku. Príkaz má dva pozičné parametre:
+
+\begin{enumerate}
+    \item {\it kľúčové slová v slovenskom jazyku}
+    \item {\it kľúčové slová v anglickom jazyku}
+\end{enumerate}
+
+Príklad použitia tohto príkazu ilustruje nasledovný výpis:
+
+\begin{listing}[ht!]
+\begin{minted}[frame=lines]{latex}
+\keywords{%
+    cestovanie, realny cas, teleportacia
+}{%
+    traveling, real-time, teleportation
+}
+\end{minted}
+\caption{Zadanie kľúčových slov záverečnej práce}
+\end{listing}
+
+
 \subsection{Príkaz {\tt \textbackslash{}acknowledgment}}
+
+Pomocou tohto príkazu je možné napísať vlastné poďakovanie do práce. Príklad použitia tohto príkazu ilustruje nasledovný výpis:
+
+\begin{listing}[ht!]
+\begin{minted}[frame=lines]{latex}
+\acknowledgment{%
+    Rad by som podakoval kapitanovi Kirkovi za moznost experimental-
+    neho overenia vysledkov mojej prace na jeho lodi. Za rapidne 
+    zredukovanie jeho posadky vdaka experimentom sa mu ospravedlnu-
+    jem.
+}
+\end{minted}
+\caption{Napísanie vlastného poďakovania do práce}
+\end{listing}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Príkazy na vygenerovanie špeciálnych strán}
 
-\subsection{Príkaz {\tt \textbackslash{}frontmatter}}
+Šablóna obsahuje niekoľko príkazov, pomocou ktorých je možné vygenerovať niekoľko špeciálnych strán na základe hodnôt premenných nastavených pomocou príkazov uvedených v predchádzajúcej podkapitole. Pomocou týchto príkazov je možné vygenerovať napr. titulnú stranu záverečnej práce alebo špeciálne strany, na ktorých sa zobrazí text poďakovania alebo čestného vyhlásenia.
+
 \subsection{Príkaz {\tt \textbackslash{}frontpage}}
-\subsection{Príkaz {\tt \textbackslash{}abstractpage}}
-\subsection{Príkaz {\tt \textbackslash{}declarationpage}}
-\subsection{Príkaz {\tt \textbackslash{}acknowledgmentpage}}
+
+Pomocou tohto príkazu dôjde k vygenerovaniu obálky záverečnej práce. Obsah stránky bude zložený z:
+
+\begin{itemize}
+    \item názvu univerzity,
+    \item názvu fakulty,
+    \item názvu záverečnej práce,
+    \item typu záverečnej práce,
+    \item roku publikovania, a
+    \item mena a priezviska autora záverečnej práce.
+\end{itemize}
+
+
 \subsection{Príkaz {\tt \textbackslash{}titlepage}}
 
+Tento príkaz vygeneruje titulnú stránku záverečnej práce. Obsah stránky bude zložený z:
 
+\begin{itemize}
+    \item názvu a mesta univerzity,
+    \item názvu fakulty,
+    \item názvu záverečnej práce,
+    \item typu záverečnej práce,
+    \item roku publikovania,
+    \item mena a priezviska autora záverečnej práce,
+    \item štúdijného programu a štúdijného oboru,
+    \item školiaceho pracoviska, a
+    \item mien vedúceho a konzultanta práce.
+\end{itemize}
+
+
+\subsection{Príkaz {\tt \textbackslash{}abstractpage}}
+
+Tento príkaz vygeneruje stránku s abstraktom v slovenskom a anglickom jazyku. Súčasťou tejto stránky budú aj kľúčové slová v oboch jazykoch.
+
+
+\subsection{Príkaz {\tt \textbackslash{}declarationpage}}
+
+Tento príkaz vygeneruje stránku s čestným vyhlásením.
+
+
+\subsection{Príkaz {\tt \textbackslash{}acknowledgmentpage}}
+
+Tento príkaz vygeneruje stránku s poďakovaním.
+
+
+\subsection{Príkaz {\tt \textbackslash{}frontmatter}}
+
+Tento príkaz vo vašej práci vygeneruje naraz postupne tieto stránky:
+
+\begin{enumerate}
+    \item prednú stránku
+    \item titulnú stránku
+    \item stránku s abstraktom práce
+    \item stránku s čestným vyhlásením
+    \item stránku s poďakovaním
+    \item obsah záverečnej práce
+    \item zoznam obrázkov
+    \item zoznam tabuliek
+\end{enumerate}
+
+Pokiaľ nepotrebujete vo svojej práci toto poradie nutne upraviť alebo zmeniť vzhľad týchto stránok, stačí, ak ako prvý príkaz vášho dokumentu bude práve príkaz \mint{latex}|\frontmatter|
+
+
+\section{Príklad kostry záverečnej práce}
+
+Pre začatie písania vašej záverečnej práce vám môže poslúžiť nasledovná kostra dokumentu. V tejto kostre sa nachádzajú len povinné parametre. Ak teda potrebujete nastaviť ďalšie vlastnosti vašej práce, môžete na to použiť niektorú z uvedených premenných.
+
+
+\begin{listing}[ht!]
+\begin{minted}[frame=lines]{latex}
+\documentclass{kithesis}
+\usepackage[slovak]{babel}
+
+\title{Nazov prace}
+\author{Juraj Hrdza}
+\supervisor{Leslie Lamport}
+\consultant{Donald E. Knuth}
+\submissiondate{24}{12}{2016}
+
+\abstract{%
+    Znenie slovenskeho abstraktu prace.
+}{%
+    Thesis abstract in English.
+}
+
+\keywords{zoznam klucovych slov}{keywords in English}
+
+\acknowledgment{Text vlastneho podakovania}
+
+\addbibresource{thesis.bib}
+
+\begin{document}
+\frontmatter{}
+\include{chapters/motivacia}
+\include{chapters/analyza}
+\include{chapters/navrh}
+\include{chapters/realizacia}
+\include{chapters/vyhodnotenie}
+\include{chapters/zaver}
+
+\printbibliography[title={Literatura}]
+\end{document}
+
+\end{minted}
+\caption{Kostra dokumentu záverečnej práce}
+\end{listing}
 
