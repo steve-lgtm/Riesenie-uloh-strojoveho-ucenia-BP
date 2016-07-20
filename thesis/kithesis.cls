@@ -10,7 +10,7 @@
 %%
 %%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{kpithesis}[2016/06/21 KI Thesis Class, v2016.1]
+\ProvidesClass{kithesis}[2016/06/21 KI Thesis Class, v2016.1]
 
 \typeout{}
 \typeout{***********************************************}
@@ -92,6 +92,9 @@
    baseurl={http://www.tuke.sk}
 ]{hyperref}
 
+% luatex for some functions
+\RequirePackage{luacode}
+\directlua{dofile("functions.lua")}
 
 % popisky ku obrazkom a tabulkam
 \def\figurename{Obrázok}
@@ -136,8 +139,11 @@
 %%
 %%%%%
 
+\def\br{\\}
+
+
 % DOCVAR: college (The name of the thesis writer's college)
-\newcommand{\@college}{Technická univerzita v košiciach}
+\newcommand{\@college}{Technická univerzita v Košiciach}
 \newcommand{\@college@city}{Košice}
 \newcommand{\college}[2]{
 	\renewcommand{\@college}{#1}
@@ -202,6 +208,14 @@
     \newcommand{\@keywords@en}{#1}%
     \newcommand{\@keywords@sk}{#2}%
 }
+
+% DOCVAR: thesis title
+%\newcommand{\@title}{}
+\renewcommand{\title}[2]{%
+    \newcommand{\@title@en}{#1}%
+    \newcommand{\@title@sk}{#2}%
+}
+
 
 % DOCVAR: thesis (type of the thesis)
 \newcommand{\@acknowledgment}{Na tomto mieste by som sa rád poďakoval svojmu vedúcemu záverečnej práce za pripomienky a~odbornú pomoc.}
@@ -275,7 +289,7 @@
 
 		\vfill
 
-  		{\LARGE \textbf{\@title}}
+  		{\LARGE \textbf{\@title@sk}}
 
   		\bigskip
 
@@ -295,18 +309,56 @@
 %% Abstract component
 %%
 %%%%%
+\def\xxx#1{%
+    \directlua{%
+        print('>>>>>>>>>>>>> hello')
+        print('>>>>>>> ' .. [[#1]])
+        %tex.print(rmLineEnds([[#1]]))
+        %local s = [[#1]]
+        %print([[#1]])
+      %local s, _ = string.gsub("#1",'\\(%A)',"X")
+      %tex.sprint(s)
+  }
+}
 \newcommand{\abstractpage}{
+
+    \def\br{}
+    %\xxx{kurnik \\ sopa}
+
+    %\xxx{\luatexluaescapestring{kurnik \\ sopa}}
+    %\xxx{\@title}
+
     \thispagestyle{empty}
-
-	\noindent\textbf{Abstrakt}\par\@abstract@sk\\[5mm]
-	\noindent\textbf{Kľúčové slová}\\
-	\@keywords@sk
-
-	\noindent\textbf{Abstract}\par\@abstract@en\\[5mm]
-	\noindent\textbf{Keywords}\\
-	\@keywords@en
+    \begin{tabular}{p{0.2\textwidth}p{0.8\textwidth}}
+        Názov práce:    & \@title@sk \\ \\ % \directlua{rawText([[\detokenize{\@title@sk}]])} \\ \\
+        Pracovisko:     & \@department, \@college \\
+        Autor:          & \@author\\
+        Školiteľ:       & \@supervisor \\
+        Konzultant:     & \@consultant \\
+        Dátum:          & \@submissionday. \@submissionmonth. \@submissionyear\\
+        Kľúčové slová:  & \@keywords@sk \\ \\
+        \abstractname:       & \@abstract@sk\\
+    \end{tabular}
 
     \newpage
+
+    \begin{otherlanguage}{english}
+    \thispagestyle{empty}
+    \begin{tabular}{p{0.2\textwidth}p{0.8\textwidth}}
+        Thesis title:   & \@title@en \\ \\
+        Department:     & \@department, \@college \\
+        Author:         & \@author\\
+        Supervisor:     & \@supervisor \\
+        Tutor:          & \@consultant \\
+        Date:           & \@submissionday. \@submissionmonth. \@submissionyear\\
+        Keywords:       & \@keywords@en \\ \\
+        \abstractname:       & \@abstract@en\\
+    \end{tabular}
+    \end{otherlanguage}
+
+    \newpage
+
+    \def\br{\\}
 }
 
 
@@ -371,7 +423,7 @@
 
  		\vfill
 
-    	{\LARGE \textbf{\@title}}
+    	{\LARGE \textbf{\@title@sk}}
 
     	\bigskip
 
