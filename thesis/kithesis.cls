@@ -49,7 +49,7 @@
 \RequirePackage{graphicx}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg,.mps}
 
-\RequirePackage[utf8]{inputenc}
+\RequirePackage[utf8]{luainputenc}
 \RequirePackage[T1]{fontenc}
 
 \RequirePackage[
