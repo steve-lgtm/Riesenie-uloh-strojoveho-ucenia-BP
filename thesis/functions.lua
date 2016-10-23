@@ -5,6 +5,8 @@ function rmLineEnds(text)
 end
 
 function rawText(text)
+    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---------------------------------------------------")
+    print(text)
     text = string.gsub(text, "\\\\", "")
     print(text)
     tex.print(text)

@@ -47,9 +47,9 @@
 ]{geometry}
 
 \RequirePackage{graphicx}
-\DeclareGraphicsExtensions{.pdf,.png,.jpg,.mps}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.eps}
 
-\RequirePackage[utf8]{luainputenc}
+\RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 
 \RequirePackage[
@@ -57,12 +57,14 @@
     table]{totalcount}
 
 %% Numeric citations and sorting by year (descending), name and title
+\RequirePackage{csquotes}
 \RequirePackage[
     style=numeric,
     sorting=ydnt,
-    isbn=true]{biblatex}
-%\DefineBibliographyStrings{slovak}{%
-    %bibliography = {Literatúra}
+    isbn=true,
+	backend=biber]{biblatex}
+%\DefineBibliographyStrings{slovak}{
+	%bibliography = {Literatúra}
 %}
 
 % 'zhusti' polozky obsahu
@@ -92,10 +94,6 @@
    baseurl={http://www.tuke.sk}
 ]{hyperref}
 
-% luatex for some functions
-\RequirePackage{luacode}
-\directlua{dofile("functions.lua")}
-
 % popisky ku obrazkom a tabulkam
 \def\figurename{Obrázok}
 \def\tabname{Tabuľka}
@@ -116,9 +114,9 @@
 
 % slovnik terminov a skratiek
 \RequirePackage[
-    acronyms,
-	nonumberlist,
-	noredefwarn
+    acronym
+	%nonumberlist,
+	%noredefwarn
 ]{glossaries}  
 \makeglossaries % prikaz na vytvorenie suboru .glo
 
@@ -143,25 +141,40 @@
 
 
 % DOCVAR: college (The name of the thesis writer's college)
-\newcommand{\@college}{Technická univerzita v Košiciach}
-\newcommand{\@college@city}{Košice}
+\newcommand{\@college@sk}{Technická univerzita v Košiciach}
+\newcommand{\@college@en}{Technical university of Košice}
 \newcommand{\college}[2]{
-	\renewcommand{\@college}{#1}
-	\renewcommand{\@college@city}{#2}
+	\renewcommand{\@college@en}{#1}
+	\renewcommand{\@college@sk}{#2}
 }
 
+\newcommand{\@college@city}{Košice}
+
 % DOCVAR: faculty (The name of the thesis writer's faculty)
-\newcommand{\@faculty}{Fakulta elektrotechniky a informatiky}
-\newcommand{\faculty}[1]{\renewcommand{\@faculty}{#1}}
+\newcommand{\@faculty@en}{Faculty of Electrical Engineering and informatics}
+\newcommand{\@faculty@sk}{Fakulta elektrotechniky a informatiky}
+\newcommand{\faculty}[2]{
+	\renewcommand{\@faculty@en}{#1}
+	\renewcommand{\@faculty@sk}{#2}
+}
 
 
 % DOCVAR: department (name of the thesis writer's department)
-\newcommand{\@department}{Katedra počítačov a informatiky}
-\newcommand{\@department@shortcut}{KPI}
+\newcommand{\@department@sk}{Katedra počítačov a informatiky}
+\newcommand{\@department@en}{Department of Computers and Informatics}
 \newcommand{\department}[2]{
-	\renewcommand{\@department}{#1}
-	\renewcommand{\@department@shortcut}{#2}
+	\renewcommand{\@department@en}{#1}
+	\renewcommand{\@department@sk}{#2}
 }
+
+% DOCVAR: department's shortcut
+\newcommand{\@departmentacr@sk}{KPI}
+\newcommand{\@departmentacr@en}{DCI}
+\newcommand{\departmentacr}[2]{
+	\renewcommand{\@departmentacr@en}{#1}
+	\renewcommand{\@departmentacr@sk}{#2}
+}
+
 
 % DOCVAR: supervisor (name of the thesis writer's supervisor)
 \newcommand{\@supervisor}{}
@@ -180,8 +193,12 @@
 \newcommand{\studyprogramme}[1]{\renewcommand{\@studyprogramme}{#1}}
 
 % DOCVAR: thesis (type of the thesis)
-\newcommand{\@thesis}{Bakalárska práca}
-\newcommand{\thesis}[1]{\renewcommand{\@thesis}{#1}}
+\newcommand{\@thesis@en}{Bachelor thesis}
+\newcommand{\@thesis@sk}{Bakalárska práca}
+\newcommand{\thesis}[2]{
+    \renewcommand{\@thesis@en}{#1}
+    \renewcommand{\@thesis@sk}{#2}
+}
 
 % DOCVAR: declaration text
 \newcommand{\@declaration}{Vyhlasujem, že som záverečnú prácu vypracoval(a) samostatne s~použitím uvedenej odbornej literatúry.}
@@ -210,7 +227,6 @@
 }
 
 % DOCVAR: thesis title
-%\newcommand{\@title}{}
 \renewcommand{\title}[2]{%
     \newcommand{\@title@en}{#1}%
     \newcommand{\@title@sk}{#2}%
@@ -283,9 +299,9 @@
 	%\pagestyle{empty}
 
 	\begin{center}
-		{\Large \textbf{\@college}}
+		{\Large \textbf{\@college@sk}}
 
-		{\Large \textbf{\@faculty}}
+		{\Large \textbf{\@faculty@sk}}
 
 		\vfill
 
@@ -293,7 +309,7 @@
 
   		\bigskip
 
-  		{\large \textbf{\@thesis}}
+  		{\large \textbf{\@thesis@sk}}
 	\end{center}
 
 	\vfill
@@ -309,29 +325,14 @@
 %% Abstract component
 %%
 %%%%%
-\def\xxx#1{%
-    \directlua{%
-        print('>>>>>>>>>>>>> hello')
-        print('>>>>>>> ' .. [[#1]])
-        %tex.print(rmLineEnds([[#1]]))
-        %local s = [[#1]]
-        %print([[#1]])
-      %local s, _ = string.gsub("#1",'\\(%A)',"X")
-      %tex.sprint(s)
-  }
-}
+
 \newcommand{\abstractpage}{
-
     \def\br{}
-    %\xxx{kurnik \\ sopa}
-
-    %\xxx{\luatexluaescapestring{kurnik \\ sopa}}
-    %\xxx{\@title}
 
     \thispagestyle{empty}
     \begin{tabular}{p{0.2\textwidth}p{0.8\textwidth}}
-        Názov práce:    & \@title@sk \\ \\ % \directlua{rawText([[\detokenize{\@title@sk}]])} \\ \\
-        Pracovisko:     & \@department, \@college \\
+        Názov práce:    & \@title@sk \\ \\ 
+        Pracovisko:     & \@department@sk, \@college@sk \\
         Autor:          & \@author\\
         Školiteľ:       & \@supervisor \\
         Konzultant:     & \@consultant \\
@@ -346,7 +347,7 @@
     \thispagestyle{empty}
     \begin{tabular}{p{0.2\textwidth}p{0.8\textwidth}}
         Thesis title:   & \@title@en \\ \\
-        Department:     & \@department, \@college \\
+        Department:     & \@department@en, \@college@en \\
         Author:         & \@author\\
         Supervisor:     & \@supervisor \\
         Tutor:          & \@consultant \\
@@ -417,9 +418,9 @@
 	\thispagestyle{empty}
 
 	\begin{center}
-		{\Large \textbf{\@college}}
+		{\Large \textbf{\@college@sk}}
 
-		{\Large \textbf{\@faculty}}
+		{\Large \textbf{\@faculty@sk}}
 
  		\vfill
 
@@ -427,7 +428,7 @@
 
     	\bigskip
 
-    	{\large \textbf{\@thesis}}%
+    	{\large \textbf{\@thesis@sk}}%
 	\end{center}
 
  	\vfill
@@ -437,7 +438,7 @@
 		\begin{tabular}{p{.25\textwidth}p{.65\textwidth}}
 			Štúdijný program:& \@studyprogramme \\
 			Štúdijný odbor:& \@fieldofstudy \\
-			Školiace pracovisko:& \@department~(\@department@shortcut) \\
+			Školiace pracovisko:& \@department@sk~(\@departmentacr@sk) \\
 			Školiteľ:& \@supervisor \\
 			Konzultant:& \@consultant \\
 		\end{tabular}
@@ -457,9 +458,12 @@
 %%
 %%%%%
 
+% Font for some math characters to work with TeX Gyre Pagella font
+
+\RequirePackage{textcomp}
+
 % Font used for thesis is TeX Gyre Pagella.
 % Note: You might need to install it first.
-%\renewcommand\rmdefault{psb}
 
 \RequirePackage{tgpagella}
 

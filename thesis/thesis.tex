@@ -3,34 +3,34 @@
 %%
 %% For compilation use following command:
 %% latexmk -pdf -pvc -bibtex --shell-escape thesis
+%%
 %% -----------------------------------------------------------------
+%%                                     _     _      
+%%      _ __  _ __ ___  __ _ _ __ ___ | |__ | | ___ 
+%%     | '_ \| '__/ _ \/ _` | '_ ` _ \| '_ \| |/ _ \
+%%     | |_) | | |  __/ (_| | | | | | | |_) | |  __/
+%%     | .__/|_|  \___|\__,_|_| |_| |_|_.__/|_|\___|
+%%     |_|                                          
+%%
+%% -----------------------------------------------------------------
+
 \documentclass{kithesis}
 
-% balicky
-\usepackage[english,czech]{babel}
-
-% syntax higlighting and it's configuration
-\usepackage{minted}  
-\renewcommand\listoflistingscaption{Zoznam zdrojových kódov}
-\renewcommand\listingscaption{Výpis}
-\newminted{latex}{frame=lines,framerule=2pt}
-\usemintedstyle{tango}
-
+% Additional packages
+\usepackage[english,slovak]{babel}
 \usepackage{blindtext}  % lorem ipsum
-\usepackage{nicefrac}  % pekne zlomky
-\usepackage{rotating}  % umoznuje otacat obrazky spolu s popiskami
-\usepackage{csquotes}
 
-% premenne
-\title{My master thesis \\ with title over two lines}{Moja diplomová práca \\ s názvom cez dva riadky}
+% Variables
+\title{My thesis \br (the skeleton)}{Moja záverečná práca \br (šablóna)}
 
 \author{Janko Hraško}
-\supervisor{Leslie Lamport} %veduciprace
+\supervisor{Leslie Lamport} %veduci prace
 \consultant{Donald E. Knuth} %konzultant
-%\college{Žilinská univerzita}{Žilina} %univerzita
-%\faculty{Fakulta elektrotechniky a informatiky} %fakulta
-\department{Katedra počítačov a informatiky}{KPI} %katedra
-%\thesis{Diplomová práca} %typprace
+%\college{University of Žilina}{Žilinská univerzita} %univerzita
+%\faculty{Faculty of Electrical Engineering and informatics}{Fakulta elektrotechniky a informatiky} %fakulta
+%\department{Department of Computers and Informatics}{Katedra počítačov a informatiky} %katedra
+%\departmentacr{DCI}{KPI} % skratka katedry
+%\thesis{Master thesis}{Diplomová práca} %typ prace
 \submissiondate{13}{5}{2016}
 %\fieldofstudy{9.2.1 Informatika}
 %\studyprogramme{Informatika}
@@ -39,9 +39,11 @@
 %\declaration{som nepodvadzal}
 
 \abstract{%
-    anglicky \LaTeX \blindtext
+    % english 
+	\blindtext
 }{%
-    slovensky \blindtext
+    % slovak 
+	\blindtext
 }
 
 \acknowledgment{Na tomto mieste by som rád poďakoval svojmu vedúcemu práce za jeho čas a odborné vedenie počas riešenia mojej záverečnej práce.
@@ -50,57 +52,54 @@ Rovnako by som sa rád poďakoval svojim rodičom a priateľom za ich podporu a 
     
 V neposlednom rade by som sa rád poďakoval pánom {\it Donaldovi E. Knuthovi} a {\it Leslie Lamportovi} za typografický systém \LaTeX, s ktorým som strávil množstvo nezabudnuteľných večerov.}
 
-\addbibresource{thesis.bib}
+\addbibresource{chapters/bibliography.bib}
 
 % if you want to work only on selected chapters
-%\includeonly{chapters/struktura,chapters/formatovanie}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\includeonly{chapters/analyza} %,chapters/synteza}
+%%
+%% -----------------------------------------------------------------
+%%          _                                       _   
+%%       __| | ___   ___ _   _ _ __ ___   ___ _ __ | |_ 
+%%      / _` |/ _ \ / __| | | | '_ ` _ \ / _ \ '_ \| __|
+%%     | (_| | (_) | (__| |_| | | | | | |  __/ | | | |_ 
+%%      \__,_|\___/ \___|\__,_|_| |_| |_|\___|_| |_|\__|
+%%                                                      
+%% -----------------------------------------------------------------
+
 \begin{document}
 %% Title page, abstract, declaration etc.:
 \frontmatter{}
 
-%% List of code listings
-\listoflistings
-
-% list of acronyms
-\thispagestyle{empty}
-\input{acronyms.tex}
-\printglossary[type=\acronymtype,title={\acrlistname}]
-\newpage
+%% List of code listings, if you are using package minted
+%\listoflistings
 
 \pagenumbering{arabic}
 
+%% Chapters
+\include{chapters/motivacia}
+\include{chapters/formulacia}
+\include{chapters/analyza}
+\include{chapters/synteza}
+\include{chapters/vyhodnotenie}
+\include{chapters/zaver}
 
-%
-\include{chapters/instalacia}
-\include{chapters/struktura}
-\include{chapters/sablona}
-\include{chapters/formatovanie}
-%%
-%\include{formulacia}
-%%
-%\include{analyza}
-%%
-%\include{jadroprace}
-%%
-%\include{zaver}
-%%
-%\include{literatura}
-%\bibliographystyle{dcu}
-%\bibliography{bibliography}{}
+%% The bibliography
 \printbibliography[title={Literatúra}]
+\addcontentsline{toc}{chapter}{\numberline{}Literatúra}
+
 %%
-%\include{prilohy}
-%%
-%\include{prilohaa}
-%%
-%\include{prilohab}
-%%
-%\include{prilohac}
-%
+\include{chapters/prilohy}
+\include{chapters/prilohaa}
+
+% List of acronyms
+\thispagestyle{empty}
+\input{acronyms.tex}
+\printglossary %[type=\acronymtype,title={\acrlistname}]
+\printglossaries
+\newpage
+
 % zivotopis autora
 %\curriculumvitae\protect
-%\label{page:posledna}
 %Táto časť\/ je nepovinná. Autor tu môže uviesť\/ svoje biografické
 %údaje, údaje o~záujmoch, účasti na~projektoch, účasti na~súťažiach,
 %získané ocenenia, zahraničné pobyty na~praxi, domácu prax, publikácie
