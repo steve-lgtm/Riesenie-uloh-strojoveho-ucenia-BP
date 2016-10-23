@@ -1,0 +1,410 @@
+\chapter{Práca so šablónou}
+\label{ch:sablona}
+
+\section{Štruktúra projektu}
+
+Projekt záverečnej práce má nasledovnú štruktúru:
+
+\begin{verbatim}
+.
+|-- CHANGELOG.md
+|-- chapters
+|   |-- motivacia.tex
+|   |-- analyza.tex
+|   |-- navrh.tex
+|   |-- implementacia.tex
+|   |-- vyhodnotenie.tex
+|   `-- zaver.tex
+|-- figures
+|   |-- foto.png
+|   `-- tugboat.png
+|-- kithesis.cls
+|-- thesis.bib
+`-- thesis.tex
+\end{verbatim}
+
+Význam jednotlivých súborov a priečinkov je nasledovný:
+
+\begin{itemize}
+    \item priečinok {\tt \bf{chapters/}} obsahuje {\tt .tex} súbory reprezentujúce samostatné kapitoly záverečnej práce. Ak niektorú z nich chcete do práce vložiť, môžete použiť príkaz \mint{latex}|\include{chapters/nazov.kapitoly}| V prípade, že chcete pracovať len na jednej alebo niektorých kapitolách a nechcete znovu generovať celú prácu, môžete využiť príkaz \mint{latex}|\includeonly{kapitola1,kapitola2}|
+    \item priečinok {\tt \bf{figures/}} obsahuje zoznam obrázkov, ktoré boli v práci použité
+    \item v súbore {\tt \bf{kithesis.cls}} sa nachádza samotná šablóna \emph{kpithesis}
+    \item súbor {\tt \bf{thesis.bib}} obsahuje zoznam literatúry vo formáte \emph{BibTeX}
+    \item súbor {\tt \bf{thesis.tex}} predstavuje hlavný súbor záverečnej práce
+\end{itemize}
+
+
+\section{Príkazy na nastavenie vlastností šablóny}
+
+V šablóne je zadefinovaných niekoľko špeciálnych príkazov, pomocou ktorých je možné nastaviť niekoľko vlastností výsledného dokumentu, ako napr. meno autora, názov univerzity, vlastné znenie poďakovania a pod.
+
+\subsection{Príkaz {\tt \textbackslash{}author}}
+
+Pomocou tohto príkazu je možné nastaviť meno a priezvisko autora záverečnej práce. Jeho použitie je ilustrované v nasledovnom výpise kódu:
+
+\begin{listing}[ht]
+\begin{minted}[frame=lines]{latex}
+\author{Juraj Matta}
+\end{minted}
+\caption{Nastavenie mena a priezviska autora záverečnej práce}
+\end{listing}
+
+
+\subsection{Príkaz {\tt \textbackslash{}title}}
+
+Pomocou tohto príkazu je možné nastaviť názov záverečnej práce. Jeho použitie je ilustrované v nasledovnom výpise kódu:
+
+\begin{listing}[ht]
+\begin{minted}[frame=lines]{latex}
+\title{Krokovanie a ladenie programov v jazyku C}
+\end{minted}
+\caption{Nastavenie názvu záverečnej práce}
+\end{listing}
+
+V prípade, že sa vám názov zalomí na titulnej strane nevhodne, môžete ho zalomiť sami pomocou pripraveného makra {\tt \textbackslash{}br} takto:
+
+\begin{listing}[ht]
+\begin{minted}[frame=lines]{latex}
+\title{Krokovanie a ladenie programov\br v jazyku C}
+\end{minted}
+\caption{Nastavenie názvu záverečnej práce cez dva riadky}
+\end{listing}
+
+
+\subsection{Príkaz {\tt \textbackslash{}college}}
+
+Pomocou tohto príkazu je možné nastaviť názov univerzity, kde sa záverečná práca píše. Názov univerzity bude použitý na titulnej, ako aj na druhej strane záverečnej práce.
+
+Tento príkaz má dva parametre:
+
+\begin{enumerate}
+    \item {\it názov univerzity} 
+    \item {\it mesto}, v ktorom sa univerzita nachádza. 
+\end{enumerate}
+
+Použitie tohto príkazu je ilustrované v nasledovnom výpise kódu:
+
+\begin{listing}[ht]
+\begin{minted}[frame=lines]{latex}
+\college{Zilinska univerzita}{Zilina}
+\end{minted}
+\caption{Nastavenie názvu univerzity záverečnej práce}
+\end{listing}
+
+Pokiaľ však tento príkaz nepoužijete, predvolená hodnota bude použitá {\it Technická univerzita Košice} pre názov univerzity a {\it Košice} pre mesto, v ktorom sa univerzita nachádza.
+
+
+\subsection{Príkaz {\tt \textbackslash{}faculty}}
+
+Tento príkaz slúži na nastavenie názvu fakulty, na ktorej záverečná práca vznikla. Názov sa následne použije na titulnej a druhej strane záverečnej práce.
+
+Použitie tohto príkazu je ilustrované v nasledovnom výpise kódu:
+
+\begin{listing}[ht]
+\begin{minted}[frame=lines]{latex}
+\faculty{Hutnicka fakulta}
+\end{minted}
+\caption{Nastavenie názvu fakulty záverečnej práce}
+\end{listing}
+
+Pokiaľ však tento príkaz nepoužijete, predvolená hodnota bude použitá {\it Fakulta elektrotechniky a informatiky}.
+
+
+\subsection{Príkaz {\tt \textbackslash{}department}}
+
+Pomocou tohto príkazu je možné nastaviť názov katedry, pod hlavičkou ktorej záverečná práca vznikla. Názov katedry sa zobrazí na titulnej, ako aj na druhej strane záverečnej práce.
+
+Tento príkaz má dva parametre:
+
+\begin{enumerate}
+    \item {\it názov katedry} 
+    \item {\it skratka katedry}
+\end{enumerate}
+
+Použitie tohto príkazu je ilustrované v nasledovnom výpise kódu:
+
+\begin{listing}[ht]
+\begin{minted}[frame=lines]{latex}
+\department{Katedra kybernetiky a umelej inteligencie}{KKUI}
+\end{minted}
+\caption{Nastavenie názvu katedry}
+\end{listing}
+
+Pokiaľ však tento príkaz nepoužijete, predvolená hodnota pre názov katedry bude použitá {\it Katedra počítačov a informatiky} a skratka bude nastavená na hodnotu {\it KPI}.
+
+
+\subsection{Príkaz {\tt \textbackslash{}supervisor}}
+
+Pomocou tohto príkazu je možné nastaviť meno a priezvisko vedúceho záverečnej práce. Jeho použitie je ilustrované v nasledovnom výpise kódu:
+
+\begin{listing}[ht]
+\begin{minted}[frame=lines]{latex}
+\supervisor{Leslie Lamport}
+\end{minted}
+\caption{Nastavenie mena a priezviska vedúceho práce}
+\end{listing}
+
+
+\subsection{Príkaz {\tt \textbackslash{}consultant}}
+
+Pomocou tohto príkazu je možné nastaviť meno a priezvisko konzultanta záverečnej práce. Jeho použitie je ilustrované v nasledovnom výpise kódu:
+
+\begin{listing}[ht!]
+\begin{minted}[frame=lines]{latex}
+\consultant{Donald E. Knuth}
+\end{minted}
+\caption{Nastavenie mena a priezviska konzultanta práce}
+\end{listing}
+
+
+\subsection{Príkaz {\tt \textbackslash{}fieldofstudy}}
+
+Pomocou tohto príkazu je možné nastaviť štúdijný odbor. Jeho použitie je ilustrované v nasledovnom výpise kódu:
+
+\begin{listing}[ht!]
+\begin{minted}[frame=lines]{latex}
+\fieldofstudy{1.2.3 Programovanie}
+\end{minted}
+\caption{Príklad použitia príkazu {\tt \textbackslash{}fieldofstudy} pre nastavenie štúdijného oboru}
+\end{listing}
+
+Ak typ štúdijného oboru nenastavíte, použije sa predvolená hodnota {\it 9.2.1. Informatika}.
+
+
+\subsection{Príkaz {\tt \textbackslash{}studyprogramme}}
+
+Pomocou tohto príkazu je možné nastaviť štúdijný program. Jeho použitie je ilustrované v nasledovnom výpise kódu:
+
+\begin{listing}[ht!]
+\begin{minted}[frame=lines]{latex}
+\studyprogramme{Programovanie}
+\end{minted}
+\caption{Príklad použitia príkazu {\tt \textbackslash{}studyprogramme} pre nastavenie štúdijného programu}
+\end{listing}
+
+Ak štúdijný program nenastavíte, použije sa predvolená hodnota {\it Informatika}.
+
+
+\subsection{Príkaz {\tt \textbackslash{}thesis}}
+
+Pomocou tohto príkazu je možné nastaviť typ záverečnej práce, ako napr. {\it Bakalárska práca} alebo {\it Dizertačná práca}. Jeho použitie je ilustrované v nasledovnom výpise kódu:
+
+\begin{listing}[ht!]
+\begin{minted}[frame=lines]{latex}
+\thesis{Diplomova praca}
+\end{minted}
+\caption{Nastavenie typu záverečnej práce}
+\end{listing}
+
+Ak typ záverečnej práce nešpecifikujete, použije sa automaticky hodnota {\it Bakalárska práca}.
+
+
+\subsection{Príkaz {\tt \textbackslash{}declaration}}
+
+Pomocou tohto príkazu je možné nastaviť text čestného vyhlásenia autora záverečnej práce. Príklad nastavenia vlastného textu čestného vyhlásenia je nasledovný:
+
+\mint{latex}|\declaration{Cestne skautske, ze som celu pracu napisal sam.}|
+
+Ak text čestného vyhlásenia nenastavíte, použije sa automaticky hodnota {\it Vyhlasujem, že som záverečnú prácu vypracoval(a) samostatne s~použitím uvedenej odbornej literatúry.}
+
+
+\subsection{Príkaz {\tt \textbackslash{}submissiondate}}
+
+Pomocou tohto príkazu je možné nastaviť dátum odovzdania práce. Tento príkaz má tri pozičné parametre:
+
+\begin{enumerate}
+    \item {\it deň}
+    \item {\it mesiac}
+    \item {\it rok}
+\end{enumerate}
+
+Príklad nastavenia dátumu odovzdania je nasledovný:
+
+\mint{latex}|\submissiondate{24}{12}{2016}|
+
+
+\subsection{Príkaz {\tt \textbackslash{}abstract}}
+
+Pomocou tohto príkazu je možné napísať abstrakt záverečnej práce v slovenskom a anglickom jazyku. Príkaz má dva pozičné parametre:
+
+\begin{enumerate}
+    \item {\it znenie abstraktu v slovenskom jazyku}
+    \item {\it znenie abstraktu v anglickom jazyku}
+\end{enumerate}
+
+Príklad použitia tohto príkazu ilustruje nasledovný výpis:
+
+\begin{listing}[ht!]
+\begin{minted}[frame=lines]{latex}
+\abstract{%
+    Tato bakalarska praca sa venuje navrhu a implementacii telepor-
+    tovacieho systemu, vdaka ktoremu je mozne prekonavat obrovske 
+    vzdialenosti v realnom case. System bol otestovany a neskor na-
+    sadeny na \emph{U.S.S. Enterprise}, kde sa s uspechom pouziva 
+    dodnes.
+}{%
+    This bachelor thesis is dedicated to the design and implementa-
+    tion of teleportation system, which can be used to travel over
+    huge distances in real-time. System was tested and later 
+    installed at \emph{U.S.S. Enterprise}, where it is successfully
+    used till today.
+}
+\end{minted}
+\caption{Zadanie abstraktu záverečnej práce}
+\end{listing}
+
+
+\subsection{Príkaz {\tt \textbackslash{}keywords}}
+
+Pomocou tohto príkazu je možné zadať kľúčové slová charakterizujúce záverečnú prácu v slovenskom a anglickom jazyku. Príkaz má dva pozičné parametre:
+
+\begin{enumerate}
+    \item {\it kľúčové slová v slovenskom jazyku}
+    \item {\it kľúčové slová v anglickom jazyku}
+\end{enumerate}
+
+Príklad použitia tohto príkazu ilustruje nasledovný výpis:
+
+\begin{listing}[ht!]
+\begin{minted}[frame=lines]{latex}
+\keywords{%
+    cestovanie, realny cas, teleportacia
+}{%
+    traveling, real-time, teleportation
+}
+\end{minted}
+\caption{Zadanie kľúčových slov záverečnej práce}
+\end{listing}
+
+
+\subsection{Príkaz {\tt \textbackslash{}acknowledgment}}
+
+Pomocou tohto príkazu je možné napísať vlastné poďakovanie do práce. Príklad použitia tohto príkazu ilustruje nasledovný výpis:
+
+\begin{listing}[ht!]
+\begin{minted}[frame=lines]{latex}
+\acknowledgment{%
+    Rad by som podakoval kapitanovi Kirkovi za moznost experimental-
+    neho overenia vysledkov mojej prace na jeho lodi. Za rapidne 
+    zredukovanie jeho posadky vdaka experimentom sa mu ospravedlnu-
+    jem.
+}
+\end{minted}
+\caption{Napísanie vlastného poďakovania do práce}
+\end{listing}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Príkazy na vygenerovanie špeciálnych strán}
+
+Šablóna obsahuje niekoľko príkazov, pomocou ktorých je možné vygenerovať niekoľko špeciálnych strán na základe hodnôt premenných nastavených pomocou príkazov uvedených v predchádzajúcej podkapitole. Pomocou týchto príkazov je možné vygenerovať napr. titulnú stranu záverečnej práce alebo špeciálne strany, na ktorých sa zobrazí text poďakovania alebo čestného vyhlásenia.
+
+\subsection{Príkaz {\tt \textbackslash{}frontpage}}
+
+Pomocou tohto príkazu dôjde k vygenerovaniu obálky záverečnej práce. Obsah stránky bude zložený z:
+
+\begin{itemize}
+    \item názvu univerzity,
+    \item názvu fakulty,
+    \item názvu záverečnej práce,
+    \item typu záverečnej práce,
+    \item roku publikovania, a
+    \item mena a priezviska autora záverečnej práce.
+\end{itemize}
+
+
+\subsection{Príkaz {\tt \textbackslash{}titlepage}}
+
+Tento príkaz vygeneruje titulnú stránku záverečnej práce. Obsah stránky bude zložený z:
+
+\begin{itemize}
+    \item názvu a mesta univerzity,
+    \item názvu fakulty,
+    \item názvu záverečnej práce,
+    \item typu záverečnej práce,
+    \item roku publikovania,
+    \item mena a priezviska autora záverečnej práce,
+    \item štúdijného programu a štúdijného oboru,
+    \item školiaceho pracoviska, a
+    \item mien vedúceho a konzultanta práce.
+\end{itemize}
+
+
+\subsection{Príkaz {\tt \textbackslash{}abstractpage}}
+
+Tento príkaz vygeneruje stránku s abstraktom v slovenskom a anglickom jazyku. Súčasťou tejto stránky budú aj kľúčové slová v oboch jazykoch.
+
+
+\subsection{Príkaz {\tt \textbackslash{}declarationpage}}
+
+Tento príkaz vygeneruje stránku s čestným vyhlásením.
+
+
+\subsection{Príkaz {\tt \textbackslash{}acknowledgmentpage}}
+
+Tento príkaz vygeneruje stránku s poďakovaním.
+
+
+\subsection{Príkaz {\tt \textbackslash{}frontmatter}}
+
+Tento príkaz vo vašej práci vygeneruje naraz postupne tieto stránky:
+
+\begin{enumerate}
+    \item prednú stránku
+    \item titulnú stránku
+    \item stránku s abstraktom práce
+    \item stránku s čestným vyhlásením
+    \item stránku s poďakovaním
+    \item obsah záverečnej práce
+    \item zoznam obrázkov
+    \item zoznam tabuliek
+\end{enumerate}
+
+Pokiaľ nepotrebujete vo svojej práci toto poradie nutne upraviť alebo zmeniť vzhľad týchto stránok, stačí, ak ako prvý príkaz vášho dokumentu bude práve príkaz \mint{latex}|\frontmatter|
+
+
+\section{Príklad kostry záverečnej práce}
+
+Pre začatie písania vašej záverečnej práce vám môže poslúžiť nasledovná kostra dokumentu. V tejto kostre sa nachádzajú len povinné parametre. Ak teda potrebujete nastaviť ďalšie vlastnosti vašej práce, môžete na to použiť niektorú z uvedených premenných.
+
+
+\begin{listing}[ht!]
+\begin{minted}[frame=lines]{latex}
+\documentclass{kithesis}
+\usepackage[slovak]{babel}
+
+\title{Nazov prace}
+\author{Juraj Hrdza}
+\supervisor{Leslie Lamport}
+\consultant{Donald E. Knuth}
+\submissiondate{24}{12}{2016}
+
+\abstract{%
+    Znenie slovenskeho abstraktu prace.
+}{%
+    Thesis abstract in English.
+}
+
+\keywords{zoznam klucovych slov}{keywords in English}
+
+\acknowledgment{Text vlastneho podakovania}
+
+\addbibresource{thesis.bib}
+
+\begin{document}
+\frontmatter{}
+\include{chapters/motivacia}
+\include{chapters/analyza}
+\include{chapters/navrh}
+\include{chapters/realizacia}
+\include{chapters/vyhodnotenie}
+\include{chapters/zaver}
+
+\printbibliography[title={Literatura}]
+\end{document}
+
+\end{minted}
+\caption{Kostra dokumentu záverečnej práce}
+\end{listing}
+

@@ -1,0 +1,75 @@
+\chapter{Typografický systém \LaTeX}
+\label{ch:instalacia}
+
+\section{Ako začať s \LaTeX{}om}
+
+Pre zvládnutie tohto jazyka neexistuje lepší spôsob, ako v ňom proste začať dokumenty rovno písať. Pre zvládnutie základov odporúčame použiť voľne dostupnú publikáciu \emph{The Not So Short Introduction to \LaTeX} \cite{lshort}, ktorú do slovenčiny preložili \emph{Ján Buša st.} a \emph{Ján Buša ml.} \cite{lshortsk}.
+
+Môžete rovnako siahnuť aj po originálnych československých zdrojoch. Voľne dostupná, stručná a zrozumiteľná publikácia je \emph{\LaTeX pro pragmatiky} \cite{satrapa2011} od \emph{Pavla Satrapu}. Pre dôkladnejšie zoznámenie sa s prácou v jazyku poslúži kniha \emph{\LaTeX pro začátečníky} \cite{rybicka2003} od \emph{Jiřího Rybičku}. 
+
+
+\section{Inštalácia v OS Windows}
+
+Ak pracujete v \emph{OS Windows}, stiahnite si distribúciu \LaTeX-u s názvom \emph{TeX Live} zo stránky \url{https://www.tug.org/texlive/}. Inštaláciu distribúcie \emph{MikTeX} neodporúčame.
+
+
+\section{Inštalácia v OS Linux}
+
+Ak používate distribúciu \emph{Fedora 23}, pre používanie šablóny budete potrebovať nainštalovať nasledujúce balíčky:
+
+\begin{minted}{bash}
+$ sudo dnf install texlive-bibtopic texlive-cslatex \
+                 texlive-collection-latex \
+                 texlive-collection-fontsrecommended \
+                 texlive-cite latexmk texlive-textcase \
+                 texlive-engrec texlive-parskip \
+                 texlive-minted \
+                 texlive-europecv \
+                 texlive-hyphen-english texlive-hyphen-slovak \
+                 texlive-titlesec
+\end{minted}
+
+\section{Inštalácia v OSX}
+
+TODO: Nakoľko nedisponujeme týmto systémom, ak má niekto z vás skúsenosti s inštaláciou systému \LaTeX na tento operačný systém, ozvite sa ;)
+
+
+\section{Ďaľšie odporúčané balíčky}
+\begin{itemize}
+    \item \emph{minted}\footnote{\url{https://www.ctan.org/pkg/minted}} - zvýrazňovač zdrojového kódu (syntax highlighter) pre \LaTeX 
+    \item \emph{europecv}\footnote{\url{https://www.ctan.org/pkg/europecv}} - šablóna pre písanie životopisov vo formáte EuroPass 
+    \item \emph{PGF/TikZ}\footnote{\url{http://www.ctan.org/pkg/pgf}} - dvojica jazykov, pomocou ktorých je možné vytvárať vektorovú grafiku 
+    \item \emph{rotating}\footnote{\url{https://www.ctan.org/pkg/rotating}} - umožňuje otáčať obrázky a tabuľky (spolu s ich popiskami)
+\end{itemize}
+
+
+\section{Generovanie \LaTeX dokumentov}
+
+Pre priame spúšťanie z príkazového riadku odporúčame použiť príkaz {\tt latexmk}, ktorý slúži na zostavenie  \LaTeX dokumentov. Príklad použitia je nasledovný:
+
+\begin{minted}{bash}
+$ latexmk -pdf -bibtex -shell-escape thesis
+\end{minted}
+
+Ak nechcete spúšťať tento príkaz zakaždým po vykonaní zmien v zdrojových súboroch, pridajte programu {\tt latexmk} prepínač {\tt -pvc}, ktorý zabezpečí ich sledovanie a znovuzostavenie výstupu automaticky:
+
+\begin{minted}{bash}
+$ latexmk -pdf -bibtex -shell-escape -pvc thesis
+\end{minted}
+
+Ak budete chcieť vyčistiť vygenerované výstupy, stačí nástroj {\tt latexmk} spustiť s prepínačom {\tt -c}:
+
+\begin{minted}{bash}
+$ latexmk -c thesis
+\end{minted}
+
+
+\section{Nástroj vlna}
+
+Význam tohto nástroja je zhrnutý v úvode jeho manuálovej stránky:
+
+\begin{quote}
+There exists a special Czech and Slovak typographical rule: you cannot leave the non-syllabic preposition on the end of one line and continue writting text on next line. For  example, you  cannot  write  down  the text "v lese" (in a forest) like "v<new-line>lese". The program vlna adds the asciitilde between  such  preposition  and  the next  word and removes the space(s) in this place.  It means, the program converts "v lese" to "v~lese". You  can  use  this  program  as  a  preporcessor  before  TeXing. Moreower,  you  can  set  another  sequence  to  store instead asciitilte (see the -x option).
+\end{quote}
+
+Takže ak záverečnú prácu píšete v slovenskom alebo českom jazyku, odporúčame nástroj vlna spustiť minimálne raz pred samotným odovzdaním. Samozrejme ho môžete spustiť vždy, keď svoju prácu budete posielať svojmu školiteľovi alebo konzultantovi na kontrolu.

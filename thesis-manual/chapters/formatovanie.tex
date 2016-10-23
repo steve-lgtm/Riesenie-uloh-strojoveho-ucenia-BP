@@ -1,0 +1,107 @@
+\chapter{Formátovanie dokumentu}
+\label{ch:formatovanie}
+
+V tejto kapitole sa nachádza niekoľko tipov pre formátovanie dokumentu. Nachádzajú sa tu napr. tipy pre vkladanie obrázkov a výpisov zdrojového kódu do vašej práce.
+
+\section{Vkladanie obrázkov}
+
+Všetky obrázky, ktoré budete chcieť v dokumente použiť, ukladajte do priečinku {\tt figures/}. Následne obrázok vložte do dokumentu pomocou prostredia \verb!figure! pomocou príkazu \verb!\includegraphics! bez uvedenia jeho prípony. Napríklad takto:
+
+\begin{minted}{latex}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.6\textwidth]{figures/tugboat}
+    \caption{\LaTeX{} Friendly Zone}
+\end{figure}
+\end{minted}
+
+Výsledok tohto fragmentu kódu sa nachádza na obrázku \ref{o:latex_friendly_zone}.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.6\textwidth]{figures/tugboat}
+    \caption{\LaTeX{} Friendly Zone \label{o:latex_friendly_zone}}
+\end{figure}
+
+
+Ak chcete obrázok vložiť do dokumentu otočený o $90$, môžete použiť voľbu {\tt angle=90}, ktorú poskytuje balík {\tt graphicx}:
+
+\begin{minted}{latex}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[angle=90,width=.6\textwidth]{figures/tugboat}
+    \caption{\LaTeX{} Friendly Zone (with angle)}
+\end{figure}
+\end{minted}
+
+Výsledkom tejto úpravy je obrázok \ref{o:latex_friendly_zone_90}.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[angle=90,width=.6\textwidth]{figures/tugboat}
+    \caption{\LaTeX{} Friendly Zone (with angle)\label{o:latex_friendly_zone_90}}
+\end{figure}
+
+V prípade, ak chcete otočiť obrázok spolu s popiskom, použite balíček {\tt rotating}, ktorý poskytuje prostredie {\tt sidewaysfigure} nasledovným spôsobom:
+
+\begin{listing}[ht]
+\begin{minted}[frame=lines]{latex}
+\begin{sidewaysfigure}
+    \centering
+    \includegraphics[width=.6\textheight]{figures/tugboat}
+    \caption{\LaTeX{} Friendly Zone (with rotating)}
+\end{sidewaysfigure}
+\end{minted}
+\caption{Zobrazenie obrázku na šírku pomocou balíčka \tt{rotating}}
+\end{listing}
+
+Výsledok tohto fragmentu kódu sa nachádza na obrázku \ref{o:latex_friendly_zone_rotating}.
+
+\begin{sidewaysfigure}
+    \centering
+    \includegraphics[width=.6\textheight]{figures/tugboat}
+    \caption{\LaTeX{} Friendly Zone (with rotating)\label{o:latex_friendly_zone_rotating}}
+\end{sidewaysfigure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Vkladanie tabuliek}
+
+\subsection{Vytvorenie tabuľky z CSV súboru}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Vkladanie fragmentov kódov}
+
+Fragment kódu, alebo vo všeobecnosti - výpis programu, je reprezentovaný ako text. Preto kódy do práce nikdy nevkladajte ako obrázky! Je veľmi pravdepodobné, že ak tak urobíte, bude takto vložený obrázok rozmazaný, čo neprispieva ku celkovému dobrému dojmu z výsledku.
+
+Pre vkladanie fragmentov zdrojových kódov môžete použiť balíček {\bf\tt minted}, ktorý umožňuje do textu vkladať celé fragmenty kódu, ale rovnako tiež len jednoriadkové kódy. 
+
+Príklad vloženia fragmentu kódu do textu sa nachádza vo výpise \ref{source:hello}.
+
+
+\begin{listing}[ht]
+\inputminted[frame=lines]{latex}{examples/hello.world.tex}
+\caption{Použitie balíka {\tt\bf minted} na zobrazenie fragmentu zdrojového kódu}\label{source:hello}
+\end{listing}
+
+Po preložení sa výsledok v texte zobrazí nasledovne:
+
+\begin{minted}{c}
+#include <stdio.h>
+
+int main(){
+    printf("Hello world\n");
+    return 0;
+}
+\end{minted}
+
+Pokiaľ potrebujete do textu vložiť len jednoriadkový fragment kódu, môžete použiť príkaz {\tt\textbackslash{mint}}. Ukážka použitia tohto príkazu sa nachádza vo výpise \ref{source:mint}.
+
+
+\section{Literatúra a jej citovanie}
+
+Pre prácu so zdrojmi sa používa systém balík {\tt \bf BibLaTeX}.
+\inputminted{latex}{chapters/bibliography.bib}
+
+

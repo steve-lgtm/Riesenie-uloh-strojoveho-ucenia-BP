@@ -1,0 +1,109 @@
+%% -----------------------------------------------------------------
+%% This file uses UTF-8 encoding
+%%
+%% For compilation use following command:
+%% latexmk -pdf -pvc -bibtex --shell-escape thesis-manual
+%% -----------------------------------------------------------------
+\documentclass{kithesis}
+
+% balicky
+\usepackage[english,slovak]{babel}
+
+% syntax higlighting and it's configuration
+\usepackage{minted}  
+\renewcommand\listoflistingscaption{Zoznam zdrojových kódov}
+\renewcommand\listingscaption{Výpis}
+\newminted{latex}{frame=lines,framerule=2pt}
+\usemintedstyle{tango}
+
+\usepackage{blindtext}  % lorem ipsum
+\usepackage{nicefrac}  % pekne zlomky
+\usepackage{rotating}  % umoznuje otacat obrazky spolu s popiskami
+\usepackage{csquotes}
+
+% premenne
+\title{My master thesis \br with title over two lines}{Moja diplomová práca \br s názvom cez dva riadky}
+
+\author{Janko Hraško}
+\supervisor{Leslie Lamport} %veduciprace
+\consultant{Donald E. Knuth} %konzultant
+%\college{Žilinská univerzita}{Žilina} %univerzita
+%\faculty{Fakulta elektrotechniky a informatiky} %fakulta
+\department{Katedra počítačov a informatiky}{KPI} %katedra
+%\thesis{Diplomová práca} %typprace
+\submissiondate{13}{5}{2016}
+%\fieldofstudy{9.2.1 Informatika}
+%\studyprogramme{Informatika}
+%\city{Košice} %mesto
+\keywords{\LaTeX, programming, typesetting}{\LaTeX, programovanie, sadzba textu}
+%\declaration{som nepodvadzal}
+
+\abstract{%
+    anglicky \LaTeX \blindtext
+}{%
+    slovensky \blindtext
+}
+
+\acknowledgment{Na tomto mieste by som rád poďakoval svojmu vedúcemu práce za jeho čas a odborné vedenie počas riešenia mojej záverečnej práce.
+
+Rovnako by som sa rád poďakoval svojim rodičom a priateľom za ich podporu a povzbudzovanie počas celého môjho štúdia.
+    
+V neposlednom rade by som sa rád poďakoval pánom {\it Donaldovi E. Knuthovi} a {\it Leslie Lamportovi} za typografický systém \LaTeX, s ktorým som strávil množstvo nezabudnuteľných večerov.}
+
+\addbibresource{thesis.bib}
+
+% if you want to work only on selected chapters
+%\includeonly{chapters/struktura} %,chapters/formatovanie}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%% Title page, abstract, declaration etc.:
+\frontmatter{}
+
+%% List of code listings
+\listoflistings
+
+% list of acronyms
+\thispagestyle{empty}
+\input{acronyms.tex}
+\printglossary[type=\acronymtype,title={\acrlistname}]
+\newpage
+
+\pagenumbering{arabic}
+
+
+%
+\include{chapters/instalacia}
+\include{chapters/struktura}
+\include{chapters/sablona}
+\include{chapters/formatovanie}
+%%
+%\include{formulacia}
+%%
+%\include{analyza}
+%%
+%\include{jadroprace}
+%%
+%\include{zaver}
+%%
+%\include{literatura}
+%\bibliographystyle{dcu}
+%\bibliography{bibliography}{}
+\printbibliography[title={Literatúra}]
+%%
+%\include{prilohy}
+%%
+%\include{prilohaa}
+%%
+%\include{prilohab}
+%%
+%\include{prilohac}
+%
+% zivotopis autora
+%\curriculumvitae\protect
+%\label{page:posledna}
+%Táto časť\/ je nepovinná. Autor tu môže uviesť\/ svoje biografické
+%údaje, údaje o~záujmoch, účasti na~projektoch, účasti na~súťažiach,
+%získané ocenenia, zahraničné pobyty na~praxi, domácu prax, publikácie
+%a~pod.
+
+\end{document}
