@@ -56,7 +56,10 @@ V neposlednom rade by som sa rád poďakoval pánom {\it Donaldovi E. Knuthovi} 
 
 % if you want to work only on selected chapters
 %\includeonly{chapters/analyza} %,chapters/synteza}
-%%
+
+% Load acronyms
+\input{acronyms}
+
 %% -----------------------------------------------------------------
 %%          _                                       _   
 %%       __| | ___   ___ _   _ _ __ ___   ___ _ __ | |_ 
@@ -88,14 +91,12 @@ V neposlednom rade by som sa rád poďakoval pánom {\it Donaldovi E. Knuthovi} 
 \addcontentsline{toc}{chapter}{Literatúra}
 
 % List of acronyms
-\printglossary [type=\acronymtype,title={\acrlistname}]
+\printglossary[type=\acronymtype,title={\acrlistname}]
 
 %% Appendix
-%\begin{appendix}
 \include{chapters/prilohy}
-%\appendix
+\appendix
 \include{chapters/prilohaa}
-%\end{appendix}
 
 % zivotopis autora
 %\curriculumvitae\protect

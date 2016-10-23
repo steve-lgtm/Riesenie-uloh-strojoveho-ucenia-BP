@@ -114,6 +114,7 @@
 
 % slovnik terminov a skratiek
 \RequirePackage[
+    nomain,
     toc,
     acronym,
     nonumberlist,
