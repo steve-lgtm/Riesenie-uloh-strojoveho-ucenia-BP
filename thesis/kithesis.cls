@@ -57,7 +57,7 @@
     table]{totalcount}
 
 %% Numeric citations and sorting by year (descending), name and title
-\RequirePackage{csquotes}
+%\RequirePackage{csquotes}
 \RequirePackage[
     style=numeric,
     sorting=ydnt,
@@ -114,9 +114,10 @@
 
 % slovnik terminov a skratiek
 \RequirePackage[
-    acronym
-	%nonumberlist,
-	%noredefwarn
+    toc,
+    acronym,
+    nonumberlist,
+    noredefwarn
 ]{glossaries}  
 \makeglossaries % prikaz na vytvorenie suboru .glo
 

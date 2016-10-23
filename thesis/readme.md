@@ -21,6 +21,7 @@ sudo dnf install texlive-cslatex texlive-hyphen-slovak latexmk texstudio texlive
 ## Additional Packages
 
 * `csquotes`
+* `texlive-tex-gyre`
 
 # Running
 
@@ -33,6 +34,18 @@ latexmk -pdf -bibtex -pvc -shell-escape thesis
 vďaka čomu dôjde k vytvoreniu výsledného dokumentu vo formáte _PDF_, pričom nástroj sa neukončí, ale bude sledovať zmeny a pri každej zmene (uložení niektorého _.tex_ súboru) dôjde k opätovnému preloženiu.
 
 Projekt si samozrejme môžete otvoriť v ktoromkoľvek _LaTeX_ editore alebo IDE, ako je napr. _TeX Studio_
+
+
+Ak potrebujete vygenerovať zoznam skratiek, z príkazového riadku spustite nasledovný príkaz:
+```bash
+makeglossaries thesis
+```
+
+Tým dôjde k vygenerovaniu zoznamu skratiek, ktorý sa vo vašej práci zobrazí zavolaním príkazu
+
+```latex
+\printglossary [type=\acronymtype,title={\acrlistname}]
+```
 
 # Troubleshooting
 

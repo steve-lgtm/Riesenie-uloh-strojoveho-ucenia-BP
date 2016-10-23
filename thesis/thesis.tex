@@ -85,18 +85,17 @@ V neposlednom rade by som sa rád poďakoval pánom {\it Donaldovi E. Knuthovi} 
 
 %% The bibliography
 \printbibliography[title={Literatúra}]
-\addcontentsline{toc}{chapter}{\numberline{}Literatúra}
-
-%%
-\include{chapters/prilohy}
-\include{chapters/prilohaa}
+\addcontentsline{toc}{chapter}{Literatúra}
 
 % List of acronyms
-\thispagestyle{empty}
-\input{acronyms.tex}
-\printglossary %[type=\acronymtype,title={\acrlistname}]
-\printglossaries
-\newpage
+\printglossary [type=\acronymtype,title={\acrlistname}]
+
+%% Appendix
+%\begin{appendix}
+\include{chapters/prilohy}
+%\appendix
+\include{chapters/prilohaa}
+%\end{appendix}
 
 % zivotopis autora
 %\curriculumvitae\protect
