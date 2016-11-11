@@ -472,8 +472,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%% Line spacing
+%% Line spacing and paragraph indentation
 %%
 %%%%%
 
 \linespread{1.3}
+\setlength{\parindent}{1.5em}

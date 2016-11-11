@@ -20,8 +20,9 @@ sudo dnf install texlive-cslatex texlive-hyphen-slovak latexmk texstudio texlive
 
 ## Additional Packages
 
-* `csquotes`
+* `texlive-csquotes`
 * `texlive-tex-gyre`
+* `texlive-titlesec`
 
 ## Compilation
 

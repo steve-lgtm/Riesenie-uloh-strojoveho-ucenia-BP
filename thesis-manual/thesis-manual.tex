@@ -10,7 +10,7 @@
 \usepackage[english,slovak]{babel}
 
 % syntax higlighting and it's configuration
-\usepackage{minted}  
+\usepackage{minted}
 \renewcommand\listoflistingscaption{Zoznam zdrojových kódov}
 \renewcommand\listingscaption{Výpis}
 \newminted{latex}{frame=lines,framerule=2pt}
@@ -22,7 +22,11 @@
 \usepackage{csquotes}
 
 % premenne
-\title{My master thesis \br with title over two lines}{Moja diplomová práca \br s názvom cez dva riadky}
+\title{
+    Manual for writing\br{}diploma thesis
+}{
+    Manuál pre písanie\br{}záverečných prác
+}
 
 \author{Janko Hraško}
 \supervisor{Leslie Lamport} %veduciprace
@@ -57,7 +61,20 @@ V neposlednom rade by som sa rád poďakoval pánom {\it Donaldovi E. Knuthovi} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 %% Title page, abstract, declaration etc.:
-\frontmatter{}
+\pagenumbering{roman}
+\frontpage
+
+\pagestyle{plain}
+\tableofcontents
+\newpage
+
+% show list of figures only if there are some
+\listoffigures
+\newpage
+    
+% show list of tables only if there are some
+\listoftables
+\newpage
 
 %% List of code listings
 \listoflistings
@@ -69,41 +86,18 @@ V neposlednom rade by som sa rád poďakoval pánom {\it Donaldovi E. Knuthovi} 
 \newpage
 
 \pagenumbering{arabic}
+\pagestyle{fancy}
 
-
-%
+% chapters
 \include{chapters/instalacia}
 \include{chapters/struktura}
 \include{chapters/sablona}
 \include{chapters/formatovanie}
-%%
-%\include{formulacia}
-%%
-%\include{analyza}
-%%
-%\include{jadroprace}
-%%
-%\include{zaver}
-%%
-%\include{literatura}
-%\bibliographystyle{dcu}
-%\bibliography{bibliography}{}
+
 \printbibliography[title={Literatúra}]
 %%
 %\include{prilohy}
 %%
 %\include{prilohaa}
-%%
-%\include{prilohab}
-%%
-%\include{prilohac}
-%
-% zivotopis autora
-%\curriculumvitae\protect
-%\label{page:posledna}
-%Táto časť\/ je nepovinná. Autor tu môže uviesť\/ svoje biografické
-%údaje, údaje o~záujmoch, účasti na~projektoch, účasti na~súťažiach,
-%získané ocenenia, zahraničné pobyty na~praxi, domácu prax, publikácie
-%a~pod.
 
 \end{document}
