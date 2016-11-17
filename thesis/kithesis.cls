@@ -3,7 +3,7 @@
 %% KI Thesis Class.
 %%
 %% Class for writing bachelor/master/phd thesis at Computer Science department
-%% at Faculty of Electrotechnics and Informatics and Technical university 
+%% at Faculty of Electrotechnics and Informatics and Technical university
 %% of Košice.
 %%
 %% http://kpi.fei.tuke.sk
@@ -102,7 +102,7 @@
 
 %% Vlastná hlavička
 \RequirePackage{fancyhdr}
-\setlength{\headheight}{15pt} 
+\setlength{\headheight}{15pt}
 
 % nastavenie hlavičky pre hlavnú časť práce
 \pagestyle{fancy}
@@ -119,7 +119,7 @@
     acronym,
     nonumberlist,
     noredefwarn
-]{glossaries}  
+]{glossaries}
 \makeglossaries % prikaz na vytvorenie suboru .glo
 
 
@@ -278,7 +278,7 @@
         \listoffigures%
         \newpage%
     \fi
-    
+
     % show list of tables only if there are some
     \iftotaltables%
         \listoftables%
@@ -307,7 +307,7 @@
 
 		\vfill
 
-  		{\LARGE \textbf{\@title@sk}}
+  		{\LARGE \textbf{\@title@sk} \par}
 
   		\bigskip
 
@@ -317,7 +317,7 @@
 	\vfill
 
 	{\Large \textbf{\@submissionyear}} \hfill {\Large \textbf{\@author}}
-	
+
 	\newpage
 }
 
@@ -333,7 +333,7 @@
 
     \thispagestyle{empty}
     \begin{tabular}{p{0.2\textwidth}p{0.8\textwidth}}
-        Názov práce:    & \@title@sk \\ \\ 
+        Názov práce:    & \@title@sk \\ \\
         Pracovisko:     & \@department@sk, \@college@sk \\
         Autor:          & \@author\\
         Školiteľ:       & \@supervisor \\
@@ -426,7 +426,7 @@
 
  		\vfill
 
-    	{\LARGE \textbf{\@title@sk}}
+    	{\LARGE \textbf{\@title@sk} \par}
 
     	\bigskip
 
