@@ -62,15 +62,12 @@
 %\RequirePackage{csquotes}
 \RequirePackage[
     style=numeric,
-    sorting=ydnt,
+    sorting=none, %ydnt,
     isbn=true,
 	backend=biber]{biblatex}
 %\DefineBibliographyStrings{slovak}{
 	%bibliography = {Literatúra}
 %}
-
-% 'zhusti' polozky obsahu
-\RequirePackage{parskip}
 
 \RequirePackage[
    unicode,
