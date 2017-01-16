@@ -32,6 +32,8 @@
 %%
 %%%%%
 
+\RequirePackage{pdfpages}
+
 % titlesec for modification of chapters and sections
 \RequirePackage{titlesec}
 \titleformat{\chapter}
@@ -140,6 +142,24 @@
 %%%%%
 
 \def\br{\\}
+
+% DOCVAR: thesisspec (The list of thesis specifications)
+\newcommand{\@thesisspec}{
+    \thispagestyle{empty}
+    \vspace*{\fill}
+    \begin{center}
+        Tu vložte zadávací list pomocou príkazu\\
+        {\tt{\textbackslash{}thesisspec\{cesta/k/suboru/so/zadavacim.listom\}}}\\
+        v preambule dokumentu.
+    \end{center}
+    \vspace*{\fill}
+    \newpage
+}
+\newcommand{\thesisspec}[1]{
+    \renewcommand{\@thesisspec}{
+		\includepdf[pages={-}]{#1}
+    }
+}
 
 
 % DOCVAR: college (The name of the thesis writer's college)
@@ -252,7 +272,7 @@
 %% Degree.
 %% Date of submission and defense. (optional)
 %% Place and date of publication and publishers (and other info by them).
-%%%%%
+%
 \newcommand{\frontmatter}{
 	\pagenumbering{roman}
 	\frontpage
@@ -260,11 +280,7 @@
 	\abstractpage
 
     % thesis detail specification
-    \thispagestyle{empty}
-    \vspace*{\fill}
-    \centerline{Tu vložte zadávací list}
-    \vspace*{\fill}
-    \newpage
+    \@thesisspec
 
     \declarationpage
     \acknowledgmentpage

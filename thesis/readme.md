@@ -23,6 +23,10 @@ sudo dnf install texlive-cslatex texlive-hyphen-slovak latexmk texstudio texlive
 * `texlive-csquotes`
 * `texlive-tex-gyre`
 * `texlive-titlesec`
+* `texlive-glossaries`
+* `texlive-biblatex`
+* `biber`
+* `texlive-pdfpages`
 
 ## Compilation
 
