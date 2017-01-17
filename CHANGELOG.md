@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 - vytvorený príkaz `\thesisspec{}` na zadanie cesty k zadaváciemu listu
     - ak nie je použitý, zobrazí sa na príslušnej stránke správa
     - ak je použitý, na príslušnom mieste sa vloží zadávací list
+- zvacsena vyska hlavicky dokumentu
 
 ## [0.1.0] - 2015-10-19
 ### Changed
