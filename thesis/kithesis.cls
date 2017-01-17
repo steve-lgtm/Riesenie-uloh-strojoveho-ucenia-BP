@@ -43,7 +43,7 @@
 \RequirePackage[
 	a4paper,
 	width=150mm,
-    top=25mm,
+    top=35mm,
     bottom=25mm,
     bindingoffset=6mm
 ]{geometry}
