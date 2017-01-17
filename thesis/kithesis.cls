@@ -347,7 +347,7 @@
 
     \thispagestyle{empty}
     \noindent
-    \begin{tabular}{p{.2\textwidth}p{.75\textwidth}}
+    \begin{tabular}{@{}p{.2\textwidth}p{.75\textwidth}}
         Názov práce:    & \@title@sk \\ \\
         Pracovisko:     & \@department@sk, \@college@sk \\
         Autor:          & \@author\\
@@ -363,7 +363,7 @@
     \begin{otherlanguage}{english}
     \thispagestyle{empty}
     \noindent
-    \begin{tabular}{p{.2\textwidth}p{.75\textwidth}}
+    \begin{tabular}{@{}p{.2\textwidth}p{.75\textwidth}}
         Thesis title:   & \@title@en \\ \\
         Department:     & \@department@en, \@college@en \\
         Author:         & \@author\\
@@ -451,7 +451,7 @@
  	\vfill
 
     \noindent
-    \begin{tabular}{p{.25\textwidth}p{.75\textwidth}}
+    \begin{tabular}{@{}p{.25\textwidth}p{.7\textwidth}}
         Štúdijný program:& \@studyprogramme \\
         Štúdijný odbor:& \@fieldofstudy \\
         Školiace pracovisko:& \@department@sk~(\@departmentacr@sk) \\
@@ -462,8 +462,9 @@
     \vspace{2\baselineskip}
 
     \begin{center}
+        \centering
         {\Large \textbf{\@college@city{} \@submissionyear}} \hfill {\Large \textbf{\@author}}
-\end{center}
+    \end{center}
 
 	\newpage
 }
