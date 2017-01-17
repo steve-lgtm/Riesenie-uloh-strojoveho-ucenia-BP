@@ -311,7 +311,6 @@
 \newcommand{\frontpage}{
 
 	\thispagestyle{empty}
-	%\pagestyle{empty}
 
 	\begin{center}
 		{\Large \textbf{\@college@sk}}
@@ -329,7 +328,9 @@
 
 	\vfill
 
-	{\Large \textbf{\@submissionyear}} \hfill {\Large \textbf{\@author}}
+    \begin{center}
+    	{\Large \textbf{\@submissionyear}} \hfill {\Large \textbf{\@author}}
+    \end{center}
 
 	\newpage
 }
@@ -345,7 +346,8 @@
     \def\br{}
 
     \thispagestyle{empty}
-    \begin{tabular}{p{0.2\textwidth}p{0.8\textwidth}}
+    \noindent
+    \begin{tabular}{p{.2\textwidth}p{.75\textwidth}}
         Názov práce:    & \@title@sk \\ \\
         Pracovisko:     & \@department@sk, \@college@sk \\
         Autor:          & \@author\\
@@ -360,7 +362,8 @@
 
     \begin{otherlanguage}{english}
     \thispagestyle{empty}
-    \begin{tabular}{p{0.2\textwidth}p{0.8\textwidth}}
+    \noindent
+    \begin{tabular}{p{.2\textwidth}p{.75\textwidth}}
         Thesis title:   & \@title@en \\ \\
         Department:     & \@department@en, \@college@en \\
         Author:         & \@author\\
@@ -392,7 +395,7 @@
 
     \bigskip
 
-    \@declaration
+    \noindent\@declaration
 
     \bigskip
 
@@ -429,7 +432,6 @@
 %%
 %%%%%
 \renewcommand{\titlepage}{
-
 	\thispagestyle{empty}
 
 	\begin{center}
@@ -443,25 +445,25 @@
 
     	\bigskip
 
-    	{\large \textbf{\@thesis@sk}}%
+    	{\large \textbf{\@thesis@sk}}
 	\end{center}
 
  	\vfill
 
-	{\normalsize
-		\noindent
-		\begin{tabular}{p{.25\textwidth}p{.65\textwidth}}
-			Štúdijný program:& \@studyprogramme \\
-			Štúdijný odbor:& \@fieldofstudy \\
-			Školiace pracovisko:& \@department@sk~(\@departmentacr@sk) \\
-			Školiteľ:& \@supervisor \\
-			Konzultant:& \@consultant \\
-		\end{tabular}
+    \noindent
+    \begin{tabular}{p{.25\textwidth}p{.75\textwidth}}
+        Štúdijný program:& \@studyprogramme \\
+        Štúdijný odbor:& \@fieldofstudy \\
+        Školiace pracovisko:& \@department@sk~(\@departmentacr@sk) \\
+        Školiteľ:& \@supervisor \\
+        Konzultant:& \@consultant \\
+    \end{tabular}
+	
+    \vspace{2\baselineskip}
 
-		\vspace{2\baselineskip}
-
-		{\Large \textbf{\@college@city{} \@submissionyear}} \hfill {\Large \textbf{\@author}}
-	}
+    \begin{center}
+        {\Large \textbf{\@college@city{} \@submissionyear}} \hfill {\Large \textbf{\@author}}
+\end{center}
 
 	\newpage
 }
