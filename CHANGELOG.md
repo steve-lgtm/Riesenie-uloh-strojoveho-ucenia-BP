@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [2017.1] - 2017-01-17
-- zrušený balík parskip
+- zrušený balík `parskip`
     - pridaný `\noindent` do čestného vyhlásenia 
     - zrušené odsadzovanie na titulných stranách
 - oprava prostredia tabular na titulných stranách
