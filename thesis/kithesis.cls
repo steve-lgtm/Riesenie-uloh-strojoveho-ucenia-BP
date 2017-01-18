@@ -6,7 +6,10 @@
 %% at Faculty of Electrotechnics and Informatics and Technical university
 %% of Košice.
 %%
-%% http://kpi.fei.tuke.sk
+%% department homepage: http://kpi.fei.tuke.sk
+%% project homepage: https://git.kpi.fei.tuke.sk/tuke/thesis.in.latex
+%%
+%% current version: 2017.1
 %%
 %%%%%
 \NeedsTeXFormat{LaTeX2e}

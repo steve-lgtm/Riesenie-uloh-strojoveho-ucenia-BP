@@ -18,6 +18,7 @@ Používatelia Fedory napíšu:
 sudo dnf install texlive-cslatex texlive-hyphen-slovak latexmk texstudio texlive-engrec 
 ```
 
+
 ## Additional Packages
 
 * `texlive-csquotes`
@@ -27,6 +28,7 @@ sudo dnf install texlive-cslatex texlive-hyphen-slovak latexmk texstudio texlive
 * `texlive-biblatex`
 * `biber`
 * `texlive-pdfpages`
+
 
 ## Compilation
 
@@ -51,8 +53,18 @@ latexmk -pdf -bibtex -pvc -shell-escape thesis
 V prípade, že zoznam aktualizujete a medzičasom ste už _PDF_ dokument vygenerovali, stačí spustiť už len príkaz `makeglossaries` a následne dokument pregenerovať.
 
 
+## Update
+
+Ak dôjde k aktualizácii šablóny, stačí vo vašom projekte aktualizovať len súbor `kithesis.cls`. Vždy sa však pozrite do súboru `CHANGELOG.md`, aby ste sa o aktualizácii uistili.
+
+
 ## Troubleshooting
 
 ### Q1: Našiel som v šablóne chybu. Kde ju môžem reportovať?
 
 Buď mailom na miroslav.binas@tuke.sk alebo priamo tu gitlab-e.
+
+
+## TODO
+
+* biblatex-iso690 pre citovanie
