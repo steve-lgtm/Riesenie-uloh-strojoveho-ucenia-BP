@@ -9,7 +9,7 @@
 %% department homepage: http://kpi.fei.tuke.sk
 %% project homepage: https://git.kpi.fei.tuke.sk/tuke/thesis.in.latex
 %%
-%% current version: 2017.1
+%% current version: 2017.2
 %%
 %%%%%
 \NeedsTeXFormat{LaTeX2e}

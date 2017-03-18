@@ -1,6 +1,20 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2017.2] - 2017-03-18
+- opravený problém s číslovaním literatúry
+    - v súbore thesis.tex došlo k prehodeniu riadkov pri umiestňovaní literatúry kvôli nesprávnej strane v obsahu. z pôvodného 
+    ```latex
+    \printbibliography[title={Literatúra}]
+    \addcontentsline{toc}{chapter}{Literatúra}
+    ```
+    sa stalo
+    ```latex
+    \phantomsection
+    \addcontentsline{toc}{chapter}{Literatúra}
+    \printbibliography[title={Literatúra}]
+    ```
+
 ## [2017.1] - 2017-01-17
 - zrušený balík `parskip`
     - pridaný `\noindent` do čestného vyhlásenia 
