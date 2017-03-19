@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2017.3] - 2017-03-19
+- zrušené zvýrazňovanie odkazov v šablóne
+    - treba ešte zvážiť ich použitie možno spôsobom draft vs publisher ready verzia dokumentu
+
+
 ## [2017.2] - 2017-03-18
 - opravený problém s číslovaním literatúry
     - v súbore thesis.tex došlo k prehodeniu riadkov pri umiestňovaní literatúry kvôli nesprávnej strane v obsahu. z pôvodného 

@@ -9,7 +9,7 @@
 %% department homepage: http://kpi.fei.tuke.sk
 %% project homepage: https://git.kpi.fei.tuke.sk/tuke/thesis.in.latex
 %%
-%% current version: 2017.2
+%% current version: 2017.3
 %%
 %%%%%
 \NeedsTeXFormat{LaTeX2e}
@@ -84,7 +84,7 @@
    bookmarksnumbered,
    bookmarksopen,
    pdfhighlight={/P},
-   colorlinks,
+   colorlinks=false, % TODO draft vs publish ready?
    citecolor=magenta,
    bookmarksnumbered,
    %pdfkeywords = {\LaTeX},
