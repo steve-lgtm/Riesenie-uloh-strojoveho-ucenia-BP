@@ -44,8 +44,8 @@
 
 % sets the document geometry
 \RequirePackage[
-	a4paper,
-	width=150mm,
+    a4paper,
+    width=150mm,
     top=35mm,
     bottom=25mm,
     bindingoffset=6mm
@@ -67,9 +67,9 @@
     style=numeric,
     sorting=none, %ydnt,
     isbn=true,
-	backend=biber]{biblatex}
+    backend=biber]{biblatex}
 %\DefineBibliographyStrings{slovak}{
-	%bibliography = {Literatúra}
+    %bibliography = {Literatúra}
 %}
 
 \RequirePackage[
@@ -110,8 +110,8 @@
 \pagestyle{fancy}
 \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
 \fancyhf{}
-\lhead{\slshape \nouppercase{\leftmark}}
-\rhead{\thepage}
+\rhead{\slshape \nouppercase{\leftmark}}
+\rfoot{\thepage}
 \renewcommand{\headrulewidth}{0.7pt}
 
 % slovnik terminov a skratiek
@@ -157,7 +157,7 @@
 }
 \newcommand{\thesisspec}[1]{
     \renewcommand{\@thesisspec}{
-		\includepdf[pages={-}]{#1}
+        \includepdf[pages={-}]{#1}
     }
 }
 
@@ -166,8 +166,8 @@
 \newcommand{\@college@sk}{Technická univerzita v Košiciach}
 \newcommand{\@college@en}{Technical university of Košice}
 \newcommand{\college}[2]{
-	\renewcommand{\@college@en}{#1}
-	\renewcommand{\@college@sk}{#2}
+    \renewcommand{\@college@en}{#1}
+    \renewcommand{\@college@sk}{#2}
 }
 
 \newcommand{\@college@city}{Košice}
@@ -176,8 +176,8 @@
 \newcommand{\@faculty@en}{Faculty of Electrical Engineering and informatics}
 \newcommand{\@faculty@sk}{Fakulta elektrotechniky a informatiky}
 \newcommand{\faculty}[2]{
-	\renewcommand{\@faculty@en}{#1}
-	\renewcommand{\@faculty@sk}{#2}
+    \renewcommand{\@faculty@en}{#1}
+    \renewcommand{\@faculty@sk}{#2}
 }
 
 
@@ -185,16 +185,16 @@
 \newcommand{\@department@sk}{Katedra počítačov a informatiky}
 \newcommand{\@department@en}{Department of Computers and Informatics}
 \newcommand{\department}[2]{
-	\renewcommand{\@department@en}{#1}
-	\renewcommand{\@department@sk}{#2}
+    \renewcommand{\@department@en}{#1}
+    \renewcommand{\@department@sk}{#2}
 }
 
 % DOCVAR: department's shortcut
 \newcommand{\@departmentacr@sk}{KPI}
 \newcommand{\@departmentacr@en}{DCI}
 \newcommand{\departmentacr}[2]{
-	\renewcommand{\@departmentacr@en}{#1}
-	\renewcommand{\@departmentacr@sk}{#2}
+    \renewcommand{\@departmentacr@en}{#1}
+    \renewcommand{\@departmentacr@sk}{#2}
 }
 
 
@@ -229,9 +229,9 @@
 % DOCVAR: date (declaration date)
 \newcommand{\@submissiondate}{}
 \newcommand{\submissiondate}[3]{
-	\newcommand{\@submissionday}{#1}
-	\newcommand{\@submissionmonth}{#2}
-	\newcommand{\@submissionyear}{#3}
+    \newcommand{\@submissionday}{#1}
+    \newcommand{\@submissionmonth}{#2}
+    \newcommand{\@submissionyear}{#3}
 }
 
 % DOCVAR: abstract of the thesis
@@ -274,10 +274,10 @@
 %% Place and date of publication and publishers (and other info by them).
 %
 \newcommand{\frontmatter}{
-	\pagenumbering{roman}
-	\frontpage
-	\titlepage
-	\abstractpage
+    \pagenumbering{roman}
+    \frontpage
+    \titlepage
+    \abstractpage
 
     % thesis detail specification
     \@thesisspec
@@ -313,29 +313,29 @@
 %%%%%
 \newcommand{\frontpage}{
 
-	\thispagestyle{empty}
-
-	\begin{center}
-		{\Large \textbf{\@college@sk}}
-
-		{\Large \textbf{\@faculty@sk}}
-
-		\vfill
-
-  		{\LARGE \textbf{\@title@sk} \par}
-
-  		\bigskip
-
-  		{\large \textbf{\@thesis@sk}}
-	\end{center}
-
-	\vfill
+    \thispagestyle{empty}
 
     \begin{center}
-    	{\Large \textbf{\@submissionyear}} \hfill {\Large \textbf{\@author}}
+        {\Large \textbf{\@college@sk}}
+
+        {\Large \textbf{\@faculty@sk}}
+
+        \vfill
+
+        {\LARGE \textbf{\@title@sk} \par}
+
+        \bigskip
+
+        {\large \textbf{\@thesis@sk}}
     \end{center}
 
-	\newpage
+    \vfill
+
+    \begin{center}
+        {\Large \textbf{\@submissionyear}} \hfill {\Large \textbf{\@author}}
+    \end{center}
+
+    \newpage
 }
 
 
@@ -435,23 +435,23 @@
 %%
 %%%%%
 \renewcommand{\titlepage}{
-	\thispagestyle{empty}
+    \thispagestyle{empty}
 
-	\begin{center}
-		{\Large \textbf{\@college@sk}}
+    \begin{center}
+        {\Large \textbf{\@college@sk}}
 
-		{\Large \textbf{\@faculty@sk}}
+        {\Large \textbf{\@faculty@sk}}
 
- 		\vfill
+        \vfill
 
-    	{\LARGE \textbf{\@title@sk} \par}
+        {\LARGE \textbf{\@title@sk} \par}
 
-    	\bigskip
+        \bigskip
 
-    	{\large \textbf{\@thesis@sk}}
-	\end{center}
+        {\large \textbf{\@thesis@sk}}
+    \end{center}
 
- 	\vfill
+    \vfill
 
     \noindent
     \begin{tabular}{@{}p{.25\textwidth}p{.7\textwidth}}
@@ -461,7 +461,7 @@
         Školiteľ:& \@supervisor \\
         Konzultant:& \@consultant \\
     \end{tabular}
-	
+    
     \vspace{2\baselineskip}
 
     \begin{center}
@@ -469,7 +469,7 @@
         {\Large \textbf{\@college@city{} \@submissionyear}} \hfill {\Large \textbf{\@author}}
     \end{center}
 
-	\newpage
+    \newpage
 }
 
 
