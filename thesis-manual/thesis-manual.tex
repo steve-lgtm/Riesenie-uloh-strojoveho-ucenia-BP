@@ -94,10 +94,16 @@ V neposlednom rade by som sa rád poďakoval pánom {\it Donaldovi E. Knuthovi} 
 \include{chapters/sablona}
 \include{chapters/formatovanie}
 
+%% The bibliography
+\phantomsection
+\addcontentsline{toc}{chapter}{Literatúra}
 \printbibliography[title={Literatúra}]
-%%
-%\include{prilohy}
-%%
-%\include{prilohaa}
+
+
+%% Appendix
+%\include{chapters/prilohy}
+%\appendix
+%\renewcommand\chaptername{Príloha}
+%\include{chapters/prilohaa}
 
 \end{document}

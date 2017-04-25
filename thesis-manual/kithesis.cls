@@ -3,14 +3,15 @@
 %% KI Thesis Class.
 %%
 %% Class for writing bachelor/master/phd thesis at Computer Science department
-%% at Faculty of Electrotechnics and Informatics and Technical university 
+%% at Faculty of Electrotechnics and Informatics and Technical university
 %% of Košice.
 %%
-%% http://kpi.fei.tuke.sk
+%% department homepage: http://kpi.fei.tuke.sk
+%% project homepage: https://git.kpi.fei.tuke.sk/tuke/thesis.in.latex
 %%
 %%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{kithesis}[2016/06/21 KI Thesis Class, v2016.1]
+\ProvidesClass{kithesis}[2017/04/25 KI Thesis Class, v2017.4]
 
 \typeout{}
 \typeout{***********************************************}
@@ -32,6 +33,8 @@
 %%
 %%%%%
 
+\RequirePackage{pdfpages}
+
 % titlesec for modification of chapters and sections
 \RequirePackage{titlesec}
 \titleformat{\chapter}
@@ -39,10 +42,10 @@
 
 % sets the document geometry
 \RequirePackage[
-	a4paper,
-	width=150mm,
-    top=25mm,
-    bottom=25mm,
+    a4paper,
+    width=150mm,
+    top=35mm,
+    bottom=35mm,
     bindingoffset=6mm
 ]{geometry}
 
@@ -60,15 +63,12 @@
 %\RequirePackage{csquotes}
 \RequirePackage[
     style=numeric,
-    sorting=ydnt,
+    sorting=none, %ydnt,
     isbn=true,
-	backend=biber]{biblatex}
+    backend=biber]{biblatex}
 %\DefineBibliographyStrings{slovak}{
-	%bibliography = {Literatúra}
+    %bibliography = {Literatúra}
 %}
-
-% 'zhusti' polozky obsahu
-\RequirePackage{parskip}
 
 \RequirePackage[
    unicode,
@@ -82,7 +82,7 @@
    bookmarksnumbered,
    bookmarksopen,
    pdfhighlight={/P},
-   colorlinks,
+   colorlinks=false, % TODO draft vs publish ready?
    citecolor=magenta,
    bookmarksnumbered,
    %pdfkeywords = {\LaTeX},
@@ -102,15 +102,32 @@
 
 %% Vlastná hlavička
 \RequirePackage{fancyhdr}
-\setlength{\headheight}{15pt} 
+\setlength{\headheight}{15pt}
 
 % nastavenie hlavičky pre hlavnú časť práce
 \pagestyle{fancy}
 \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
 \fancyhf{}
-\lhead{\slshape \nouppercase{\leftmark}}
-\rhead{\thepage}
+\rhead{\slshape \nouppercase{\leftmark}}
+\rfoot{\thepage}
+
+
+% štýl pre prvú stranu kapitoly (plain s číslom strany v päte zarovnaný vpravo)
+\fancypagestyle{chapterpage}{
+    \fancyhf{}
+    \renewcommand\headrulewidth{0pt}
+    \rfoot{\thepage}
+}
+
+% zmena štýlu prvej stránke kapitoly
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{chapterpage}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+
 \renewcommand{\headrulewidth}{0.7pt}
+
 
 % slovnik terminov a skratiek
 \RequirePackage[
@@ -119,7 +136,7 @@
     acronym,
     nonumberlist,
     noredefwarn
-]{glossaries}  
+]{glossaries}
 \makeglossaries % prikaz na vytvorenie suboru .glo
 
 
@@ -141,13 +158,31 @@
 
 \def\br{\\}
 
+% DOCVAR: thesisspec (The list of thesis specifications)
+\newcommand{\@thesisspec}{
+    \thispagestyle{empty}
+    \vspace*{\fill}
+    \begin{center}
+        Tu vložte zadávací list pomocou príkazu\\
+        {\tt{\textbackslash{}thesisspec\{cesta/k/suboru/so/zadavacim.listom\}}}\\
+        v preambule dokumentu.
+    \end{center}
+    \vspace*{\fill}
+    \newpage
+}
+\newcommand{\thesisspec}[1]{
+    \renewcommand{\@thesisspec}{
+        \includepdf[pages={-}]{#1}
+    }
+}
+
 
 % DOCVAR: college (The name of the thesis writer's college)
 \newcommand{\@college@sk}{Technická univerzita v Košiciach}
 \newcommand{\@college@en}{Technical university of Košice}
 \newcommand{\college}[2]{
-	\renewcommand{\@college@en}{#1}
-	\renewcommand{\@college@sk}{#2}
+    \renewcommand{\@college@en}{#1}
+    \renewcommand{\@college@sk}{#2}
 }
 
 \newcommand{\@college@city}{Košice}
@@ -156,8 +191,8 @@
 \newcommand{\@faculty@en}{Faculty of Electrical Engineering and informatics}
 \newcommand{\@faculty@sk}{Fakulta elektrotechniky a informatiky}
 \newcommand{\faculty}[2]{
-	\renewcommand{\@faculty@en}{#1}
-	\renewcommand{\@faculty@sk}{#2}
+    \renewcommand{\@faculty@en}{#1}
+    \renewcommand{\@faculty@sk}{#2}
 }
 
 
@@ -165,16 +200,16 @@
 \newcommand{\@department@sk}{Katedra počítačov a informatiky}
 \newcommand{\@department@en}{Department of Computers and Informatics}
 \newcommand{\department}[2]{
-	\renewcommand{\@department@en}{#1}
-	\renewcommand{\@department@sk}{#2}
+    \renewcommand{\@department@en}{#1}
+    \renewcommand{\@department@sk}{#2}
 }
 
 % DOCVAR: department's shortcut
 \newcommand{\@departmentacr@sk}{KPI}
 \newcommand{\@departmentacr@en}{DCI}
 \newcommand{\departmentacr}[2]{
-	\renewcommand{\@departmentacr@en}{#1}
-	\renewcommand{\@departmentacr@sk}{#2}
+    \renewcommand{\@departmentacr@en}{#1}
+    \renewcommand{\@departmentacr@sk}{#2}
 }
 
 
@@ -209,9 +244,9 @@
 % DOCVAR: date (declaration date)
 \newcommand{\@submissiondate}{}
 \newcommand{\submissiondate}[3]{
-	\newcommand{\@submissionday}{#1}
-	\newcommand{\@submissionmonth}{#2}
-	\newcommand{\@submissionyear}{#3}
+    \newcommand{\@submissionday}{#1}
+    \newcommand{\@submissionmonth}{#2}
+    \newcommand{\@submissionyear}{#3}
 }
 
 % DOCVAR: abstract of the thesis
@@ -252,19 +287,15 @@
 %% Degree.
 %% Date of submission and defense. (optional)
 %% Place and date of publication and publishers (and other info by them).
-%%%%%
+%
 \newcommand{\frontmatter}{
-	\pagenumbering{roman}
-	\frontpage
-	\titlepage
-	\abstractpage
+    \pagenumbering{roman}
+    \frontpage
+    \titlepage
+    \abstractpage
 
     % thesis detail specification
-    \thispagestyle{empty}
-    \vspace*{\fill}
-    \centerline{Tu vložte zadávací list}
-    \vspace*{\fill}
-    \newpage
+    \@thesisspec
 
     \declarationpage
     \acknowledgmentpage
@@ -278,7 +309,7 @@
         \listoffigures%
         \newpage%
     \fi
-    
+
     % show list of tables only if there are some
     \iftotaltables%
         \listoftables%
@@ -297,28 +328,29 @@
 %%%%%
 \newcommand{\frontpage}{
 
-	\thispagestyle{empty}
-	%\pagestyle{empty}
+    \thispagestyle{empty}
 
-	\begin{center}
-		{\Large \textbf{\@college@sk}}
+    \begin{center}
+        {\Large \textbf{\@college@sk}}
 
-		{\Large \textbf{\@faculty@sk}}
+        {\Large \textbf{\@faculty@sk}}
 
-		\vfill
+        \vfill
 
-  		{\LARGE \textbf{\@title@sk}}
+        {\LARGE \textbf{\@title@sk} \par}
 
-  		\bigskip
+        \bigskip
 
-  		{\large \textbf{\@thesis@sk}}
-	\end{center}
+        {\large \textbf{\@thesis@sk}}
+    \end{center}
 
-	\vfill
+    \vfill
 
-	{\Large \textbf{\@submissionyear}} \hfill {\Large \textbf{\@author}}
-	
-	\newpage
+    \begin{center}
+        {\Large \textbf{\@submissionyear}} \hfill {\Large \textbf{\@author}}
+    \end{center}
+
+    \newpage
 }
 
 
@@ -332,8 +364,9 @@
     \def\br{}
 
     \thispagestyle{empty}
-    \begin{tabular}{p{0.2\textwidth}p{0.8\textwidth}}
-        Názov práce:    & \@title@sk \\ \\ 
+    \noindent
+    \begin{tabular}{@{}p{.2\textwidth}p{.75\textwidth}}
+        Názov práce:    & \@title@sk \\ \\
         Pracovisko:     & \@department@sk, \@college@sk \\
         Autor:          & \@author\\
         Školiteľ:       & \@supervisor \\
@@ -347,7 +380,8 @@
 
     \begin{otherlanguage}{english}
     \thispagestyle{empty}
-    \begin{tabular}{p{0.2\textwidth}p{0.8\textwidth}}
+    \noindent
+    \begin{tabular}{@{}p{.2\textwidth}p{.75\textwidth}}
         Thesis title:   & \@title@en \\ \\
         Department:     & \@department@en, \@college@en \\
         Author:         & \@author\\
@@ -379,7 +413,7 @@
 
     \bigskip
 
-    \@declaration
+    \noindent\@declaration
 
     \bigskip
 
@@ -416,41 +450,41 @@
 %%
 %%%%%
 \renewcommand{\titlepage}{
+    \thispagestyle{empty}
 
-	\thispagestyle{empty}
+    \begin{center}
+        {\Large \textbf{\@college@sk}}
 
-	\begin{center}
-		{\Large \textbf{\@college@sk}}
+        {\Large \textbf{\@faculty@sk}}
 
-		{\Large \textbf{\@faculty@sk}}
+        \vfill
 
- 		\vfill
+        {\LARGE \textbf{\@title@sk} \par}
 
-    	{\LARGE \textbf{\@title@sk}}
+        \bigskip
 
-    	\bigskip
+        {\large \textbf{\@thesis@sk}}
+    \end{center}
 
-    	{\large \textbf{\@thesis@sk}}%
-	\end{center}
+    \vfill
 
- 	\vfill
+    \noindent
+    \begin{tabular}{@{}p{.25\textwidth}p{.7\textwidth}}
+        Štúdijný program:& \@studyprogramme \\
+        Štúdijný odbor:& \@fieldofstudy \\
+        Školiace pracovisko:& \@department@sk~(\@departmentacr@sk) \\
+        Školiteľ:& \@supervisor \\
+        Konzultant:& \@consultant \\
+    \end{tabular}
+    
+    \vspace{2\baselineskip}
 
-	{\normalsize
-		\noindent
-		\begin{tabular}{p{.25\textwidth}p{.65\textwidth}}
-			Štúdijný program:& \@studyprogramme \\
-			Štúdijný odbor:& \@fieldofstudy \\
-			Školiace pracovisko:& \@department@sk~(\@departmentacr@sk) \\
-			Školiteľ:& \@supervisor \\
-			Konzultant:& \@consultant \\
-		\end{tabular}
+    \begin{center}
+        \centering
+        {\Large \textbf{\@college@city{} \@submissionyear}} \hfill {\Large \textbf{\@author}}
+    \end{center}
 
-		\vspace{2\baselineskip}
-
-		{\Large \textbf{\@college@city{} \@submissionyear}} \hfill {\Large \textbf{\@author}}
-	}
-
-	\newpage
+    \newpage
 }
 
 
@@ -472,8 +506,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%% Line spacing
+%% Line spacing and paragraph indentation
 %%
 %%%%%
 
 \linespread{1.3}
+\setlength{\parindent}{1.5em}
