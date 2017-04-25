@@ -110,14 +110,24 @@
 \fancyhf{}
 \rhead{\slshape \nouppercase{\leftmark}}
 \rfoot{\thepage}
-\renewcommand{\headrulewidth}{0.7pt}
 
-% číslo strany vpravo dole na prvej stránke kapitoly
+
+% štýl pre prvú stranu kapitoly (plain s číslom strany v päte zarovnaný vpravo)
+\fancypagestyle{chapterpage}{
+    \fancyhf{}
+    \renewcommand\headrulewidth{0pt}
+    \rfoot{\thepage}
+}
+
+% zmena štýlu prvej stránke kapitoly
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
-                    \thispagestyle{fancy}%
+                    \thispagestyle{chapterpage}%
                     \global\@topnum\z@
                     \@afterindentfalse
                     \secdef\@chapter\@schapter}
+
+\renewcommand{\headrulewidth}{0.7pt}
+
 
 % slovnik terminov a skratiek
 \RequirePackage[
