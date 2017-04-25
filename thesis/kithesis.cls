@@ -9,11 +9,9 @@
 %% department homepage: http://kpi.fei.tuke.sk
 %% project homepage: https://git.kpi.fei.tuke.sk/tuke/thesis.in.latex
 %%
-%% current version: 2017.3
-%%
 %%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{kithesis}[2016/06/21 KI Thesis Class, v2016.1]
+\ProvidesClass{kithesis}[2017/04/25 KI Thesis Class, v2017.4]
 
 \typeout{}
 \typeout{***********************************************}
@@ -47,7 +45,7 @@
     a4paper,
     width=150mm,
     top=35mm,
-    bottom=25mm,
+    bottom=35mm,
     bindingoffset=6mm
 ]{geometry}
 
@@ -113,6 +111,13 @@
 \rhead{\slshape \nouppercase{\leftmark}}
 \rfoot{\thepage}
 \renewcommand{\headrulewidth}{0.7pt}
+
+% číslo strany vpravo dole na prvej stránke kapitoly
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{fancy}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
 
 % slovnik terminov a skratiek
 \RequirePackage[

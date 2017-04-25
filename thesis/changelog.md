@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2017.4] - 2017-04-25
+- akceptovaný merge request od mateja 
+    - hlavičky a päty stránok sú orientované vpravo, keďže záverečná práca je tlačená jednostranne a text je na pravej strane 
+    - číslovanie stránok je aktuálne v päte a vždy vpravo
+    - opravený problém s názvami príloh
+- výška stránky sa kvôli číslovaniu zmenšila o 1cm
+
+
 ## [2017.3] - 2017-03-19
 - zrušené zvýrazňovanie odkazov v šablóne
     - treba ešte zvážiť ich použitie možno spôsobom draft vs publisher ready verzia dokumentu
