@@ -95,6 +95,9 @@
 ]{hyperref}
 
 % popisky ku obrazkom a tabulkam
+\RequirePackage[small]{caption}
+\setlength{\captionmargin}{25pt}
+
 \def\figurename{Obrázok}
 \def\tabname{Tabuľka}
 \def\refname{Zoznam použitej literatúry}
@@ -480,7 +483,7 @@
         Školiteľ:& \@supervisor \\
         Konzultant:& \@consultant \\
     \end{tabular}
-    
+
     \vspace{2\baselineskip}
 
     \begin{center}
