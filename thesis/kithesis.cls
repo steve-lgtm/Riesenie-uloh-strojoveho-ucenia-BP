@@ -11,7 +11,7 @@
 %%
 %%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{kithesis}[2017/04/25 KI Thesis Class, v2017.4]
+\ProvidesClass{kithesis}[2017/04/25 KI Thesis Class, v2017.5]
 
 \typeout{}
 \typeout{***********************************************}
@@ -109,7 +109,9 @@
 
 % nastavenie hlavičky pre hlavnú časť práce
 \pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
+\renewcommand{\chaptermark}[1]{
+    \markboth{\ifnum\value{chapter}>0 \chaptername\ \thechapter.\ \fi #1}{}
+}
 \fancyhf{}
 \rhead{\slshape \nouppercase{\leftmark}}
 \rfoot{\thepage}

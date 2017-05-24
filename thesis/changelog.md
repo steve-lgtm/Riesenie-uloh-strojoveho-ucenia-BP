@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2017.5] - 2017-05-24
+- v prípade, že vytvárate kapitolu bez číslovania, v záhlaví sa zobrazí len jej názov
+- popisky (obrázkov, tabuliek) sú aktuálne o niečo menšie, aby boli odlíšiteľné od zvyšného textu
+- pridany "magic" root komentar do suborov kapitol
+- chyba v slovenskom texte (štúdijný -> študijný)
+- zarovnanie cislovania stran vpravo v obsahu od 2. strany
+- lepsie zalamovanie linkov v literature
+
 ## [2017.4] - 2017-04-25
 - akceptovaný merge request od mateja 
     - hlavičky a päty stránok sú orientované vpravo, keďže záverečná práca je tlačená jednostranne a text je na pravej strane 
