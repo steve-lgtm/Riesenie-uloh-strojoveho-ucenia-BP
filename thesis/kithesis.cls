@@ -3,7 +3,7 @@
 %% KI Thesis Class.
 %%
 %% Class for writing bachelor/master/phd thesis at Computer Science department
-%% at Faculty of Electrotechnics and Informatics and Technical university
+%% at Faculty of Electrotechnics and Informatics and Technical University
 %% of Košice.
 %%
 %% department homepage: http://kpi.fei.tuke.sk
@@ -184,7 +184,7 @@
 
 % DOCVAR: college (The name of the thesis writer's college)
 \newcommand{\@college@sk}{Technická univerzita v Košiciach}
-\newcommand{\@college@en}{Technical university of Košice}
+\newcommand{\@college@en}{Technical University of Košice}
 \newcommand{\college}[2]{
     \renewcommand{\@college@en}{#1}
     \renewcommand{\@college@sk}{#2}
