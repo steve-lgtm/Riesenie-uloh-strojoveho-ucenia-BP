@@ -95,6 +95,9 @@
 ]{hyperref}
 
 % popisky ku obrazkom a tabulkam
+\RequirePackage[small]{caption}
+\setlength{\captionmargin}{25pt}
+
 \def\figurename{Obrázok}
 \def\tabname{Tabuľka}
 \def\refname{Zoznam použitej literatúry}
@@ -274,6 +277,10 @@
 \newcommand{\@acknowledgment}{Na tomto mieste by som sa rád poďakoval svojmu vedúcemu záverečnej práce za pripomienky a~odbornú pomoc.}
 \newcommand{\acknowledgment}[1]{\renewcommand{\@acknowledgment}{#1}}
 
+% right page number aligment from 2nd page in table of content
+\fancypagestyle{plain}{%
+    \renewcommand{\footrulewidth}{0pt}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
@@ -470,13 +477,13 @@
 
     \noindent
     \begin{tabular}{@{}p{.25\textwidth}p{.7\textwidth}}
-        Štúdijný program:& \@studyprogramme \\
-        Štúdijný odbor:& \@fieldofstudy \\
+        Študijný program:& \@studyprogramme \\
+        Študijný odbor:& \@fieldofstudy \\
         Školiace pracovisko:& \@department@sk~(\@departmentacr@sk) \\
         Školiteľ:& \@supervisor \\
         Konzultant:& \@consultant \\
     \end{tabular}
-    
+
     \vspace{2\baselineskip}
 
     \begin{center}
