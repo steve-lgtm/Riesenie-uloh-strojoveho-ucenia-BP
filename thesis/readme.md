@@ -58,13 +58,23 @@ V prípade, že zoznam aktualizujete a medzičasom ste už _PDF_ dokument vygene
 Ak dôjde k aktualizácii šablóny, stačí vo vašom projekte aktualizovať len súbor `kithesis.cls`. Vždy sa však pozrite do súboru `CHANGELOG.md`, aby ste sa o aktualizácii uistili.
 
 
+## Spell Checking
+
+Ak náhodou na písanie nepoužívate nástroj, ktorý kontrolu pravopisu neobsahuje, môžete využiť nástroj `aspell` nasledujúcim spôsobom:
+
+```bash
+aspell -d sk_SK -t -c file.tex
+```
+
+
 ## Troubleshooting
 
 ### Q1: Našiel som v šablóne chybu. Kde ju môžem reportovať?
 
-Buď mailom na miroslav.binas@tuke.sk alebo priamo tu gitlab-e.
+Buď mailom na miroslav.binas@tuke.sk alebo priamo tu gitlab-e. Ideálne pomocou _merge request_-u.
 
 
 ## TODO
 
 * biblatex-iso690 pre citovanie
+* ukážka príloh pre veci ako diagram tried riešenia, REST API, ...
