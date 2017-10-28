@@ -74,6 +74,21 @@ aspell -d sk_SK -t -c file.tex
 Buď mailom na miroslav.binas@tuke.sk alebo priamo tu gitlab-e. Ideálne pomocou _merge request_-u.
 
 
+### Q2: Číslovanie strán obsahu je rímskymi číslicami. Je to v poriadku?
+
+Áno je to v poriadku. Práca používa dva štýly číslovania strán. Číslovanie rímskymi číslicami je v úvodnej časti práce (obsah a všetky zoznamy). Číslovanie zvyšku práce počínajúc od úvodu, resp. motivácie práce je číslované arabskými číslicami. Číslovanie druhej časti práce začína na strane s úvodom, resp. s motiváciou.
+
+
+### Q3: Nezobrazuje sa mi obsah.
+
+Skús prácu preložiť ešte raz. Je to vlastnosť _LaTeX_-u. Ak chceš mať aktuálny obsah, je nutné ho vždy preložiť 2x.
+
+
+### Q4: V zozname literatúry mi zobrazuje len 3 záznamy aj napriek tomu, že ich mám viac.
+
+Pre generovanie zoznamu literatúry sa používa _BibTeX_. Ten zobrazí len tie položky, ktoré v práci reálne citujete. Ak teda v práci realáne citujete len 3 dokumenty, budú v zozname literatúry zobrazené len tie.
+
+
 ## TODO
 
 * biblatex-iso690 pre citovanie
