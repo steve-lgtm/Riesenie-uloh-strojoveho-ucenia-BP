@@ -11,10 +11,15 @@
 %%
 %%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{kithesis}[2017/04/25 KI Thesis Class, v2017.5]
+\ProvidesClass{kithesis}[2017/12/18 KI Thesis Class, v2017.7]
 
 \typeout{}
 \typeout{***********************************************}
+\typeout{ ____   ___  _ _____ _____ }
+\typeout{|___ \ / _ \/ |___  |___  |}
+\typeout{  __) | | | | |  / /   / / }
+\typeout{ / __/| |_| | | / /_  / /  }
+\typeout{|_____|\___/|_|/_/(_)/_/  }
 \typeout{***********************************************}
 \typeout{}
 
@@ -62,6 +67,8 @@
 %% Numeric citations and sorting by year (descending), name and title
 %\RequirePackage{csquotes}
 \RequirePackage[
+    bibencoding=auto,
+    babel=other,
     style=numeric,
     sorting=none, %ydnt,
     isbn=true,
@@ -136,12 +143,12 @@
 
 % slovnik terminov a skratiek
 \RequirePackage[
-    nomain,
     toc,
     acronym,
     nonumberlist,
     noredefwarn
 ]{glossaries}
+\loadglsentries{glossary}
 \makeglossaries % prikaz na vytvorenie suboru .glo
 
 
@@ -325,8 +332,8 @@
         \newpage%
     \fi
 
-    \pagenumbering{arabic}
     \pagestyle{fancy}
+    \pagenumbering{arabic}
 }
 
 

@@ -19,3 +19,6 @@ _minted*
 *.run.xml
 *.synctex.gz
 *.toc
+*.glg
+*.glo
+*.gls

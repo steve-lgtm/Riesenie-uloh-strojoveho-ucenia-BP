@@ -103,5 +103,16 @@ Pokiaľ potrebujete do textu vložiť len jednoriadkový fragment kódu, môžet
 
 \section{Literatúra a jej citovanie}
 
-Pre prácu so zdrojmi sa používa systém balík {\tt \bf BibLaTeX}.
-\inputminted{latex}{chapters/bibliography.bib}
+Pre prácu so zdrojmi sa používa systém, resp. balík {\tt \bf BibLaTeX}.
+
+Niekedy potrebujete použiť zdroj, ktorý je napísaný v inom jazyku ako v slovenskom. Ak potrebujete v zdroji použiť iné znaky, ako v sade \emph{Latin 2} (
+{\emph{ISO/IEC 8859-2}), do štruktúry reprezentujúcej zdroj uveďte kľúče `language` a `hyphenation` s hodnotou jazyka, v ktorom je titul napísaný. Príkladom je zdroj v literatúre \cite{eckel}, ktorého kód vyzerá nasledovne:
+
+\begin{minted}{latex}
+@book{eckel,
+}
+\end{minted}
+
+%\inputminted{latex}{chapters/bibliography.bib}
+
+

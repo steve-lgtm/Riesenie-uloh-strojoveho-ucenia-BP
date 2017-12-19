@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2017.6] - 2017-11-22
+- do konfigurácie balíka `babel` pridaná konfigurácia pre podporu písania literatúry v iných jazykoch ako slovenských
+    - ilustráciou je zdroj napísaný po rusky
+
 ## [2017.5] - 2017-05-24
 - v prípade, že vytvárate kapitolu bez číslovania, v záhlaví sa zobrazí len jej názov
 - popisky (obrázkov, tabuliek) sú aktuálne o niečo menšie, aby boli odlíšiteľné od zvyšného textu
@@ -8,6 +12,7 @@ All notable changes to this project will be documented in this file.
 - chyba v slovenskom texte (štúdijný -> študijný)
 - zarovnanie cislovania stran vpravo v obsahu od 2. strany
 - lepsie zalamovanie linkov v literature
+
 
 ## [2017.4] - 2017-04-25
 - akceptovaný merge request od mateja 

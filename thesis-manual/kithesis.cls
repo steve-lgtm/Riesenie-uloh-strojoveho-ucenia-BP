@@ -3,7 +3,7 @@
 %% KI Thesis Class.
 %%
 %% Class for writing bachelor/master/phd thesis at Computer Science department
-%% at Faculty of Electrotechnics and Informatics and Technical university
+%% at Faculty of Electrotechnics and Informatics and Technical University
 %% of Košice.
 %%
 %% department homepage: http://kpi.fei.tuke.sk
@@ -11,10 +11,15 @@
 %%
 %%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{kithesis}[2017/04/25 KI Thesis Class, v2017.4]
+\ProvidesClass{kithesis}[2017/12/18 KI Thesis Class, v2017.7]
 
 \typeout{}
 \typeout{***********************************************}
+\typeout{ ____   ___  _ _____ _____ }
+\typeout{|___ \ / _ \/ |___  |___  |}
+\typeout{  __) | | | | |  / /   / / }
+\typeout{ / __/| |_| | | / /_  / /  }
+\typeout{|_____|\___/|_|/_/(_)/_/  }
 \typeout{***********************************************}
 \typeout{}
 
@@ -62,6 +67,8 @@
 %% Numeric citations and sorting by year (descending), name and title
 %\RequirePackage{csquotes}
 \RequirePackage[
+    bibencoding=auto,
+    babel=other,
     style=numeric,
     sorting=none, %ydnt,
     isbn=true,
@@ -109,7 +116,9 @@
 
 % nastavenie hlavičky pre hlavnú časť práce
 \pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
+\renewcommand{\chaptermark}[1]{
+    \markboth{\ifnum\value{chapter}>0 \chaptername\ \thechapter.\ \fi #1}{}
+}
 \fancyhf{}
 \rhead{\slshape \nouppercase{\leftmark}}
 \rfoot{\thepage}
@@ -134,12 +143,12 @@
 
 % slovnik terminov a skratiek
 \RequirePackage[
-    nomain,
     toc,
     acronym,
     nonumberlist,
     noredefwarn
 ]{glossaries}
+\loadglsentries{glossary}
 \makeglossaries % prikaz na vytvorenie suboru .glo
 
 
@@ -182,7 +191,7 @@
 
 % DOCVAR: college (The name of the thesis writer's college)
 \newcommand{\@college@sk}{Technická univerzita v Košiciach}
-\newcommand{\@college@en}{Technical university of Košice}
+\newcommand{\@college@en}{Technical University of Košice}
 \newcommand{\college}[2]{
     \renewcommand{\@college@en}{#1}
     \renewcommand{\@college@sk}{#2}
@@ -277,6 +286,10 @@
 \newcommand{\@acknowledgment}{Na tomto mieste by som sa rád poďakoval svojmu vedúcemu záverečnej práce za pripomienky a~odbornú pomoc.}
 \newcommand{\acknowledgment}[1]{\renewcommand{\@acknowledgment}{#1}}
 
+% right page number aligment from 2nd page in table of content
+\fancypagestyle{plain}{%
+    \renewcommand{\footrulewidth}{0pt}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
@@ -473,8 +486,8 @@
 
     \noindent
     \begin{tabular}{@{}p{.25\textwidth}p{.7\textwidth}}
-        Štúdijný program:& \@studyprogramme \\
-        Štúdijný odbor:& \@fieldofstudy \\
+        Študijný program:& \@studyprogramme \\
+        Študijný odbor:& \@fieldofstudy \\
         Školiace pracovisko:& \@department@sk~(\@departmentacr@sk) \\
         Školiteľ:& \@supervisor \\
         Konzultant:& \@consultant \\
