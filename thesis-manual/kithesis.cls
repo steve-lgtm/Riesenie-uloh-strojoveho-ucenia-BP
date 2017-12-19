@@ -11,7 +11,7 @@
 %%
 %%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{kithesis}[2017/12/18 KI Thesis Class, v2017.7]
+\ProvidesClass{kithesis}[2017/12/19 KI Thesis Class, v2017.7]
 
 \typeout{}
 \typeout{***********************************************}
@@ -332,8 +332,8 @@
         \newpage%
     \fi
 
-    \pagenumbering{arabic}
     \pagestyle{fancy}
+    \pagenumbering{arabic}
 }
 
 

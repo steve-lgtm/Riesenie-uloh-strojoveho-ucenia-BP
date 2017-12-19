@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2017.7] - 2017-12-19
+- opravený problém s odkazom na _Motiváciu_ v obsahu, ktorý ukazoval na nesprávnu stranu
+- pridaný zoznam termínov v súbore `glossary.tex`
+- pridaný ľahký návod na použitie zoznamu skratiek a termínov priamo v súboroch `glossary.tex` a `acronyms.tex`
+- refaktoring
+    - výpis literatúry na jeden riadok spolu s položkou v obsahu
+    - pre prílohy bol vytvorený samostatný priečinok `appendixes/`
+
 ## [2017.6] - 2017-11-22
 - do konfigurácie balíka `babel` pridaná konfigurácia pre podporu písania literatúry v iných jazykoch ako slovenských
     - ilustráciou je zdroj napísaný po rusky
