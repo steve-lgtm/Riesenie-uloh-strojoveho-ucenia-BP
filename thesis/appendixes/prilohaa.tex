@@ -1,0 +1,33 @@
+% !TEX root = ../thesis.tex
+
+\chapter{Karel Language Reference}
+
+\section*{Primitives}
+
+\begin{itemize}
+    \item \mintinline{c}{void movek()} - Moves \textit{Karel} one intersection forward.
+    \item \mintinline{c}{void turn_left()} - Pivots \textit{Karel} $90$ degrees left.
+    \item \mintinline{c}{void pick_beeper()} - Takes a beeper from the current intersection and puts it in the beeper bag.
+    \item \mintinline{c}{void put_beeper()} - Takes a beeper from the beeper bag and puts it at the current intersection.
+    \item \mintinline{c}{void turn_on(char* path)} - Turns \textit{Karel} on.
+    \item \mintinline{c}{void turn_off()} - Turns \textit{Karel} off.
+\end{itemize}
+
+
+\section*{Sensors}
+
+\begin{itemize}
+    \item \mintinline{c}{int front_is_clear()} - Returns \texttt{1} if there is no wall directly in front of \textit{Karel}. \texttt{0} if there is.
+    \item \mintinline{c}{int right_is_clear()} - Returns \texttt{1} if there is no wall immediately to \textit{Karel}'s right. \texttt{0} if there is.
+    \item \mintinline{c}{int beepers_present()} - Returns \texttt{1} if \textit{Karel} is standing at an intersection that has a beeper. \texttt{0} otherwise.
+    \item \mintinline{c}{int facing_north()} - Returns \texttt{1} if \textit{Karel} is facing north. \texttt{0} otherwise.
+    \item \mintinline{c}{int beepers_in_bag()} - Returns \texttt{1} if there is at least one beeper in \textit{Karel}'s beeper bag. \texttt{0} if the beeper bag is empty.
+\end{itemize}
+
+
+\section*{Misc}
+
+\begin{itemize}
+    \item \mintinline{c}{void set_step_delay(int)} - Sets delay of one \textit{Karel}'s step in miliseconds.
+    \item \mintinline{c}{loop(int)} - Repeats \textit{Karel}'s instruction in a loop.
+\end{itemize}
