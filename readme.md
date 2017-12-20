@@ -3,6 +3,7 @@
 This project contains document templates for the thesis (bachelor and diploma) and presentation written in _LaTeX_. Using these templates you can focus more to the content of your work and to writing itself than to the fight with the text processing software such as _MS Word_ or _OO Writer_.
 
 There are two main directories in this project:
+* `dist/` - all of the _LaTeX_ packages, classes and styles
 * `presentation/` - contains presentation template
 * `thesis/` - contains thesis template
 * `thesis-manual/` - contains manual for writing thesis
