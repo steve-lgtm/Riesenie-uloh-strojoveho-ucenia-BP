@@ -92,14 +92,18 @@
    colorlinks=false, % TODO draft vs publish ready?
    citecolor=magenta,
    bookmarksnumbered,
-   %pdfkeywords = {\LaTeX},
-   %pdfcreator = {\LaTeX\ with package hyperref},
-   %pdftitle={Odporúčania pre písanie záverečných prác},
-   %pdfauthor={Mr. Manager},
-   %pdfkeywords={},
-   %pdfsubject={Záverečná práca},
-   baseurl={http://www.tuke.sk}
+   baseurl={https://kpi.fei.tuke.sk/}
 ]{hyperref}
+
+% PDF metadata based on macro values
+\AtBeginDocument{
+  \hypersetup{
+    pdftitle = {\@title@en},
+    pdfauthor = {\@author},
+    pdfkeywords = {\@keywords@en},
+    pdfsubject = {\@thesis@en}
+  }
+}
 
 % popisky ku obrazkom a tabulkam
 \RequirePackage[small]{caption}

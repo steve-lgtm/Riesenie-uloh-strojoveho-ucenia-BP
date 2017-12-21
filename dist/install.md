@@ -1,5 +1,7 @@
 # Installation Guide
 
+Najjednoduchší spôsob, ako použiť pripravené balíčky, je prekopírovať príslušné súbory z tohto priečinku ku vášmu dokumentu. Ak však chcete nainštalovať balíčky do systému _LaTeX_, postupujte podľa nasledovného návodu:
+
 1. Pomocou príkazu `kpsewhich` zistite umiestnenie vášho lokálneho _TeX_ domovského priečinku:
 
     ```bash
@@ -24,4 +26,5 @@
 
 
 ## References
+
 * https://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-or-cls-files-to-make-them-available-to-all-my-te
