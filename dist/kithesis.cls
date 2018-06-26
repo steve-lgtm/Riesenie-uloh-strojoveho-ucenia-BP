@@ -25,7 +25,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%% Using article class as base.
+%% Using report class as base.
 %%
 %%%%%
 \PassOptionsToClass{a4paper,12pt,oneside}{report}
@@ -73,9 +73,10 @@
     sorting=none, %ydnt,
     isbn=true,
     backend=biber]{biblatex}
-%\DefineBibliographyStrings{slovak}{
-    %bibliography = {Literatúra}
-%}
+
+\DefineBibliographyStrings{slovak}{%
+    bibliography = {Literatúra}
+}
 
 \RequirePackage[
    unicode,
@@ -91,7 +92,6 @@
    pdfhighlight={/P},
    colorlinks=false, % TODO draft vs publish ready?
    citecolor=magenta,
-   bookmarksnumbered,
    baseurl={https://kpi.fei.tuke.sk/}
 ]{hyperref}
 
