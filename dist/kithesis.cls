@@ -11,15 +11,15 @@
 %%
 %%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{kithesis}[2017/12/19 KI Thesis Class, v2017.7]
+\ProvidesClass{kithesis}[2018/10/06 KI Thesis Class, v2018.1]
 
 \typeout{}
 \typeout{***********************************************}
-\typeout{ ____   ___  _ _____ _____ }
-\typeout{|___ \ / _ \/ |___  |___  |}
-\typeout{  __) | | | | |  / /   / / }
-\typeout{ / __/| |_| | | / /_  / /  }
-\typeout{|_____|\___/|_|/_/(_)/_/  }
+\typeout{ ____   ___  _  ___   _ }
+\typeout{|___ \ / _ \/ |( _ ) / |}
+\typeout{  __) | | | | |/ _ \ | |}
+\typeout{ / __/| |_| | | (_) || |}
+\typeout{|_____|\___/|_|\___(_)_|}
 \typeout{***********************************************}
 \typeout{}
 
@@ -69,11 +69,17 @@
 \RequirePackage[
     bibencoding=auto,
     babel=other,
-    style=numeric,
-    sorting=none, %ydnt,
-    isbn=true,
-    backend=biber]{biblatex}
+    style=iso-authoryear,   % support for ISO 690
+    sortlocale=sk_SK,       % sorts entries based on slovak locale
+    autolang=other,
+    sorting=ydnt,           % from latest to oldest
+    backend=biber           % different backend
+]{biblatex}
 
+% location of file with bibliography resources
+\addbibresource{chapters/bibliography.bib}
+
+% slovak translation of bibliography
 \DefineBibliographyStrings{slovak}{%
     bibliography = {Literatúra}
 }
@@ -111,7 +117,7 @@
 
 \def\figurename{Obrázok}
 \def\tabname{Tabuľka}
-\def\refname{Zoznam použitej literatúry}
+% \def\refname{Zoznam použitej literatúry} % TODO replaced by biblatex stuff, should be \bibname either
 \def\acrlistname{Zoznam skratiek}
 
 %% Vlastná hlavička

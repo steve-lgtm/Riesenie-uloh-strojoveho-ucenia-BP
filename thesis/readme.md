@@ -19,7 +19,7 @@ sudo dnf install texlive-cslatex texlive-hyphen-slovak latexmk texstudio texlive
 ```
 
 
-## Additional Packages
+### Additional Packages
 
 * `texlive-csquotes`
 * `texlive-tex-gyre`
