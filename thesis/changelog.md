@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2018.1] - 2018-10-07
+- pridaná podpora iso960
+- názov kapitoly Literatúra sa dostal do šablóny
+- pridaná nová štruktúra práce na základe článku: https://www.scss.tcd.ie/joeran.beel/blog/2010/03/02/how-to-write-a-phd-thesis/
+- vytvorený priečinok dist/, kde sa nachádza šablóna
+
 ## [2017.7] - 2017-12-19
 - opravený problém s odkazom na _Motiváciu_ v obsahu, ktorý ukazoval na nesprávnu stranu
 - pridaný zoznam termínov v súbore `glossary.tex`
