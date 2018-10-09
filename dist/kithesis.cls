@@ -187,7 +187,9 @@
     \begin{center}
         Tu vložte zadávací list pomocou príkazu\\
         {\tt{\textbackslash{}thesisspec\{cesta/k/suboru/so/zadavacim.listom\}}}\\
-        v preambule dokumentu. Odporúčame skenovať na 200 až 300 DPI, odtieň sivej!
+        v preambule dokumentu. 
+        
+        Kópiu zadávacieho listu skenujte čiernobielo (v odtieňoch sivej) na $200$ až $300$ DPI!
         Nezabudnite do jednej práce vložiť originál zadávacieho listu!
     \end{center}
     \vspace*{\fill}
