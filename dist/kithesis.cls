@@ -187,7 +187,8 @@
     \begin{center}
         Tu vložte zadávací list pomocou príkazu\\
         {\tt{\textbackslash{}thesisspec\{cesta/k/suboru/so/zadavacim.listom\}}}\\
-        v preambule dokumentu.
+        v preambule dokumentu. Odporúčame skenovať na 200 až 300 DPI, odtieň sivej!
+        Nezabudnite do jednej práce vložiť originál zadávacieho listu!
     \end{center}
     \vspace*{\fill}
     \newpage
@@ -391,32 +392,48 @@
 
     \thispagestyle{empty}
     \noindent
-    \begin{tabular}{@{}p{.2\textwidth}p{.75\textwidth}}
-        Názov práce:    & \@title@sk \\ \\
-        Pracovisko:     & \@department@sk, \@college@sk \\
-        Autor:          & \@author\\
-        Školiteľ:       & \@supervisor \\
-        Konzultant:     & \@consultant \\
-        Dátum:          & \@submissionday. \@submissionmonth. \@submissionyear\\
-        Kľúčové slová:  & \@keywords@sk \\ \\
-        \abstractname:       & \@abstract@sk\\
-    \end{tabular}
+    \subsection*{Abstrakt v SJ}
 
-    \newpage
+    \@abstract@sk
+    
+    \subsection*{Kľúčové slová v SJ}
+
+    \@keywords@sk
+
+    %\begin{tabular}{@{}p{.2\textwidth}p{.75\textwidth}}
+        %Názov práce:    & \@title@sk \\ \\
+        %Pracovisko:     & \@department@sk, \@college@sk \\
+        %Autor:          & \@author\\
+        %Školiteľ:       & \@supervisor \\
+        %Konzultant:     & \@consultant \\
+        %Dátum:          & \@submissionday. \@submissionmonth. \@submissionyear\\
+        %Kľúčové slová:  & \@keywords@sk \\ \\
+        %\abstractname:       & \@abstract@sk\\
+    %\end{tabular}
+
+    %\newpage
 
     \begin{otherlanguage}{english}
     \thispagestyle{empty}
     \noindent
-    \begin{tabular}{@{}p{.2\textwidth}p{.75\textwidth}}
-        Thesis title:   & \@title@en \\ \\
-        Department:     & \@department@en, \@college@en \\
-        Author:         & \@author\\
-        Supervisor:     & \@supervisor \\
-        Tutor:          & \@consultant \\
-        Date:           & \@submissionday. \@submissionmonth. \@submissionyear\\
-        Keywords:       & \@keywords@en \\ \\
-        \abstractname:       & \@abstract@en\\
-    \end{tabular}
+
+    \subsection*{Abstrakt v AJ}
+
+    \@abstract@en
+    
+    \subsection*{Kľúčové slová v AJ}
+
+    \@keywords@en
+    %\begin{tabular}{@{}p{.2\textwidth}p{.75\textwidth}}
+        %Thesis title:   & \@title@en \\ \\
+        %Department:     & \@department@en, \@college@en \\
+        %Author:         & \@author\\
+        %Supervisor:     & \@supervisor \\
+        %Tutor:          & \@consultant \\
+        %Date:           & \@submissionday. \@submissionmonth. \@submissionyear\\
+        %Keywords:       & \@keywords@en \\ \\
+        %\abstractname:       & \@abstract@en\\
+    %\end{tabular}
     \end{otherlanguage}
 
     \newpage
