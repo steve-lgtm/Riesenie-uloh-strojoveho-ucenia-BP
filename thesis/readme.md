@@ -33,6 +33,7 @@ sudo dnf install texlive-cslatex texlive-hyphen-slovak latexmk texstudio texlive
 * `texlive-updmap-map`
 * `texlive-biblatex-iso690`
 * `texlive-framed`
+* texlive-xargs
 
 
 ## Compilation
