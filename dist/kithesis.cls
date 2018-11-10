@@ -48,9 +48,11 @@
 % sets the document geometry
 \RequirePackage[
     a4paper,
-    width=150mm,
-    top=35mm,
-    bottom=35mm,
+    %width=150mm,
+    top=25mm,
+    bottom=25mm,
+    left=30mm,
+    right=25mm,
     bindingoffset=6mm
 ]{geometry}
 
@@ -69,7 +71,8 @@
 \RequirePackage[
     bibencoding=auto,
     babel=other,
-    style=iso-authoryear,   % support for ISO 690
+    style=iso-numeric,   % old numeric system
+    %style=iso-authoryear,   % support for ISO 690
     sortlocale=sk_SK,       % sorts entries based on slovak locale
     autolang=other,
     sorting=ydnt,           % from latest to oldest
@@ -141,6 +144,7 @@
     \rfoot{\thepage}
 }
 
+
 % zmena štýlu prvej stránke kapitoly
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
                     \thispagestyle{chapterpage}%
@@ -160,6 +164,9 @@
 ]{glossaries}
 \loadglsentries{glossary}
 \makeglossaries % prikaz na vytvorenie suboru .glo
+
+
+\RequirePackage{xargs}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -199,6 +206,20 @@
     \renewcommand{\@thesisspec}{
         \includepdf[pages={-}]{#1}
     }
+}
+
+
+% Command for author's name in the form of: [affil]{Name}{Surname}[affil]
+% TODO without xargs package: https://texfaq.org/FAQ-twooptarg
+\newcommand{\@author@prefix}{}
+\newcommand{\@author@firstname}{}
+\newcommand{\@author@lastname}{}
+\newcommand{\@author@postfix}{}
+\renewcommandx\author[4][1=1, 4=4]{
+    \renewcommand{\@author@prefix}{#1}
+    \renewcommand{\@author@firstname}{#2}
+    \renewcommand{\@author@lastname}{#3}
+    \renewcommand{\@author@postfix}{#4}
 }
 
 
@@ -376,7 +397,7 @@
     \vfill
 
     \begin{center}
-        {\Large \textbf{\@submissionyear}} \hfill {\Large \textbf{\@author}}
+        {\Large \textbf{\@submissionyear}} \hfill {\Large \textbf{\@author@prefix~\@author@firstname~\@author@lastname~\@author@postfix}}
     \end{center}
 
     \newpage
@@ -416,8 +437,8 @@
     %\newpage
 
     \begin{otherlanguage}{english}
-    \thispagestyle{empty}
-    \noindent
+    %\thispagestyle{empty}
+    %\noindent
 
     \subsection*{Abstrakt v AJ}
 
@@ -438,6 +459,12 @@
     %\end{tabular}
     \end{otherlanguage}
 
+    \vfill
+
+    \subsection*{Bibliografická citácia}
+
+    \MakeUppercase\@author@lastname, \@author@firstname. {\slshape \@title@sk}. \@college@city: \@college@sk, \@faculty@sk, \@submissionyear. 69s. Vedúci práce: \@supervisor
+
     \newpage
 
     \def\br{\\}
@@ -454,9 +481,7 @@
 
     \vglue0pt
     \vfill
-    \noindent\textbf{Čestné vyhlásenie}
-
-    \bigskip
+    \subsection*{Čestné vyhlásenie}
 
     \noindent\@declaration
 
@@ -479,9 +504,7 @@
     \thispagestyle{empty}%
     \vglue0pt\vfill%
 
-    \noindent\textbf{Poďakovanie}%
-
-    \bigskip
+    \subsection*{Poďakovanie}%
 
     \@acknowledgment
 
@@ -514,7 +537,7 @@
     \vfill
 
     \noindent
-    \begin{tabular}{@{}p{.25\textwidth}p{.7\textwidth}}
+    \begin{tabular}{@{}p{.26\textwidth}p{.7\textwidth}}
         Študijný program:& \@studyprogramme \\
         Študijný odbor:& \@fieldofstudy \\
         Školiace pracovisko:& \@department@sk~(\@departmentacr@sk) \\
@@ -526,7 +549,7 @@
 
     \begin{center}
         \centering
-        {\Large \textbf{\@college@city{} \@submissionyear}} \hfill {\Large \textbf{\@author}}
+        {\Large \textbf{\@college@city{} \@submissionyear}} \hfill {\Large \textbf{\@author@prefix~\@author@firstname~\@author@lastname~\@author@postfix}}
     \end{center}
 
     \newpage
