@@ -19,7 +19,15 @@
 % Additional packages
 \usepackage[main=slovak,english]{babel}
 \usepackage{blindtext}  % lorem ipsum
-\usepackage{minted}  % for source code 
+
+\usepackage{listings}  % for source code
+% Listings settings
+% See for details: https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+\lstset{
+    basicstyle=\small\ttfamily,  % smaller typewriter font
+    showstringspaces=false       % don't show spaces in string
+}
+\def\lstlistingname{Zdrojový kód}
 
 % Variables
 %\thesisspec{figures/thesisspec.png} 

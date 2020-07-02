@@ -529,6 +529,8 @@
 
 \RequirePackage{tgpagella}
 
+% Use Latin Modern as typewriter font, because it supports bold
+\renewcommand{\ttdefault}{lmtt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
