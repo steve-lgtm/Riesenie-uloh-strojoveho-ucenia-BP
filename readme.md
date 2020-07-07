@@ -18,7 +18,7 @@ Používatelia Fedory napíšu:
 sudo dnf install texlive-collection-latexrecommended \
     texlive-collection-langczechslovak \
     texlive-biblatex texlive-biblatex-iso690 \
-    texlive-glossaries texlive-xargs texlive-blindtext \
+    texlive-glossaries texlive-xargs \
     latexmk texstudio
 ```
 
