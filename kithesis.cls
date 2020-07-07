@@ -130,7 +130,7 @@
     \markboth{\ifnum\value{chapter}>0 \chaptername\ \thechapter.\ \fi #1}{}
 }
 \fancyhf{}
-\rhead{\slshape \nouppercase{\leftmark}}
+\rhead{\itshape \nouppercase{\leftmark}}
 \rfoot{\thepage}
 
 
@@ -460,7 +460,7 @@
 
     \subsection*{Bibliografická citácia}
 
-    \MakeUppercase\@author@lastname, \@author@firstname. {\slshape \@title@sk}. \@college@city: \@college@sk, \@faculty@sk, \@submissionyear. 69s. Vedúci práce: \@supervisor
+    \MakeUppercase\@author@lastname, \@author@firstname. {\itshape \@title@sk}. \@college@city: \@college@sk, \@faculty@sk, \@submissionyear. 69s. Vedúci práce: \@supervisor
 
     \newpage
 
