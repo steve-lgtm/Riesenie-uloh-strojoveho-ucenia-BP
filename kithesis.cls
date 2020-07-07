@@ -67,7 +67,7 @@
     table]{totalcount}
 
 %% Numeric citations and sorting by citation order
-%\RequirePackage{csquotes}
+\RequirePackage{csquotes}
 \RequirePackage[
     bibencoding=auto,
     babel=other,
