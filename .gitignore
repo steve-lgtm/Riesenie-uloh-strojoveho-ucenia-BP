@@ -22,3 +22,5 @@ _minted*
 *.glg
 *.glo
 *.gls
+
+/thesis.pdf
