@@ -15,25 +15,12 @@ Ako editor odporúčame nainštalovať [TeX Studio](http://www.texstudio.org/) a
 Používatelia Fedory napíšu:
 
 ```bash
-sudo dnf install texlive-cslatex texlive-hyphen-slovak latexmk texstudio texlive-engrec 
+sudo dnf install texlive-collection-latexrecommended \
+    texlive-collection-langczechslovak \
+    texlive-biblatex texlive-biblatex-iso690 \
+    texlive-glossaries texlive-xargs texlive-blindtext \
+    latexmk texstudio
 ```
-
-
-### Additional Packages
-
-* `texlive-csquotes`
-* `texlive-tex-gyre`
-* `texlive-titlesec`
-* `texlive-glossaries`
-* `texlive-makeindex`
-* `texlive-biblatex`
-* `biber`
-* `texlive-pdfpages`
-* `texlive-ec`
-* `texlive-updmap-map`
-* `texlive-biblatex-iso690`
-* `texlive-framed`
-* texlive-xargs
 
 
 ## Compilation
@@ -97,5 +84,4 @@ Pre generovanie zoznamu literatúry sa používa _BibTeX_. Ten zobrazí len tie 
 
 ## TODO
 
-* biblatex-iso690 pre citovanie
 * ukážka príloh pre veci ako diagram tried riešenia, REST API, ...
