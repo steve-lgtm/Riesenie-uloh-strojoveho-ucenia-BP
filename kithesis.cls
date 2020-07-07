@@ -70,7 +70,6 @@
 \RequirePackage{csquotes}
 \RequirePackage[
     bibencoding=auto,
-    babel=other,
     style=iso-numeric,      % numeric citations according for ISO 690
     autolang=other,
     sorting=none,           % sort by order of citation
