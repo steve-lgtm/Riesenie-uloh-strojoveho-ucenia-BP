@@ -1,11 +1,101 @@
-# Templates in LaTeX
+# About
 
-This project contains document templates for the thesis (bachelor and diploma) and presentation written in _LaTeX_. Using these templates you can focus more to the content of your work and to writing itself than to the fight with the text processing software such as _MS Word_ or _OO Writer_.
+Šablóna pre písanie záverečných prác na _KI FEI TUKE_. 
 
-There are two main directories in this project:
-* `dist/` - all of the _LaTeX_ packages, classes and styles
-* `presentation/` - contains presentation template
-* `thesis/` - contains thesis template
-* `thesis-manual/` - contains manual for writing thesis
+Pozor! Kódovanie všetkých dokumentov je nastavené na _UTF-8_! Nezabudnite si preto nastaviť aj svoje prostredie, v ktorom budete záverečnú prácu písať tak, aby toto kódovanie používalo!
 
-This project is still work in progress. If you will find any issue, don't forget to report it! We are still trying to make it better and easier to use. Our goal is still to provide you the best tools, so you can reach the best results.
+Aktuálna verzia vychádza z oficiálnej verzie dostupnej aj na stránkach univerzitnej knižnice. Tá je však už nejaký čas neaktulizovaná, takže tento projekt je snahou o udržiavanie aktuálnej verzie tohto projektu v súčinnosti so študentami. Upozorňujem však, že táto verzia je silne vo vývoji a odporúčam sledovať kvôli zmenám aj _changelog_.
+
+## Install
+
+Odporúčame nainštalovať balík [TeX Live](https://www.tug.org/texlive/). 
+
+Ako editor odporúčame nainštalovať [TeX Studio](http://www.texstudio.org/) alebo [TeX Maker](http://www.xm1math.net/texmaker/).
+
+Používatelia Fedory napíšu:
+
+```bash
+sudo dnf install texlive-cslatex texlive-hyphen-slovak latexmk texstudio texlive-engrec 
+```
+
+
+### Additional Packages
+
+* `texlive-csquotes`
+* `texlive-tex-gyre`
+* `texlive-titlesec`
+* `texlive-glossaries`
+* `texlive-makeindex`
+* `texlive-biblatex`
+* `biber`
+* `texlive-pdfpages`
+* `texlive-ec`
+* `texlive-updmap-map`
+* `texlive-biblatex-iso690`
+* `texlive-framed`
+* texlive-xargs
+
+
+## Compilation
+
+Dokument vytvoríte napísaním nasledovného príkazu z príkazového riadku:
+
+```bash
+latexmk -pdf -bibtex -pvc -shell-escape thesis
+```
+
+Spustením tohto príkazu dôjde k vytvoreniu výsledného dokumentu vo formáte _PDF_, ktorý sa následne zobrazí v prehliadači dokumentov. Samotný nástroj sa ale neukončí a bude sledovať zmeny, pričom pri každej zmene (uložení niektorého _.tex_ súboru) dôjde k opätovnému preloženiu výsledného dokumentu.
+
+Projekt si samozrejme môžete otvoriť v ktoromkoľvek _LaTeX_ editore alebo IDE, ako je napr. _TeX Studio_
+
+
+Ak potrebujete vygenerovať zoznam skratiek, z príkazového riadku musíte spustiť postupne tieto tri príkazy:
+```bash
+latexmk -pdf -bibtex -shell-escape thesis
+makeglossaries thesis
+latexmk -pdf -bibtex -pvc -shell-escape thesis
+```
+
+V prípade, že zoznam aktualizujete a medzičasom ste už _PDF_ dokument vygenerovali, stačí spustiť už len príkaz `makeglossaries` a následne dokument pregenerovať.
+
+
+## Update
+
+Ak dôjde k aktualizácii šablóny, stačí vo vašom projekte aktualizovať len súbor `kithesis.cls`. Vždy sa však pozrite do súboru `CHANGELOG.md`, aby ste sa o aktualizácii uistili.
+
+
+## Spell Checking
+
+Ak náhodou na písanie nepoužívate nástroj, ktorý kontrolu pravopisu neobsahuje, môžete využiť nástroj `aspell` nasledujúcim spôsobom:
+
+```bash
+aspell -d sk_SK -t -c file.tex
+```
+
+
+## Troubleshooting
+
+### Q1: Našiel som v šablóne chybu. Kde ju môžem reportovať?
+
+Buď mailom na miroslav.binas@tuke.sk alebo priamo tu gitlab-e. Ideálne pomocou _merge request_-u.
+
+
+### Q2: Číslovanie strán obsahu je rímskymi číslicami. Je to v poriadku?
+
+Áno je to v poriadku. Práca používa dva štýly číslovania strán. Číslovanie rímskymi číslicami je v úvodnej časti práce (obsah a všetky zoznamy). Číslovanie zvyšku práce počínajúc od úvodu, resp. motivácie práce je číslované arabskými číslicami. Číslovanie druhej časti práce začína na strane s úvodom, resp. s motiváciou.
+
+
+### Q3: Nezobrazuje sa mi obsah.
+
+Skús prácu preložiť ešte raz. Je to vlastnosť _LaTeX_-u. Ak chceš mať aktuálny obsah, je nutné ho vždy preložiť 2x.
+
+
+### Q4: V zozname literatúry mi zobrazuje len 3 záznamy aj napriek tomu, že ich mám viac.
+
+Pre generovanie zoznamu literatúry sa používa _BibTeX_. Ten zobrazí len tie položky, ktoré v práci reálne citujete. Ak teda v práci realáne citujete len 3 dokumenty, budú v zozname literatúry zobrazené len tie.
+
+
+## TODO
+
+* biblatex-iso690 pre citovanie
+* ukážka príloh pre veci ako diagram tried riešenia, REST API, ...
