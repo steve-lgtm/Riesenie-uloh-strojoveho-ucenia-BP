@@ -3,7 +3,7 @@
 %% KI Thesis Class.
 %%
 %% Class for writing bachelor/master/phd thesis at Computer Science department
-%% at Faculty of Electrotechnics and Informatics and Technical University
+%% at Faculty of Electrical Engineering and Informatics and Technical University
 %% of Košice.
 %%
 %% department homepage: http://kpi.fei.tuke.sk
@@ -234,7 +234,7 @@
 \newcommand{\@college@city}{Košice}
 
 % DOCVAR: faculty (The name of the thesis writer's faculty)
-\newcommand{\@faculty@en}{Faculty of Electrical Engineering and informatics}
+\newcommand{\@faculty@en}{Faculty of Electrical Engineering and Informatics}
 \newcommand{\@faculty@sk}{Fakulta elektrotechniky a informatiky}
 \newcommand{\faculty}[2]{
     \renewcommand{\@faculty@en}{#1}
@@ -571,6 +571,8 @@
 
 \RequirePackage{tgpagella}
 
+% Use Latin Modern as typewriter font, because it supports bold
+\renewcommand{\ttdefault}{lmtt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
