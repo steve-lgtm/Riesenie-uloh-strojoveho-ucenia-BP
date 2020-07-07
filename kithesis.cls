@@ -66,16 +66,14 @@
     figure,
     table]{totalcount}
 
-%% Numeric citations and sorting by year (descending), name and title
+%% Numeric citations and sorting by citation order
 %\RequirePackage{csquotes}
 \RequirePackage[
     bibencoding=auto,
     babel=other,
-    style=iso-numeric,   % old numeric system
-    %style=iso-authoryear,   % support for ISO 690
-    sortlocale=sk_SK,       % sorts entries based on slovak locale
+    style=iso-numeric,      % numeric citations according for ISO 690
     autolang=other,
-    sorting=ydnt,           % from latest to oldest
+    sorting=none,           % sort by order of citation
     backend=biber           % different backend
 ]{biblatex}
 
