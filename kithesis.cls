@@ -568,8 +568,8 @@
 
 \RequirePackage{tgpagella}
 
-% Use Latin Modern as typewriter font, because it supports bold
-\renewcommand{\ttdefault}{lmtt}
+% Use TXTT as a typewriter font. It supports bold and matches Pagella in style.
+\renewcommand*\ttdefault{txtt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
