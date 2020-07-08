@@ -1,0 +1,11 @@
+pdf:
+  stage: build
+  image: git.kpi.fei.tuke.sk:4567/sergej.chodarev/latex
+  script:
+    - latexmk -pdf -interaction=nonstopmode thesis
+  artifacts:
+    paths:
+      - thesis.pdf
+    expire_in: 2 weeks
+  only:
+    - master
