@@ -22,6 +22,12 @@ sudo dnf install texlive-collection-latexrecommended \
     latexmk texstudio
 ```
 
+Používatelia Debianu a Ubuntu to majú podobné:
+
+```bash
+sudo apt-get install texlive-latex-extra texlive-fonts-recommended \
+    texlive-lang-czechslovak texlive-bibtex-extra biber latexmk texstudio
+```
 
 ## Compilation
 
