@@ -1,11 +1,14 @@
+variables:
+  MAIN_TEX_FILE: thesis
+
 pdf:
   stage: build
-  image: git.kpi.fei.tuke.sk:4567/sergej.chodarev/latex
+  image: git.kpi.fei.tuke.sk:4567/kpi/latex
   script:
-    - latexmk -pdf -interaction=nonstopmode thesis
+    - latexmk -pdf -interaction=nonstopmode $MAIN_TEX_FILE
   artifacts:
     paths:
-      - thesis.pdf
+      - $MAIN_TEX_FILE.pdf
     expire_in: 2 weeks
   only:
     - master
