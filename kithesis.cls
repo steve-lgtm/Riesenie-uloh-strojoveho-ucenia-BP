@@ -460,7 +460,7 @@
 
     \subsection*{Bibliografická citácia}
 
-    \MakeUppercase\@author@lastname, \@author@firstname. {\itshape \@title@sk}. \@college@city: \@college@sk, \@faculty@sk, \@submissionyear. 69s. Vedúci práce: \@supervisor
+    \MakeUppercase\@author@lastname, \@author@firstname. {\itshape \@title@sk}. \@college@city: \@college@sk, \@faculty@sk, \@submissionyear. \pageref{theend}s. Vedúci práce: \@supervisor
 
     \newpage
 
