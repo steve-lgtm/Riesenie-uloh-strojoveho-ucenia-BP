@@ -163,8 +163,6 @@
 \makeglossaries % prikaz na vytvorenie suboru .glo
 
 
-\RequirePackage{xargs}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
@@ -207,16 +205,19 @@
 
 
 % Command for author's name in the form of: [affil]{Name}{Surname}[affil]
-% TODO without xargs package: https://texfaq.org/FAQ-twooptarg
+% Second optional argument using https://texfaq.org/FAQ-twooptarg
 \newcommand{\@author@prefix}{}
 \newcommand{\@author@firstname}{}
 \newcommand{\@author@lastname}{}
 \newcommand{\@author@postfix}{}
-\renewcommandx\author[4][1=1, 4=4]{
+\renewcommand\author[3][]{
     \renewcommand{\@author@prefix}{#1}
     \renewcommand{\@author@firstname}{#2}
     \renewcommand{\@author@lastname}{#3}
-    \renewcommand{\@author@postfix}{#4}
+    \authorpostfix
+}
+\newcommand\authorpostfix[1][]{
+    \renewcommand{\@author@postfix}{#1}
 }
 
 
