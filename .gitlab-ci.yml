@@ -9,6 +9,6 @@ pdf:
   artifacts:
     paths:
       - $MAIN_TEX_FILE.pdf
-    expire_in: 2 weeks
+    expire_in: 2 days
   only:
     - master
