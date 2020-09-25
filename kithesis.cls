@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%% KI Thesis Class.
+%% KPI Thesis Class.
 %%
 %% Class for writing bachelor/master/phd thesis at Computer Science department
 %% at Faculty of Electrical Engineering and Informatics and Technical University

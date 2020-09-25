@@ -1,6 +1,6 @@
 # About
 
-Šablóna pre písanie záverečných prác na _KI FEI TUKE_. 
+Šablóna pre písanie záverečných prác na _KPI FEI TUKE_. 
 
 Pozor! Kódovanie všetkých dokumentov je nastavené na _UTF-8_! Nezabudnite si preto nastaviť aj svoje prostredie, v ktorom budete záverečnú prácu písať tak, aby toto kódovanie používalo!
 
