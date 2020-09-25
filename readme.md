@@ -33,7 +33,7 @@ sudo apt-get install texlive-latex-extra texlive-fonts-recommended \
 Dokument vytvoríte napísaním nasledovného príkazu z príkazového riadku:
 
 ```bash
-latexmk -pdf -bibtex -pvc -shell-escape thesis
+latexmk -pdf -bibtex -pvc thesis
 ```
 
 Spustením tohto príkazu dôjde k vytvoreniu výsledného dokumentu vo formáte _PDF_, ktorý sa následne zobrazí v prehliadači dokumentov. Samotný nástroj sa ale neukončí a bude sledovať zmeny, pričom pri každej zmene (uložení niektorého _.tex_ súboru) dôjde k opätovnému preloženiu výsledného dokumentu.
@@ -43,9 +43,9 @@ Projekt si samozrejme môžete otvoriť v ktoromkoľvek _LaTeX_ editore alebo ID
 
 Ak potrebujete vygenerovať zoznam skratiek, z príkazového riadku musíte spustiť postupne tieto tri príkazy:
 ```bash
-latexmk -pdf -bibtex -shell-escape thesis
+latexmk -pdf -bibtex thesis
 makeglossaries thesis
-latexmk -pdf -bibtex -pvc -shell-escape thesis
+latexmk -pdf -bibtex -pvc thesis
 ```
 
 V prípade, že zoznam aktualizujete a medzičasom ste už _PDF_ dokument vygenerovali, stačí spustiť už len príkaz `makeglossaries` a následne dokument pregenerovať.
