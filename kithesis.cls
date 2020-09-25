@@ -97,6 +97,7 @@
    bookmarksopen,
    pdfhighlight={/P},
    colorlinks=false, % TODO draft vs publish ready?
+   hidelinks, % disable color links completly
    citecolor=magenta,
    baseurl={https://kpi.fei.tuke.sk/}
 ]{hyperref}
