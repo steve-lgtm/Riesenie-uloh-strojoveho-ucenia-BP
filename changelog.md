@@ -1,6 +1,21 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2020.1] - 2020-09-25
+- zrušený analytický list a nahradený len abstraktom a kľúčovými slovami
+- pozmenené rozloženie strany
+- vrátené numerické označovanie literatúry
+- zadávanie mena autora v tvare `\author[titul]{Meno}{Priezvisko}[titul]`
+- pridaná bibliografická citácia práce na konci strany s abstraktom
+- použitie balíka `listings` pre fragmenty kódu namiesto `minted`, ktorý vyžadoval inštaláciu Pythonu
+- odstránený neaktualizovaná dokumentácia a šablóna prezentácie
+- znovu zlúčené adresáre `dist/` a `thesis/`
+- PDF súbor sa neukladá v repozitári, namiesto toho sa generuje pomocou Gitlab-CI
+- použitie neproporcionálneho písma `txtt`
+- odstránená závislosť na balíku `blindtext`
+- zjednodušená štruktúra kapitol a doplnené informácie o ich obsahu
+- vypnuté farebné ramčeky okolo odkazov
+
 ## [2018.1] - 2018-10-07
 - pridaná podpora iso960
 - názov kapitoly Literatúra sa dostal do šablóny

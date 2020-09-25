@@ -11,15 +11,15 @@
 %%
 %%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{kithesis}[2018/10/06 KI Thesis Class, v2018.1]
+\ProvidesClass{kithesis}[2020/09/25 KPI Thesis Class, v2020.1]
 
 \typeout{}
 \typeout{***********************************************}
-\typeout{ ____   ___  _  ___   _ }
-\typeout{|___ \ / _ \/ |( _ ) / |}
-\typeout{  __) | | | | |/ _ \ | |}
-\typeout{ / __/| |_| | | (_) || |}
-\typeout{|_____|\___/|_|\___(_)_|}
+\typeout{   ___   ____ ___   ____   ___}
+\typeout{  |__ \ / __ \__ \ / __ \ <  /}
+\typeout{  __/ // / / /_/ // / / / / / }
+\typeout{ / __// /_/ / __// /_/ / / /  }
+\typeout{/____/\____/____/\____(_)_/   }
 \typeout{***********************************************}
 \typeout{}
 
