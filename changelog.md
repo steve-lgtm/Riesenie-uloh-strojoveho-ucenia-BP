@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2021.1] - 2020-02-08
+- znovu zapnuté farebné ramčeky okolo odkazov
+- pridaný súbor latexmkrc s konfiguráciou automatického generovania slovníkov (#10)
+
 ## [2020.1] - 2020-09-25
 - zrušený analytický list a nahradený len abstraktom a kľúčovými slovami
 - pozmenené rozloženie strany
