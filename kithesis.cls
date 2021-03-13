@@ -188,12 +188,21 @@
     \thispagestyle{empty}
     \vspace*{\fill}
     \begin{center}
+    \iflanguage{slovak}{
         Tu vložte zadávací list pomocou príkazu\\
         {\tt{\textbackslash{}thesisspec\{cesta/k/suboru/so/zadavacim.listom\}}}\\
         v preambule dokumentu. 
         
         Kópiu zadávacieho listu skenujte čiernobielo (v odtieňoch sivej) na $200$ až $300$ DPI!
         Nezabudnite do jednej práce vložiť originál zadávacieho listu!
+    }{
+        Here insert the assignment statement using the command\\
+        {\tt{\textbackslash{}thesisspec\{path/to/the/filw/with/assignment.statement\}}}\\
+        in the preamble of the document.
+        
+        Copy of the assignment statement should be scanned black\&white (grayscale) using DPI from $200$ to $300$!
+        Don't forget to insert the original assignment statement into one of the theses copies.
+    }
     \end{center}
     \vspace*{\fill}
     \newpage
