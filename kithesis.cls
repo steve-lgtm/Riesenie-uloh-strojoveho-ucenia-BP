@@ -299,24 +299,25 @@
 }
 
 % DOCVAR: abstract of the thesis
-\newcommand{\@abstract}{}
 \renewcommand{\abstract}[2]{%
     \newcommand{\@abstract@en}{#1}%
     \newcommand{\@abstract@sk}{#2}%
 }
+\newcommand{\@abstract}{\@abstract@en}
 
 % DOCVAR: thesis keywords
-\newcommand{\@keywords}{}
 \newcommand{\keywords}[2]{%
     \newcommand{\@keywords@en}{#1}%
     \newcommand{\@keywords@sk}{#2}%
 }
+\newcommand{\@keywords}{\@keywords@en}
 
 % DOCVAR: thesis title
 \renewcommand{\title}[2]{%
     \newcommand{\@title@en}{#1}%
     \newcommand{\@title@sk}{#2}%
 }
+\renewcommand{\@title}{\@title@en}
 
 
 % DOCVAR: thesis (type of the thesis)
@@ -337,26 +338,59 @@
 \newcommand{\departmentname}{Department}
 \newcommand{\supervisorname}{Supervisor}
 \newcommand{\consultantname}{Consultant}
+\newcommand{\abstractInCurrentLanguageName}{Abstract in English}
+\newcommand{\keywordsInCurrentLanguageName}{Keywords in English}
+\newcommand{\abstractInSecondLanguageName}{Abstrakt v AJ}
+\newcommand{\keywordsInSecondLanguageName}{Kľúčové slová v AJ}
+\newcommand{\bibliographiccitationname}{Bibliographic Citation}
+\newcommand{\supervisorcitationname}{Supervisor}
 \AtBeginDocument{
-    \@ifpackageloaded{babel}{
-        \addto\captionsslovak{
-            \renewcommand{\@college}{\@college@sk}
-            \renewcommand{\@department}{\@department@sk}
-            \renewcommand{\@department}{\@departmentacr@sk}
-            \renewcommand{\@faculty}{\@faculty@sk}
-            \renewcommand{\@thesis}{\@thesis@sk}
-            \renewcommand{\@declaration}{\@declaration@sk}
-            \renewcommand{\declarationname}{Čestné vyhlásenie}
-            \renewcommand{\signaturecaption}{Vlastnoručný podpis}
-            \renewcommand{\acknowledgementname}{Poďakovanie}
-            \renewcommand{\lstlistingname}{Zdrojový kód}
-            \renewcommand{\studyprogrammename}{Študijný program}
-            \renewcommand{\fieldofstudyname}{Študijný odbor}
-            \renewcommand{\departmentname}{Školiace pracovisko}
-            \renewcommand{\supervisorname}{Školiteľ}
-            \renewcommand{\consultantname}{Konzultant}
-        }
-    }{}
+    \addto\captionsenglish{
+        \renewcommand{\@title}{\@title@en}
+        \renewcommand{\@abstract}{\@abstract@en}
+        \renewcommand{\@keywords}{\@keywords@en}
+        \renewcommand{\declarationname}{Declaration}
+        \renewcommand{\signaturecaption}{Signature}
+        \renewcommand{\acknowledgementname}{Acknowledgement}
+        \renewcommand{\lstlistingname}{Listing}
+        \renewcommand{\studyprogrammename}{Study Programme}
+        \renewcommand{\fieldofstudyname}{Field of Study}
+        \renewcommand{\departmentname}{Department}
+        \renewcommand{\supervisorname}{Supervisor}
+        \renewcommand{\consultantname}{Consultant}
+        \renewcommand{\abstractInCurrentLanguageName}{Abstract in English}
+        \renewcommand{\keywordsInCurrentLanguageName}{Keywords in English}
+        \renewcommand{\abstractInSecondLanguageName}{Abstrakt v AJ}
+        \renewcommand{\keywordsInSecondLanguageName}{Kľúčové slová v AJ}
+        \renewcommand{\bibliographiccitationname}{Bibliographic Citation}
+        \renewcommand{\supervisorcitationname}{Supervisor}
+    }
+    \addto\captionsslovak{
+        \renewcommand{\@title}{\@title@sk}
+        \renewcommand{\@abstract}{\@abstract@sk}
+        \renewcommand{\@keywords}{\@keywords@sk}
+        \renewcommand{\@college}{\@college@sk}
+        \renewcommand{\@department}{\@department@sk}
+        \renewcommand{\@department}{\@departmentacr@sk}
+        \renewcommand{\@faculty}{\@faculty@sk}
+        \renewcommand{\@thesis}{\@thesis@sk}
+        \renewcommand{\@declaration}{\@declaration@sk}
+        \renewcommand{\declarationname}{Čestné vyhlásenie}
+        \renewcommand{\signaturecaption}{Vlastnoručný podpis}
+        \renewcommand{\acknowledgementname}{Poďakovanie}
+        \renewcommand{\lstlistingname}{Zdrojový kód}
+        \renewcommand{\studyprogrammename}{Študijný program}
+        \renewcommand{\fieldofstudyname}{Študijný odbor}
+        \renewcommand{\departmentname}{Školiace pracovisko}
+        \renewcommand{\supervisorname}{Školiteľ}
+        \renewcommand{\consultantname}{Konzultant}
+        \renewcommand{\abstractInCurrentLanguageName}{Abstrakt v SJ}
+        \renewcommand{\keywordsInCurrentLanguageName}{Kľúčové slová v SJ}
+        \renewcommand{\abstractInSecondLanguageName}{Abstract in Slovak}
+        \renewcommand{\keywordsInSecondLanguageName}{Keywords in Slovak}
+        \renewcommand{\bibliographiccitationname}{Bibliografická citácia}
+        \renewcommand{\supervisorcitationname}{Vedúci práce}
+    }
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -421,7 +455,7 @@
 
         \vfill
 
-        {\LARGE \textbf{\@title@sk} \par}
+        {\LARGE \textbf{\@title} \par}
 
         \bigskip
 
@@ -449,55 +483,45 @@
 
     \thispagestyle{empty}
     \noindent
-    \subsection*{Abstrakt v SJ}
+    \subsection*{\abstractInCurrentLanguageName}
 
-    \@abstract@sk
+    \@abstract
     
-    \subsection*{Kľúčové slová v SJ}
+    \subsection*{\keywordsInCurrentLanguageName}
 
-    \@keywords@sk
+    \@keywords
 
-    %\begin{tabular}{@{}p{.2\textwidth}p{.75\textwidth}}
-        %Názov práce:    & \@title@sk \\ \\
-        %Pracovisko:     & \@department@sk, \@college@sk \\
-        %Autor:          & \@author\\
-        %Školiteľ:       & \@supervisor \\
-        %Konzultant:     & \@consultant \\
-        %Dátum:          & \@submissionday. \@submissionmonth. \@submissionyear\\
-        %Kľúčové slová:  & \@keywords@sk \\ \\
-        %\abstractname:       & \@abstract@sk\\
-    %\end{tabular}
+    \iflanguage{slovak}{
+        \begin{otherlanguage}{english}
 
-    %\newpage
+            \subsection*{\abstractInSecondLanguageName}
 
-    \begin{otherlanguage}{english}
-    %\thispagestyle{empty}
-    %\noindent
+            \@abstract
 
-    \subsection*{Abstrakt v AJ}
+            \subsection*{\keywordsInSecondLanguageName}
 
-    \@abstract@en
-    
-    \subsection*{Kľúčové slová v AJ}
+            \@keywords
 
-    \@keywords@en
-    %\begin{tabular}{@{}p{.2\textwidth}p{.75\textwidth}}
-        %Thesis title:   & \@title@en \\ \\
-        %Department:     & \@department@en, \@college@en \\
-        %Author:         & \@author\\
-        %Supervisor:     & \@supervisor \\
-        %Tutor:          & \@consultant \\
-        %Date:           & \@submissionday. \@submissionmonth. \@submissionyear\\
-        %Keywords:       & \@keywords@en \\ \\
-        %\abstractname:       & \@abstract@en\\
-    %\end{tabular}
-    \end{otherlanguage}
+        \end{otherlanguage}
+    }{
+        \begin{otherlanguage}{slovak}
+
+            \subsection*{\abstractInSecondLanguageName}
+
+            \@abstract
+
+            \subsection*{\keywordsInSecondLanguageName}
+
+            \@keywords
+
+        \end{otherlanguage}
+    }
 
     \vfill
 
-    \subsection*{Bibliografická citácia}
+    \subsection*{\bibliographiccitationname}
 
-    \MakeUppercase\@author@lastname, \@author@firstname. {\itshape \@title@sk}. \@college@city: \@college, \@faculty, \@submissionyear. \pageref{theend}s. Vedúci práce: \@supervisor
+    \MakeUppercase\@author@lastname, \@author@firstname. {\itshape \@title}. \@college@city: \@college, \@faculty, \@submissionyear. \pageref{theend}s. \supervisorcitationname: \@supervisor
 
     \newpage
 
@@ -561,7 +585,7 @@
 
         \vfill
 
-        {\LARGE \textbf{\@title@sk} \par}
+        {\LARGE \textbf{\@title} \par}
 
         \bigskip
 
