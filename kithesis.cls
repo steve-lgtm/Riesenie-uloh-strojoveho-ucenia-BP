@@ -339,21 +339,23 @@
 \newcommand{\consultantname}{Consultant}
 \AtBeginDocument{
     \@ifpackageloaded{babel}{
-        \addto\captionsslovak{\renewcommand{\@college}{\@college@sk}}
-        \addto\captionsslovak{\renewcommand{\@department}{\@department@sk}}
-        \addto\captionsslovak{\renewcommand{\@department}{\@departmentacr@sk}}
-        \addto\captionsslovak{\renewcommand{\@faculty}{\@faculty@sk}}
-        \addto\captionsslovak{\renewcommand{\@thesis}{\@thesis@sk}}
-        \addto\captionsslovak{\renewcommand{\@declaration}{\@declaration@sk}}
-        \addto\captionsslovak{\renewcommand{\declarationname}{Čestné vyhlásenie}}
-        \addto\captionsslovak{\renewcommand{\signaturecaption}{Vlastnoručný podpis}}
-        \addto\captionsslovak{\renewcommand{\acknowledgementname}{Poďakovanie}}
-        \addto\captionsslovak{\renewcommand{\lstlistingname}{Zdrojový kód}}
-        \addto\captionsslovak{\renewcommand{\studyprogrammename}{Študijný program}}
-        \addto\captionsslovak{\renewcommand{\fieldofstudyname}{Študijný odbor}}
-        \addto\captionsslovak{\renewcommand{\departmentname}{Školiace pracovisko}}
-        \addto\captionsslovak{\renewcommand{\supervisorname}{Školiteľ}}
-        \addto\captionsslovak{\renewcommand{\consultantname}{Konzultant}}
+        \addto\captionsslovak{
+            \renewcommand{\@college}{\@college@sk}
+            \renewcommand{\@department}{\@department@sk}
+            \renewcommand{\@department}{\@departmentacr@sk}
+            \renewcommand{\@faculty}{\@faculty@sk}
+            \renewcommand{\@thesis}{\@thesis@sk}
+            \renewcommand{\@declaration}{\@declaration@sk}
+            \renewcommand{\declarationname}{Čestné vyhlásenie}
+            \renewcommand{\signaturecaption}{Vlastnoručný podpis}
+            \renewcommand{\acknowledgementname}{Poďakovanie}
+            \renewcommand{\lstlistingname}{Zdrojový kód}
+            \renewcommand{\studyprogrammename}{Študijný program}
+            \renewcommand{\fieldofstudyname}{Študijný odbor}
+            \renewcommand{\departmentname}{Školiace pracovisko}
+            \renewcommand{\supervisorname}{Školiteľ}
+            \renewcommand{\consultantname}{Konzultant}
+        }
     }{}
 }
 
