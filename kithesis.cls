@@ -359,7 +359,8 @@
 \newcommand{\secondkeywordsname}{No Language Selected}
 \newcommand{\bibcitationname}{No Language Selected}
 \newcommand{\supervisorcitationname}{No Language Selected}
-\newcommand{\acrlistname}{Zoznam skratiek}
+\newcommand{\acrlistname}{No Language Selected}
+\newcommand{\appendixlistname}{No Language Selected}
 
 \AtBeginDocument{
     \addto\captionsenglish{
@@ -388,6 +389,7 @@
         \renewcommand{\supervisorcitationname}{Supervisor}
         \renewcommand{\lstlistingname}{Listing}
         \renewcommand{\acrlistname}{List of Abbreviations}
+        \renewcommand{\appendixlistname}{List of Appendixes}
     }
     \addto\captionsslovak{
         \renewcommand{\@title}{\@title@sk}
@@ -415,6 +417,8 @@
         \renewcommand{\supervisorcitationname}{Vedúci práce}
         \renewcommand{\lstlistingname}{Zdrojový kód}
         \renewcommand{\acrlistname}{Zoznam skratiek}
+        \renewcommand{\appendixlistname}{Zoznam príloh}
+        \renewcommand{\appendixname}{Príloha}
     }
 }
 
