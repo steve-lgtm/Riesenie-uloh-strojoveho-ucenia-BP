@@ -116,10 +116,10 @@
 \RequirePackage[small]{caption}
 \setlength{\captionmargin}{25pt}
 
+% TODO These commande probably have no effect, because are overriden by babel
 \def\figurename{Obrázok}
 \def\tabname{Tabuľka}
 % \def\refname{Zoznam použitej literatúry} % TODO replaced by biblatex stuff, should be \bibname either
-\def\acrlistname{Zoznam skratiek}
 
 %% Vlastná hlavička
 \RequirePackage{fancyhdr}
@@ -350,6 +350,7 @@
 \newcommand{\secondkeywordsname}{No Language Selected}
 \newcommand{\bibcitationname}{No Language Selected}
 \newcommand{\supervisorcitationname}{No Language Selected}
+\newcommand{\acrlistname}{Zoznam skratiek}
 
 \AtBeginDocument{
     \addto\captionsenglish{
@@ -365,7 +366,6 @@
         \renewcommand{\declarationname}{Declaration}
         \renewcommand{\signaturename}{Signature}
         \renewcommand{\acknowledgementname}{Acknowledgement}
-        \renewcommand{\lstlistingname}{Listing}
         \renewcommand{\studyprogrammename}{Study Programme}
         \renewcommand{\fieldofstudyname}{Field of Study}
         \renewcommand{\departmentname}{Department}
@@ -377,6 +377,8 @@
         \renewcommand{\secondkeywordsname}{Keywords in Slovak}
         \renewcommand{\bibcitationname}{Bibliographic Citation}
         \renewcommand{\supervisorcitationname}{Supervisor}
+        \renewcommand{\lstlistingname}{Listing}
+        \renewcommand{\acrlistname}{List of Abbreviations}
     }
     \addto\captionsslovak{
         \renewcommand{\@title}{\@title@sk}
@@ -391,7 +393,6 @@
         \renewcommand{\declarationname}{Čestné vyhlásenie}
         \renewcommand{\signaturename}{Vlastnoručný podpis}
         \renewcommand{\acknowledgementname}{Poďakovanie}
-        \renewcommand{\lstlistingname}{Zdrojový kód}
         \renewcommand{\studyprogrammename}{Študijný program}
         \renewcommand{\fieldofstudyname}{Študijný odbor}
         \renewcommand{\departmentname}{Školiace pracovisko}
@@ -403,6 +404,8 @@
         \renewcommand{\secondkeywordsname}{Kľúčové slová v AJ}
         \renewcommand{\bibcitationname}{Bibliografická citácia}
         \renewcommand{\supervisorcitationname}{Vedúci práce}
+        \renewcommand{\lstlistingname}{Zdrojový kód}
+        \renewcommand{\acrlistname}{Zoznam skratiek}
     }
 }
 
