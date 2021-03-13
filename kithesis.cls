@@ -223,37 +223,41 @@
 
 
 % DOCVAR: college (The name of the thesis writer's college)
-\newcommand{\@college}{Technical University of Košice}
+\newcommand{\@college@en}{Technical University of Košice}
 \newcommand{\@college@sk}{Technická univerzita v Košiciach}
+\newcommand{\@college}{\@college@en}
 \newcommand{\college}[2]{
-    \renewcommand{\@college}{#1}
+    \renewcommand{\@college@en}{#1}
     \renewcommand{\@college@sk}{#2}
 }
 
 \newcommand{\@college@city}{Košice}
 
 % DOCVAR: faculty (The name of the thesis writer's faculty)
-\newcommand{\@faculty}{Faculty of Electrical Engineering and Informatics}
+\newcommand{\@faculty@en}{Faculty of Electrical Engineering and Informatics}
 \newcommand{\@faculty@sk}{Fakulta elektrotechniky a informatiky}
+\newcommand{\@faculty}{\@faculty@en}
 \newcommand{\faculty}[2]{
-    \renewcommand{\@faculty}{#1}
+    \renewcommand{\@faculty@en}{#1}
     \renewcommand{\@faculty@sk}{#2}
 }
 
 
 % DOCVAR: department (name of the thesis writer's department)
-\newcommand{\@department}{Department of Computers and Informatics}
+\newcommand{\@department@en}{Department of Computers and Informatics}
 \newcommand{\@department@sk}{Katedra počítačov a informatiky}
+\newcommand{\@department}{\@department@en}
 \newcommand{\department}[2]{
     \renewcommand{\@department@en}{#1}
     \renewcommand{\@department@sk}{#2}
 }
 
 % DOCVAR: department's shortcut
-\newcommand{\@departmentacr}{DCI}
+\newcommand{\@departmentacr@en}{DCI}
 \newcommand{\@departmentacr@sk}{KPI}
+\newcommand{\@departmentacr}{\@departmentacr@en}
 \newcommand{\departmentacr}[2]{
-    \renewcommand{\@departmentacr}{#1}
+    \renewcommand{\@departmentacr@en}{#1}
     \renewcommand{\@departmentacr@sk}{#2}
 }
 
@@ -275,18 +279,20 @@
 \newcommand{\studyprogramme}[1]{\renewcommand{\@studyprogramme}{#1}}
 
 % DOCVAR: thesis (type of the thesis)
-\newcommand{\@thesis}{Bachelor thesis}
+\newcommand{\@thesis@en}{Bachelor thesis}
 \newcommand{\@thesis@sk}{Bakalárska práca}
+\newcommand{\@thesis}{\@thesis@en}
 \newcommand{\thesis}[2]{
-    \renewcommand{\@thesis}{#1}
+    \renewcommand{\@thesis@en}{#1}
     \renewcommand{\@thesis@sk}{#2}
 }
 
 % DOCVAR: declaration text
-\newcommand{\@declaration}{I hereby declare that this thesis is my own work and effort. Where other sources of information have been used, they have been acknowledged.}
+\newcommand{\@declaration@en}{I hereby declare that this thesis is my own work and effort. Where other sources of information have been used, they have been acknowledged.}
 \newcommand{\@declaration@sk}{Vyhlasujem, že som záverečnú prácu vypracoval(a) samostatne s~použitím uvedenej odbornej literatúry.}
+\newcommand{\@declaration}{\@declaration@en}
 \newcommand{\declaration}[1]{
-    \renewcommand{\@declaration}{#1}
+    \renewcommand{\@declaration@en}{#1}
     \renewcommand{\@declaration@sk}{#1}
 }
 
@@ -324,33 +330,40 @@
 \newcommand{\@acknowledgment}{Na tomto mieste by som sa rád poďakoval svojmu vedúcemu záverečnej práce za pripomienky a~odbornú pomoc.}
 \newcommand{\acknowledgment}[1]{\renewcommand{\@acknowledgment}{#1}}
 
-% right page number aligment from 2nd page in table of content
-\fancypagestyle{plain}{%
-    \renewcommand{\footrulewidth}{0pt}
-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Translations of strings used in the thesis
+%%
 
-\newcommand{\declarationname}{Declaration}
-\newcommand{\signaturecaption}{Signature}
-\newcommand{\acknowledgementname}{Acknowledgement}
-\newcommand{\lstlistingname}{Listing}
-\newcommand{\studyprogrammename}{Study Programme}
-\newcommand{\fieldofstudyname}{Field of Study}
-\newcommand{\departmentname}{Department}
-\newcommand{\supervisorname}{Supervisor}
-\newcommand{\consultantname}{Consultant}
-\newcommand{\abstractInCurrentLanguageName}{Abstract in English}
-\newcommand{\keywordsInCurrentLanguageName}{Keywords in English}
-\newcommand{\abstractInSecondLanguageName}{Abstrakt v AJ}
-\newcommand{\keywordsInSecondLanguageName}{Kľúčové slová v AJ}
-\newcommand{\bibliographiccitationname}{Bibliographic Citation}
-\newcommand{\supervisorcitationname}{Supervisor}
+% Default empty declarations
+\newcommand{\declarationname}{No Language Selected}
+\newcommand{\signaturename}{No Language Selected}
+\newcommand{\acknowledgementname}{No Language Selected}
+\newcommand{\lstlistingname}{No Language Selected}
+\newcommand{\studyprogrammename}{No Language Selected}
+\newcommand{\fieldofstudyname}{No Language Selected}
+\newcommand{\departmentname}{No Language Selected}
+\newcommand{\supervisorname}{No Language Selected}
+\newcommand{\consultantname}{No Language Selected}
+\newcommand{\keywordsname}{No Language Selected}
+\newcommand{\secondabstractname}{No Language Selected}
+\newcommand{\secondkeywordsname}{No Language Selected}
+\newcommand{\bibcitationname}{No Language Selected}
+\newcommand{\supervisorcitationname}{No Language Selected}
+
 \AtBeginDocument{
     \addto\captionsenglish{
         \renewcommand{\@title}{\@title@en}
         \renewcommand{\@abstract}{\@abstract@en}
         \renewcommand{\@keywords}{\@keywords@en}
+        \renewcommand{\@college}{\@college@en}
+        \renewcommand{\@department}{\@department@en}
+        \renewcommand{\@departmentacr}{\@departmentacr@en}
+        \renewcommand{\@faculty}{\@faculty@en}
+        \renewcommand{\@thesis}{\@thesis@en}
+        \renewcommand{\@declaration}{\@declaration@en}
         \renewcommand{\declarationname}{Declaration}
-        \renewcommand{\signaturecaption}{Signature}
+        \renewcommand{\signaturename}{Signature}
         \renewcommand{\acknowledgementname}{Acknowledgement}
         \renewcommand{\lstlistingname}{Listing}
         \renewcommand{\studyprogrammename}{Study Programme}
@@ -358,11 +371,11 @@
         \renewcommand{\departmentname}{Department}
         \renewcommand{\supervisorname}{Supervisor}
         \renewcommand{\consultantname}{Consultant}
-        \renewcommand{\abstractInCurrentLanguageName}{Abstract in English}
-        \renewcommand{\keywordsInCurrentLanguageName}{Keywords in English}
-        \renewcommand{\abstractInSecondLanguageName}{Abstrakt v AJ}
-        \renewcommand{\keywordsInSecondLanguageName}{Kľúčové slová v AJ}
-        \renewcommand{\bibliographiccitationname}{Bibliographic Citation}
+        \renewcommand{\abstractname}{Abstract in English}
+        \renewcommand{\keywordsname}{Keywords in English}
+        \renewcommand{\secondabstractname}{Abstract in Slovak}
+        \renewcommand{\secondkeywordsname}{Keywords in Slovak}
+        \renewcommand{\bibcitationname}{Bibliographic Citation}
         \renewcommand{\supervisorcitationname}{Supervisor}
     }
     \addto\captionsslovak{
@@ -371,12 +384,12 @@
         \renewcommand{\@keywords}{\@keywords@sk}
         \renewcommand{\@college}{\@college@sk}
         \renewcommand{\@department}{\@department@sk}
-        \renewcommand{\@department}{\@departmentacr@sk}
+        \renewcommand{\@departmentacr}{\@departmentacr@sk}
         \renewcommand{\@faculty}{\@faculty@sk}
         \renewcommand{\@thesis}{\@thesis@sk}
         \renewcommand{\@declaration}{\@declaration@sk}
         \renewcommand{\declarationname}{Čestné vyhlásenie}
-        \renewcommand{\signaturecaption}{Vlastnoručný podpis}
+        \renewcommand{\signaturename}{Vlastnoručný podpis}
         \renewcommand{\acknowledgementname}{Poďakovanie}
         \renewcommand{\lstlistingname}{Zdrojový kód}
         \renewcommand{\studyprogrammename}{Študijný program}
@@ -384,13 +397,18 @@
         \renewcommand{\departmentname}{Školiace pracovisko}
         \renewcommand{\supervisorname}{Školiteľ}
         \renewcommand{\consultantname}{Konzultant}
-        \renewcommand{\abstractInCurrentLanguageName}{Abstrakt v SJ}
-        \renewcommand{\keywordsInCurrentLanguageName}{Kľúčové slová v SJ}
-        \renewcommand{\abstractInSecondLanguageName}{Abstract in Slovak}
-        \renewcommand{\keywordsInSecondLanguageName}{Keywords in Slovak}
-        \renewcommand{\bibliographiccitationname}{Bibliografická citácia}
+        \renewcommand{\abstractname}{Abstrakt v SJ}
+        \renewcommand{\keywordsname}{Kľúčové slová v SJ}
+        \renewcommand{\secondabstractname}{Abstrakt v AJ}
+        \renewcommand{\secondkeywordsname}{Kľúčové slová v AJ}
+        \renewcommand{\bibcitationname}{Bibliografická citácia}
         \renewcommand{\supervisorcitationname}{Vedúci práce}
     }
+}
+
+% right page number aligment from 2nd page in table of content
+\fancypagestyle{plain}{%
+    \renewcommand{\footrulewidth}{0pt}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -483,43 +501,43 @@
 
     \thispagestyle{empty}
     \noindent
-    \subsection*{\abstractInCurrentLanguageName}
+    \subsection*{\abstractname}
 
     \@abstract
     
-    \subsection*{\keywordsInCurrentLanguageName}
+    \subsection*{\keywordsname}
 
     \@keywords
 
     \iflanguage{slovak}{
+        \subsection*{\secondabstractname}
+
         \begin{otherlanguage}{english}
-
-            \subsection*{\abstractInSecondLanguageName}
-
             \@abstract
+        \end{otherlanguage}
+        
+        \subsection*{\secondkeywordsname}
 
-            \subsection*{\keywordsInSecondLanguageName}
-
+        \begin{otherlanguage}{english}
             \@keywords
-
         \end{otherlanguage}
     }{
+        \subsection*{\secondabstractname}
+
         \begin{otherlanguage}{slovak}
-
-            \subsection*{\abstractInSecondLanguageName}
-
             \@abstract
+        \end{otherlanguage}
+        
+        \subsection*{\secondkeywordsname}
 
-            \subsection*{\keywordsInSecondLanguageName}
-
+        \begin{otherlanguage}{slovak}
             \@keywords
-
         \end{otherlanguage}
     }
 
     \vfill
 
-    \subsection*{\bibliographiccitationname}
+    \subsection*{\bibcitationname}
 
     \MakeUppercase\@author@lastname, \@author@firstname. {\itshape \@title}. \@college@city: \@college, \@faculty, \@submissionyear. \pageref{theend}s. \supervisorcitationname: \@supervisor
 
@@ -547,7 +565,7 @@
 
     \noindent \@college@city,~\@submissionday.\@submissionmonth.\@submissionyear \hfill
     \begin{tabular}[t]{c}
-        \hbox to 50mm {\dotfill} \\ \textit{\small \signaturecaption}
+        \hbox to 50mm {\dotfill} \\ \textit{\small \signaturename}
     \end{tabular}
     \newpage
 }
