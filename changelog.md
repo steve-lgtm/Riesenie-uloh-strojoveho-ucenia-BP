@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2021.2] - 2020-03-14
+- full support for English documents
+- `readme.md` translated to English
+
 ## [2021.1] - 2020-02-08
 - znovu zapnuté farebné ramčeky okolo odkazov
 - pridaný súbor latexmkrc s konfiguráciou automatického generovania slovníkov (#10)
