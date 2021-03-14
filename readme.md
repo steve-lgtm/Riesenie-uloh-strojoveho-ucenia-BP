@@ -38,18 +38,7 @@ latexmk -pdf -bibtex -pvc thesis
 
 Running this command will create the resulting document in _PDF_ format, which will be displayed in the document browser afterwards. However, the tool will not quit and will monitor changes, while with each change (saving a _.tex_ file), the resulting document will be re-generated.
 
-
 Of course, you can open the project in any _LaTeX_ editor or IDE, e.g. _TeX Studio_.
-
-
-In case you need to generate a list of shortcuts, you must run the following three commands from the command line: 
-```bash
-latexmk -pdf -bibtex thesis
-makeglossaries thesis
-latexmk -pdf -bibtex -pvc thesis
-```
-
-In case you are updating the list and meantime you have already generated the _PDF_ the document, just run the `makeglossaries` command and then regenerate the document.
 
 
 ## Update
