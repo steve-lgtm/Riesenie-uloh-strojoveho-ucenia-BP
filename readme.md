@@ -75,3 +75,18 @@ Try compiling the work again. It is typical for _LaTeX_. If you want to have you
 ### Q4: The bibliography only shows 3 records, even though I have more.
 
 _BibTeX_ is used to generate the bibliography. It only displays those items that you actually quote in the work. Therefore, if you cite only 3 documents in the work, only those will be displayed in the bibliography. 
+
+
+## Additional Resources
+
+### LaTeX writing support for popular IDEs and editors
+
+* [TeXiFy IDEA for IntelliJ IDEs](https://plugins.jetbrains.com/plugin/9473-texify-idea)
+* [LaTeX Workshop for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
+* [VimTeX: A modern Vim and neovim filetype plugin for LaTeX files](https://github.com/lervag/vimtex)
+
+### Books about using LaTeX
+
+* [The Not So Short Introduction to LaTeX 2ε](http://tug.ctan.org/tex-archive/info/lshort/english/lshort.pdf)
+* [Nie príliš stručný úvod do systému LaTeX 2ε](http://people.tuke.sk/jan.busa/kega/latex/latex_uvod.pdf) (Slovak translation)
+* [LaTeX Wikibook](https://en.wikibooks.org/wiki/LaTeX)
