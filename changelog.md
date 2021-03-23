@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [2021.2] - 2020-03-14
+## [2021.2] - 2020-03-23
 - full support for English documents
 - `readme.md` translated to English
 
