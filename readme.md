@@ -1,18 +1,18 @@
 # About
 
-Šablóna pre písanie záverečných prác na _KPI FEI TUKE_. 
+Template for final theses writing at _DCI FEEI TUKE_. 
 
-Pozor! Kódovanie všetkých dokumentov je nastavené na _UTF-8_! Nezabudnite si preto nastaviť aj svoje prostredie, v ktorom budete záverečnú prácu písať tak, aby toto kódovanie používalo!
+Warning! The encoding of all documents is set to _UTF-8_! So don't forget to set up your environment in which you will write your thesis to use this encoding!
 
-Aktuálna verzia vychádza z oficiálnej verzie dostupnej aj na stránkach univerzitnej knižnice. Tá je však už nejaký čas neaktulizovaná, takže tento projekt je snahou o udržiavanie aktuálnej verzie tohto projektu v súčinnosti so študentami. Upozorňujem však, že táto verzia je silne vo vývoji a odporúčam sledovať kvôli zmenám aj _changelog_.
+The current version is based on the official release, also available on the website of the University Library. However, it has not been updated for some time, so this project is an effort to keep the current version of this project in collaboration with students. However, please note that this version is still under development and due to potential changes, we recommend _changelog_ monitoring.
 
 ## Install
 
-Odporúčame nainštalovať balík [TeX Live](https://www.tug.org/texlive/). 
+We recommend installing the [TeX Live](https://www.tug.org/texlive/) package.
 
-Ako editor odporúčame nainštalovať [TeX Studio](http://www.texstudio.org/) alebo [TeX Maker](http://www.xm1math.net/texmaker/).
+As an editor, we recommend installing [TeX Studio](http://www.texstudio.org/) or [TeX Maker](http://www.xm1math.net/texmaker/).
 
-Používatelia Fedory napíšu:
+Fedora users will write: 
 
 ```bash
 sudo dnf install texlive-collection-latexrecommended \
@@ -21,7 +21,7 @@ sudo dnf install texlive-collection-latexrecommended \
     latexmk texstudio
 ```
 
-Používatelia Debianu a Ubuntu to majú podobné:
+Similarly, Debian and Ubuntu users will write:
 
 ```bash
 sudo apt-get install texlive-latex-extra texlive-fonts-recommended \
@@ -30,35 +30,25 @@ sudo apt-get install texlive-latex-extra texlive-fonts-recommended \
 
 ## Compilation
 
-Dokument vytvoríte napísaním nasledovného príkazu z príkazového riadku:
+To create a document, type the following command from the command line:
 
 ```bash
 latexmk -pdf -bibtex -pvc thesis
 ```
 
-Spustením tohto príkazu dôjde k vytvoreniu výsledného dokumentu vo formáte _PDF_, ktorý sa následne zobrazí v prehliadači dokumentov. Samotný nástroj sa ale neukončí a bude sledovať zmeny, pričom pri každej zmene (uložení niektorého _.tex_ súboru) dôjde k opätovnému preloženiu výsledného dokumentu.
+Running this command will create the resulting document in _PDF_ format, which will be displayed in the document browser afterwards. However, the tool will not quit and will monitor changes, while with each change (saving a _.tex_ file), the resulting document will be re-generated.
 
-Projekt si samozrejme môžete otvoriť v ktoromkoľvek _LaTeX_ editore alebo IDE, ako je napr. _TeX Studio_
-
-
-Ak potrebujete vygenerovať zoznam skratiek, z príkazového riadku musíte spustiť postupne tieto tri príkazy:
-```bash
-latexmk -pdf -bibtex thesis
-makeglossaries thesis
-latexmk -pdf -bibtex -pvc thesis
-```
-
-V prípade, že zoznam aktualizujete a medzičasom ste už _PDF_ dokument vygenerovali, stačí spustiť už len príkaz `makeglossaries` a následne dokument pregenerovať.
+Of course, you can open the project in any _LaTeX_ editor or IDE, e.g. _TeX Studio_.
 
 
 ## Update
 
-Ak dôjde k aktualizácii šablóny, stačí vo vašom projekte aktualizovať len súbor `kithesis.cls`. Vždy sa však pozrite do súboru `CHANGELOG.md`, aby ste sa o aktualizácii uistili.
+In case the template is updated, just update the `kithesis.cls` file in your project. However, always look in the `CHANGELOG.md` file to make sure there was an update. 
 
 
 ## Spell Checking
 
-Ak náhodou na písanie nepoužívate nástroj, ktorý kontrolu pravopisu neobsahuje, môžete využiť nástroj `aspell` nasledujúcim spôsobom:
+In case your editor does not support spell-checking, you can use the `aspell` tool as follows: 
 
 ```bash
 aspell -d sk_SK -t -c file.tex
@@ -67,26 +57,36 @@ aspell -d sk_SK -t -c file.tex
 
 ## Troubleshooting
 
-### Q1: Našiel som v šablóne chybu. Kde ju môžem reportovať?
+### Q1: I found an error in the template. Where can I report it? 
 
-Buď mailom na miroslav.binas@tuke.sk alebo priamo tu gitlab-e. Ideálne pomocou _merge request_-u.
-
-
-### Q2: Číslovanie strán obsahu je rímskymi číslicami. Je to v poriadku?
-
-Áno je to v poriadku. Práca používa dva štýly číslovania strán. Číslovanie rímskymi číslicami je v úvodnej časti práce (obsah a všetky zoznamy). Číslovanie zvyšku práce počínajúc od úvodu, resp. motivácie práce je číslované arabskými číslicami. Číslovanie druhej časti práce začína na strane s úvodom, resp. s motiváciou.
+Either by e-mail to miroslav.binas@tuke.sk or directly here on gitlab. Ideally with a _merge request_. 
 
 
-### Q3: Nezobrazuje sa mi obsah.
+### Q2: The page numbering of the table of contents is in Roman numerals. Is that all right? 
 
-Skús prácu preložiť ešte raz. Je to vlastnosť _LaTeX_-u. Ak chceš mať aktuálny obsah, je nutné ho vždy preložiť 2x.
-
-
-### Q4: V zozname literatúry mi zobrazuje len 3 záznamy aj napriek tomu, že ich mám viac.
-
-Pre generovanie zoznamu literatúry sa používa _BibTeX_. Ten zobrazí len tie položky, ktoré v práci reálne citujete. Ak teda v práci realáne citujete len 3 dokumenty, budú v zozname literatúry zobrazené len tie.
+Yes, it is OK. The work uses two styles of page numbering. Numbering with Roman numerals is in the introductory part of the work (table of contents and all lists). Numbering of the rest of the work, starting from the introduction or motivation, is numbered in Arabic numerals. Numbering of the second part of the work begins on the page with the introduction or motivation.
 
 
-## TODO
+### Q3: Table of contents is not displayed.
 
-* ukážka príloh pre veci ako diagram tried riešenia, REST API, ...
+Try compiling the work again. It is typical for _LaTeX_. If you want to have your table of contents updated, it is always necessary to translate it twice. 
+
+
+### Q4: The bibliography only shows 3 records, even though I have more.
+
+_BibTeX_ is used to generate the bibliography. It only displays those items that you actually quote in the work. Therefore, if you cite only 3 documents in the work, only those will be displayed in the bibliography. 
+
+
+## Additional Resources
+
+### LaTeX writing support for popular IDEs and editors
+
+* [TeXiFy IDEA for IntelliJ IDEs](https://plugins.jetbrains.com/plugin/9473-texify-idea)
+* [LaTeX Workshop for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
+* [VimTeX: A modern Vim and neovim filetype plugin for LaTeX files](https://github.com/lervag/vimtex)
+
+### Books about using LaTeX
+
+* [The Not So Short Introduction to LaTeX 2ε](http://tug.ctan.org/tex-archive/info/lshort/english/lshort.pdf)
+* [Nie príliš stručný úvod do systému LaTeX 2ε](http://people.tuke.sk/jan.busa/kega/latex/latex_uvod.pdf) (Slovak translation)
+* [LaTeX Wikibook](https://en.wikibooks.org/wiki/LaTeX)

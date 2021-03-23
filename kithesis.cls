@@ -108,7 +108,7 @@
     pdftitle = {\@title@en},
     pdfauthor = {\@author},
     pdfkeywords = {\@keywords@en},
-    pdfsubject = {\@thesis@en}
+    pdfsubject = {\@thesis}
   }
 }
 
@@ -116,10 +116,10 @@
 \RequirePackage[small]{caption}
 \setlength{\captionmargin}{25pt}
 
+% TODO These commande probably have no effect, because are overriden by babel
 \def\figurename{Obrázok}
 \def\tabname{Tabuľka}
 % \def\refname{Zoznam použitej literatúry} % TODO replaced by biblatex stuff, should be \bibname either
-\def\acrlistname{Zoznam skratiek}
 
 %% Vlastná hlavička
 \RequirePackage{fancyhdr}
@@ -188,12 +188,21 @@
     \thispagestyle{empty}
     \vspace*{\fill}
     \begin{center}
+    \iflanguage{slovak}{
         Tu vložte zadávací list pomocou príkazu\\
         {\tt{\textbackslash{}thesisspec\{cesta/k/suboru/so/zadavacim.listom\}}}\\
         v preambule dokumentu. 
         
         Kópiu zadávacieho listu skenujte čiernobielo (v odtieňoch sivej) na $200$ až $300$ DPI!
         Nezabudnite do jednej práce vložiť originál zadávacieho listu!
+    }{
+        Here insert the assignment statement using the command\\
+        {\tt{\textbackslash{}thesisspec\{path/to/the/filw/with/assignment.statement\}}}\\
+        in the preamble of the document.
+        
+        Copy of the assignment statement should be scanned black\&white (grayscale) using DPI from $200$ to $300$!
+        Don't forget to insert the original assignment statement into one of the theses copies.
+    }
     \end{center}
     \vspace*{\fill}
     \newpage
@@ -223,8 +232,9 @@
 
 
 % DOCVAR: college (The name of the thesis writer's college)
-\newcommand{\@college@sk}{Technická univerzita v Košiciach}
 \newcommand{\@college@en}{Technical University of Košice}
+\newcommand{\@college@sk}{Technická univerzita v Košiciach}
+\newcommand{\@college}{\@college@en}
 \newcommand{\college}[2]{
     \renewcommand{\@college@en}{#1}
     \renewcommand{\@college@sk}{#2}
@@ -235,6 +245,7 @@
 % DOCVAR: faculty (The name of the thesis writer's faculty)
 \newcommand{\@faculty@en}{Faculty of Electrical Engineering and Informatics}
 \newcommand{\@faculty@sk}{Fakulta elektrotechniky a informatiky}
+\newcommand{\@faculty}{\@faculty@en}
 \newcommand{\faculty}[2]{
     \renewcommand{\@faculty@en}{#1}
     \renewcommand{\@faculty@sk}{#2}
@@ -242,16 +253,18 @@
 
 
 % DOCVAR: department (name of the thesis writer's department)
-\newcommand{\@department@sk}{Katedra počítačov a informatiky}
 \newcommand{\@department@en}{Department of Computers and Informatics}
+\newcommand{\@department@sk}{Katedra počítačov a informatiky}
+\newcommand{\@department}{\@department@en}
 \newcommand{\department}[2]{
     \renewcommand{\@department@en}{#1}
     \renewcommand{\@department@sk}{#2}
 }
 
 % DOCVAR: department's shortcut
-\newcommand{\@departmentacr@sk}{KPI}
 \newcommand{\@departmentacr@en}{DCI}
+\newcommand{\@departmentacr@sk}{KPI}
+\newcommand{\@departmentacr}{\@departmentacr@en}
 \newcommand{\departmentacr}[2]{
     \renewcommand{\@departmentacr@en}{#1}
     \renewcommand{\@departmentacr@sk}{#2}
@@ -277,14 +290,20 @@
 % DOCVAR: thesis (type of the thesis)
 \newcommand{\@thesis@en}{Bachelor thesis}
 \newcommand{\@thesis@sk}{Bakalárska práca}
+\newcommand{\@thesis}{\@thesis@en}
 \newcommand{\thesis}[2]{
     \renewcommand{\@thesis@en}{#1}
     \renewcommand{\@thesis@sk}{#2}
 }
 
 % DOCVAR: declaration text
-\newcommand{\@declaration}{Vyhlasujem, že som záverečnú prácu vypracoval(a) samostatne s~použitím uvedenej odbornej literatúry.}
-\newcommand{\declaration}[1]{\renewcommand{\@declaration}{#1}}
+\newcommand{\@declaration@en}{I hereby declare that this thesis is my own work and effort. Where other sources of information have been used, they have been acknowledged.}
+\newcommand{\@declaration@sk}{Vyhlasujem, že som záverečnú prácu vypracoval(a) samostatne s~použitím uvedenej odbornej literatúry.}
+\newcommand{\@declaration}{\@declaration@en}
+\newcommand{\declaration}[1]{
+    \renewcommand{\@declaration@en}{#1}
+    \renewcommand{\@declaration@sk}{#1}
+}
 
 % DOCVAR: date (declaration date)
 \newcommand{\@submissiondate}{}
@@ -295,29 +314,113 @@
 }
 
 % DOCVAR: abstract of the thesis
-\newcommand{\@abstract}{}
 \renewcommand{\abstract}[2]{%
     \newcommand{\@abstract@en}{#1}%
     \newcommand{\@abstract@sk}{#2}%
 }
+\newcommand{\@abstract}{\@abstract@en}
 
 % DOCVAR: thesis keywords
-\newcommand{\@keywords}{}
 \newcommand{\keywords}[2]{%
     \newcommand{\@keywords@en}{#1}%
     \newcommand{\@keywords@sk}{#2}%
 }
+\newcommand{\@keywords}{\@keywords@en}
 
 % DOCVAR: thesis title
 \renewcommand{\title}[2]{%
     \newcommand{\@title@en}{#1}%
     \newcommand{\@title@sk}{#2}%
 }
+\renewcommand{\@title}{\@title@en}
 
 
 % DOCVAR: thesis (type of the thesis)
 \newcommand{\@acknowledgment}{Na tomto mieste by som sa rád poďakoval svojmu vedúcemu záverečnej práce za pripomienky a~odbornú pomoc.}
 \newcommand{\acknowledgment}[1]{\renewcommand{\@acknowledgment}{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Translations of strings used in the thesis
+%%
+
+% Default empty declarations
+\newcommand{\declarationname}{No Language Selected}
+\newcommand{\signaturename}{No Language Selected}
+\newcommand{\acknowledgementname}{No Language Selected}
+\newcommand{\lstlistingname}{No Language Selected}
+\newcommand{\studyprogrammename}{No Language Selected}
+\newcommand{\fieldofstudyname}{No Language Selected}
+\newcommand{\departmentname}{No Language Selected}
+\newcommand{\supervisorname}{No Language Selected}
+\newcommand{\consultantname}{No Language Selected}
+\newcommand{\keywordsname}{No Language Selected}
+\newcommand{\secondabstractname}{No Language Selected}
+\newcommand{\secondkeywordsname}{No Language Selected}
+\newcommand{\bibcitationname}{No Language Selected}
+\newcommand{\supervisorcitationname}{No Language Selected}
+\newcommand{\acrlistname}{No Language Selected}
+\newcommand{\appendixlistname}{No Language Selected}
+
+\AtBeginDocument{
+    \addto\captionsenglish{
+        \renewcommand{\@title}{\@title@en}
+        \renewcommand{\@abstract}{\@abstract@en}
+        \renewcommand{\@keywords}{\@keywords@en}
+        \renewcommand{\@college}{\@college@en}
+        \renewcommand{\@department}{\@department@en}
+        \renewcommand{\@departmentacr}{\@departmentacr@en}
+        \renewcommand{\@faculty}{\@faculty@en}
+        \renewcommand{\@thesis}{\@thesis@en}
+        \renewcommand{\@declaration}{\@declaration@en}
+        \renewcommand{\declarationname}{Declaration}
+        \renewcommand{\signaturename}{Signature}
+        \renewcommand{\acknowledgementname}{Acknowledgement}
+        \renewcommand{\studyprogrammename}{Study Programme}
+        \renewcommand{\fieldofstudyname}{Field of Study}
+        \renewcommand{\departmentname}{Department}
+        \renewcommand{\supervisorname}{Supervisor}
+        \renewcommand{\consultantname}{Consultant}
+        \renewcommand{\abstractname}{Abstract in English}
+        \renewcommand{\keywordsname}{Keywords in English}
+        \renewcommand{\secondabstractname}{Abstract in Slovak}
+        \renewcommand{\secondkeywordsname}{Keywords in Slovak}
+        \renewcommand{\bibcitationname}{Bibliographic Citation}
+        \renewcommand{\supervisorcitationname}{Supervisor}
+        \renewcommand{\lstlistingname}{Listing}
+        \renewcommand{\acrlistname}{List of Abbreviations}
+        \renewcommand{\appendixlistname}{List of Appendixes}
+    }
+    \addto\captionsslovak{
+        \renewcommand{\@title}{\@title@sk}
+        \renewcommand{\@abstract}{\@abstract@sk}
+        \renewcommand{\@keywords}{\@keywords@sk}
+        \renewcommand{\@college}{\@college@sk}
+        \renewcommand{\@department}{\@department@sk}
+        \renewcommand{\@departmentacr}{\@departmentacr@sk}
+        \renewcommand{\@faculty}{\@faculty@sk}
+        \renewcommand{\@thesis}{\@thesis@sk}
+        \renewcommand{\@declaration}{\@declaration@sk}
+        \renewcommand{\declarationname}{Čestné vyhlásenie}
+        \renewcommand{\signaturename}{Vlastnoručný podpis}
+        \renewcommand{\acknowledgementname}{Poďakovanie}
+        \renewcommand{\studyprogrammename}{Študijný program}
+        \renewcommand{\fieldofstudyname}{Študijný odbor}
+        \renewcommand{\departmentname}{Školiace pracovisko}
+        \renewcommand{\supervisorname}{Školiteľ}
+        \renewcommand{\consultantname}{Konzultant}
+        \renewcommand{\abstractname}{Abstrakt v SJ}
+        \renewcommand{\keywordsname}{Kľúčové slová v SJ}
+        \renewcommand{\secondabstractname}{Abstrakt v AJ}
+        \renewcommand{\secondkeywordsname}{Kľúčové slová v AJ}
+        \renewcommand{\bibcitationname}{Bibliografická citácia}
+        \renewcommand{\supervisorcitationname}{Vedúci práce}
+        \renewcommand{\lstlistingname}{Zdrojový kód}
+        \renewcommand{\acrlistname}{Zoznam skratiek}
+        \renewcommand{\appendixlistname}{Zoznam príloh}
+        \renewcommand{\appendixname}{Príloha}
+    }
+}
 
 % right page number aligment from 2nd page in table of content
 \fancypagestyle{plain}{%
@@ -380,17 +483,17 @@
     \thispagestyle{empty}
 
     \begin{center}
-        {\Large \textbf{\@college@sk}}
+        {\Large \textbf{\@college}}
 
-        {\Large \textbf{\@faculty@sk}}
+        {\Large \textbf{\@faculty}}
 
         \vfill
 
-        {\LARGE \textbf{\@title@sk} \par}
+        {\LARGE \textbf{\@title} \par}
 
         \bigskip
 
-        {\large \textbf{\@thesis@sk}}
+        {\large \textbf{\@thesis}}
     \end{center}
 
     \vfill
@@ -414,55 +517,45 @@
 
     \thispagestyle{empty}
     \noindent
-    \subsection*{Abstrakt v SJ}
+    \subsection*{\abstractname}
 
-    \@abstract@sk
+    \@abstract
     
-    \subsection*{Kľúčové slová v SJ}
+    \subsection*{\keywordsname}
 
-    \@keywords@sk
+    \@keywords
 
-    %\begin{tabular}{@{}p{.2\textwidth}p{.75\textwidth}}
-        %Názov práce:    & \@title@sk \\ \\
-        %Pracovisko:     & \@department@sk, \@college@sk \\
-        %Autor:          & \@author\\
-        %Školiteľ:       & \@supervisor \\
-        %Konzultant:     & \@consultant \\
-        %Dátum:          & \@submissionday. \@submissionmonth. \@submissionyear\\
-        %Kľúčové slová:  & \@keywords@sk \\ \\
-        %\abstractname:       & \@abstract@sk\\
-    %\end{tabular}
+    \iflanguage{slovak}{
+        \subsection*{\secondabstractname}
 
-    %\newpage
+        \begin{otherlanguage}{english}
+            \@abstract
+        \end{otherlanguage}
+        
+        \subsection*{\secondkeywordsname}
 
-    \begin{otherlanguage}{english}
-    %\thispagestyle{empty}
-    %\noindent
+        \begin{otherlanguage}{english}
+            \@keywords
+        \end{otherlanguage}
+    }{
+        \subsection*{\secondabstractname}
 
-    \subsection*{Abstrakt v AJ}
+        \begin{otherlanguage}{slovak}
+            \@abstract
+        \end{otherlanguage}
+        
+        \subsection*{\secondkeywordsname}
 
-    \@abstract@en
-    
-    \subsection*{Kľúčové slová v AJ}
-
-    \@keywords@en
-    %\begin{tabular}{@{}p{.2\textwidth}p{.75\textwidth}}
-        %Thesis title:   & \@title@en \\ \\
-        %Department:     & \@department@en, \@college@en \\
-        %Author:         & \@author\\
-        %Supervisor:     & \@supervisor \\
-        %Tutor:          & \@consultant \\
-        %Date:           & \@submissionday. \@submissionmonth. \@submissionyear\\
-        %Keywords:       & \@keywords@en \\ \\
-        %\abstractname:       & \@abstract@en\\
-    %\end{tabular}
-    \end{otherlanguage}
+        \begin{otherlanguage}{slovak}
+            \@keywords
+        \end{otherlanguage}
+    }
 
     \vfill
 
-    \subsection*{Bibliografická citácia}
+    \subsection*{\bibcitationname}
 
-    \MakeUppercase\@author@lastname, \@author@firstname. {\itshape \@title@sk}. \@college@city: \@college@sk, \@faculty@sk, \@submissionyear. \pageref{theend}s. Vedúci práce: \@supervisor
+    \MakeUppercase\@author@lastname, \@author@firstname. {\itshape \@title}. \@college@city: \@college, \@faculty, \@submissionyear. \pageref{theend}s. \supervisorcitationname: \@supervisor
 
     \newpage
 
@@ -480,7 +573,7 @@
 
     \vglue0pt
     \vfill
-    \subsection*{Čestné vyhlásenie}
+    \subsection*{\declarationname}
 
     \noindent\@declaration
 
@@ -488,7 +581,7 @@
 
     \noindent \@college@city,~\@submissionday.\@submissionmonth.\@submissionyear \hfill
     \begin{tabular}[t]{c}
-        \hbox to 50mm {\dotfill} \\ \textit{\small Vlastnoručný podpis}
+        \hbox to 50mm {\dotfill} \\ \textit{\small \signaturename}
     \end{tabular}
     \newpage
 }
@@ -503,7 +596,7 @@
     \thispagestyle{empty}%
     \vglue0pt\vfill%
 
-    \subsection*{Poďakovanie}%
+    \subsection*{\acknowledgementname}%
 
     \@acknowledgment
 
@@ -520,28 +613,28 @@
     \thispagestyle{empty}
 
     \begin{center}
-        {\Large \textbf{\@college@sk}}
+        {\Large \textbf{\@college}}
 
-        {\Large \textbf{\@faculty@sk}}
+        {\Large \textbf{\@faculty}}
 
         \vfill
 
-        {\LARGE \textbf{\@title@sk} \par}
+        {\LARGE \textbf{\@title} \par}
 
         \bigskip
 
-        {\large \textbf{\@thesis@sk}}
+        {\large \textbf{\@thesis}}
     \end{center}
 
     \vfill
 
     \noindent
     \begin{tabular}{@{}p{.26\textwidth}p{.7\textwidth}}
-        Študijný program:& \@studyprogramme \\
-        Študijný odbor:& \@fieldofstudy \\
-        Školiace pracovisko:& \@department@sk~(\@departmentacr@sk) \\
-        Školiteľ:& \@supervisor \\
-        Konzultant:& \@consultant \\
+        \studyprogrammename:& \@studyprogramme \\
+        \fieldofstudyname:& \@fieldofstudy \\
+        \departmentname:& \@department~(\@departmentacr) \\
+        \supervisorname:& \@supervisor \\
+        \consultantname:& \@consultant \\
     \end{tabular}
 
     \vspace{2\baselineskip}
