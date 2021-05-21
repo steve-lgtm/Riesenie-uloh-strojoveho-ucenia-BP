@@ -432,6 +432,7 @@
 %
 \newcommand{\frontmatter}{
     \pagenumbering{roman}
+    \pagestyle{empty}  % no page numbers until TOC
     \frontpage
     \titlepage
     \abstractpage
@@ -470,8 +471,6 @@
 %%%%%
 \newcommand{\frontpage}{
 
-    \thispagestyle{empty}
-
     \begin{center}
         {\Large \textbf{\@college}}
 
@@ -505,7 +504,6 @@
 \newcommand{\abstractpage}{
     \def\br{}
 
-    \thispagestyle{empty}
     \noindent
     \subsection*{\abstractname}
 
@@ -559,8 +557,6 @@
 %%
 %%%%%
 \newcommand\declarationpage{
-    \thispagestyle{empty}
-
     \vglue0pt
     \vfill
     \subsection*{\declarationname}
@@ -583,7 +579,6 @@
 %%
 %%%%%
 \newcommand\acknowledgmentpage{%
-    \thispagestyle{empty}%
     \vglue0pt\vfill%
 
     \subsection*{\acknowledgementname}%
@@ -600,8 +595,6 @@
 %%
 %%%%%
 \renewcommand{\titlepage}{
-    \thispagestyle{empty}
-
     \begin{center}
         {\Large \textbf{\@college}}
 
