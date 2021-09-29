@@ -11,7 +11,7 @@
 %%
 %%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{kithesis}[2021/03/23 KPI Thesis Class, v2021.2]
+\ProvidesClass{kithesis}[2021/09/29 KPI Thesis Class, v2021.3]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
@@ -65,9 +65,6 @@
     sorting=none,           % sort by order of citation
     backend=biber           % different backend
 ]{biblatex}
-
-% location of file with bibliography resources
-\addbibresource{chapters/bibliography.bib}
 
 % slovak translation of bibliography
 \DefineBibliographyStrings{slovak}{%

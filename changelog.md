@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2021.3] - 2020-09-29
+- specification of the bibliography file removed from the class and added to the thesis.tex
+
 ## [2021.2] - 2020-03-23
 - full support for English documents
 - `readme.md` translated to English
