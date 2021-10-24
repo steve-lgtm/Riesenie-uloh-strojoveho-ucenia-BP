@@ -1,17 +1,33 @@
 % !TEX root = ../thesis.tex
 
 \chapter{Analytická časť}
+Pri strojovom učení a experimentoch je niekedy potreba na krátku dobu vyšší výkon. Pravidelne migrovanie medzi strojmi by bolo veľmi zdĺhavé. S tým nám pomôže platforma kubernetes.
 
-Analytická časť záverečnej práce analyzuje existujúce podobné prístupy k~riešeniu stanoveného problému. Autor práce musí uviesť v~tejto časti existujúce prístupy a riešenia, pričom musí zaujať stanovisko k~týmto prístupom a riešeniam a opísať ich výhody a nedostatky. Prevažne v~tejto časti autor používa odkazy na použité zdroje. Autor v~analýze nepreberá odseky z~cudzích prác ale uvádza prevažne vlastné postoje podložené odkazmi na literatúru. Analytická časť práce by teda nemala byť len povrchným prepisom základných informácií z~Wikipédie alebo zo stránok opisovaných nástrojov. Je potrebné aby bola analýza podporená aj experimentmi ak to umožňuje téma práce (napr. vyskúšam softvér). Vďaka popisu existujúcich riešení autor pochopí problematiku, viac sa nad riešeniami zamyslí, usporiada si ich, zistí ich kladné a záporné vlastnosti, z~čoho potom postupne vyplynie návrh vlastného riešenia v~syntetickej časti. Analytická časť tvorí zvyčajne ¼ jadra práce.
+Kubernetes je platforma, ktorá je veľmi robustná v nasadení, správe a orchestrácií kontajnerov. Dokáže rozdeliť súčasne záťaž medzi jednotlivými strojmi. Tato platforma v súčasnosti vytlačila predošle platformy a stala sa už štandardom. Nasadenie Kubernetes je najefektívnejšie, aj keď existuje dnes veľa podobných technológii, mnoho významných poskytovateľov ponuka klastre Kubernetes.
 
-Analytickú časť je možné rozdeliť na niekoľko kapitol, ktoré budú venované rôznym analyzovaným témam. Názvy kapitol majú zodpovedať tomu, čo je v~kapitole opisované. Napríklad ak v~práci analyzujete súčasný stav v~oblasti medzigalaktických letov, namiesto všeobecného názvu "`Analýza súčasného stavu"' by mal byť použiťý názov analyzovanej témy --- "`Medzigalaktické lety"'.
+Podľa mojich uvážení je na našu problematiku vhodný Kubeflow.
+
 
 % lorem ipsum
-\section{Lorem ipsum}
-\blindtext
+\section{Kubeflow}
+
+Kubeflow ako platforma, je vhodná na nasadenie a vývoj strojového učenia. Primárne slúži pre inžinierov a vedcov, ktorý pracujú s dátami. Obsahuje viaceré komponenty, z ktorých si vývojári môžu vybrať, čo je pre ich používateľov najlepšie, čo znamená, že na nasadzovanie nie je potrebný každý jeden komponent.\cite{web}
+
+\subsection{Architektúra}
+
+Kubeflow stavia na Kubernetes ako systéme na nasadenie, škálovanie a správu zložitých systémov. Pomocou konfiguračných rozhraní Kubeflow, môžeme špecifikovať nástroje strojového učenia, potrebné pre náš pracovný postup. Potom môžeme nasadiť pracovný postup do rôznych cloudov, miestnych platforiem na experimentovanie a na produkčné použitie.\cite{web}
+\clearpage
+\begin{figure}[!ht]
+    \includegraphics[width=.9\textwidth]{figures/kubeflowaarch}
+    \caption{\ Architektúra kubeflow \label{o:latex_friendly_zone}}
+\end{figure}
+\subsection{Pracovný postup}
+
+
+
 
 \section{Aliquam eu malesuada urna}
-\blindtext
+
 \begin{itemize}
     \item v~knihe \cite{book} autor prezentuje naozaj odvážne myšlienky
     \item nemenej zaujímavé výsledky publikuje ďalší autor v~článku \cite{article} 
@@ -24,11 +40,7 @@ Given a set of numbers, there are elementary methods to compute its \acrlong{gcd
 \subsection{Donec vehicula consequat}
 \blindtext
 
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=.9\textwidth]{figures/tugboat}
-    \caption{\LaTeX{} Friendly Zone \label{o:latex_friendly_zone}}
-\end{figure}
+
 
 \subsection{Nullam in mauris consectetur}
 \blindtext
