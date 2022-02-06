@@ -1,71 +1,69 @@
 % !TEX root = ../thesis.tex
 
-\chapter{Analytická časť}
+
+\chapter{Terminológia a technológia Kubernetes}
 Pri strojovom učení a experimentoch je niekedy potreba na krátku dobu vyšší výkon. Pravidelné migrovanie medzi strojmi by bolo veľmi zdĺhavé. S tým nám pomôže platforma kubernetes.
 
-Kubernetes je platforma, ktorá je veľmi robustná v nasadení, správe a orchestrácií kontajnerov. Dokáže rozdeliť súčasne záťaž medzi jednotlivými strojmi. Tato platforma v súčasnosti vytlačila predošle platformy a stala sa už štandardom. Nasadenie Kubernetes je najefektívnejšie, aj keď existuje dnes veľa podobných technológii a mnoho významných poskytovateľov ponúka klastre Kubernetes.
-
-Podľa mojich uvážení je na našu problematiku vhodný Kubeflow.
+Kubernetes je platforma, ktorá je veľmi robustná v nasadení, správe a orchestrácií kontajnerov. Kontajnery slúžia na zabalenie aplikácie alebo služby a obsahujú všetko potrebné na to, aby fungovali bez ohľadu v akom prostredí a zariadení sa nachádzajú. O kontajneroch je viacej opísané v časti architektúra Kubernetes. Dokáže rozdeliť súčasne záťaž medzi jednotlivými strojmi. Tato platforma v súčasnosti vytlačila predošle platformy a stala sa už štandardom. Automatizuje manuálne procesy, poskytuje mnoho doplnkových služieb, orchestráciu úložiska, vysokú škálovateľnosť, spustiteľnosť, dokáže spravovať viac klastrov súčasne a mnoho iných vlastnosti, ktoré sú spomínané v tejto sekcií.\cite{vlastnostikub} Nasadenie Kubernetes je najefektívnejšie, aj keď existuje dnes veľa podobných technológii a mnoho významných poskytovateľov ponúka klastre Kubernetes.
 
 \section{Kubernetes}
-Spôsob, akým je Kubernetes navrhnutý, je to, čo ho robí výnimočným. Kubernetes má základnú architektúru klienta a servera. Kubernetes má schopnosť vykonávať priebežné aktualizácie, prispôsobuje sa aj ďalším pracovným zaťaženiam automatickým škálovaním uzlov, ak je to potrebné, a môže sa tiež opraviť v prípade rozpadu podu. Poskytujú obrovskú výhodu v tom, že aplikácie nebudú mať žiadne výpadky.
+Kubernetes má základnú architektúru klienta a servera. Má schopnosť vykonávať priebežné aktualizácie, prispôsobuje sa aj ďalším pracovným zaťaženiam automatickým škálovaním uzlov, ak je to potrebné, a môže sa tiež opraviť v prípade rozpadu podu. Poskytujú obrovskú výhodu v tom, že aplikácie nebudú mať žiadne výpadky.
 
-Ako orchestrátor sa stará o prácu s plánovaním kontajnerov v klastri a tiež spravuje pracovné zaťaženia. Takmer všetko v Kubernetes používa deklaratívne konštrukty, ktoré popisujú, ako sa aplikácie skladajú, ako interagujú a ako sú spravované.
+Ako orchestrátor sa stará o prácu s plánovaním kontajnerov v klastri a tiež spravuje pracovné zaťaženia. Takmer všetko používa deklaratívne konštrukty, ktoré popisujú, ako sa aplikácie skladajú, ako interagujú a ako sú spravované.
 
-Táto platforma je vhodná na riešenie úloh strojového učenia, aj keď priamo na to je vyvinutý kubeflow, Je najrýchlejšie rastúcim projektom z Open Source softvéru. Kubernetes je vhodný na riešenie hlavne kvôli týmto výhodám:
+Táto platforma je vhodná na riešenie úloh strojového učenia, aj keď priamo na to je vyvinutý kubeflow, Je najrýchlejšie rastúcim projektom z Open Source softvéru. Kubernetes je vhodný na riešenie hlavne kvôli výhodám, ktoré spomenieme v nasledujúcich podsekciách.
 
 \subsection*{Prenosnosť}
 Ponúka prenosnosť, rýchlejšie a jednoduchšie nasadenie. To znamená, že v prípade potreby využívať výhody viacerých cloudov alebo serverov a môžu sa rýchlo rozvíjať bez toho aby sa musela meniť infraštruktúru.
 
 \subsection*{Škálovateľnosť}
-Ma schopnosť spúšťať kontajnery na jednom alebo viacerých verejných cloudových prostrediach, vo virtuálnych strojoch, čiže je ho možné nasadiť takmer kdekoľvek. A keďže Kubernetes zásadne zmenil spôsob vývoja a nasadzovania, je možné škálovať oveľa rýchlejšie, než v minulosti.
+Má schopnosť spúšťať kontajnery na jednom alebo viacerých verejných cloudových prostrediach, vo virtuálnych strojoch, čiže je ho možné nasadiť takmer kdekoľvek. Kubernetes zásadne zmenil spôsob vývoja a nasadzovania, je možné škálovať oveľa rýchlejšie, než v minulosti.
 
 \subsection*{Dostupnosť}
-Rieši vysokú dostupnosť na úrovni aplikácie aj infraštruktúry. Pridanie spoľahlivej úložnej vrstvy do Kubernetes zaisťuje vysokú dostupnosť stavových úloh. Okrem toho môžu byť hlavné komponenty klastra nakonfigurované na multi-node replikáciu (multi-master), čo tiež zabezpečuje vyššiu dostupnosť.
+Rieši vysokú dostupnosť na úrovni aplikácie aj infraštruktúry. Pridanie spoľahlivej úložnej vrstvy do Kubernetes zaisťuje vysokú dostupnosť úloh, vykonávaných na jednotlivých inštanciách. Okrem toho môžu byť hlavné komponenty klastra nakonfigurované na multi-node replikáciu (multi-master), čo tiež zabezpečuje vyššiu dostupnosť.
 
-\subsection{Architektúra}
-Pracovné uzly (worker), hlavný uzol (master) a spolu s API, tvoria architektúru Kubernetes. V tejto časti je opísaná architektúra ako tieto uzly fungujú a načo slúži API.
+\section{Architektúra}
+Samotnú architektúru Kubernetes tvoria pracovné uzly (worker), hlavný uzol (master) a rozhranie pre programovanie aplikácií oznacované skratkou API. V tejto časti je opísaná architektúra ako tieto uzly fungujú a načo slúži API. Jednotlivé uzly sú zložené z niekoľkých častí, ktoré sú potrebné pre ich správne fungovanie a efektivitu. Pre správne pochopenie ako Kubernetes funguje je treba sa zoznámiť najmä s niektorými termínmi.
 
-Je zložený z niekoľkých častí, ktoré sú potrebné pre jeho správne fungovanie a efektivitu. Pre správne pochopenie ako Kubernetes funguje je treba sa zoznámiť najmä s niektorými termínmi.
+\subsection{Hlavný uzol (master)}
 
-V hlavnom uzle nájdeme komponenty, ktoré riadia klaster spolu s údajmi o stave a konfigurácii klastra. Tieto základne komponenty pracujú tak aby dokázali zabezpečiť prácu tak aby kontajnery fungovali v dostatočnom počte a spotrebnými zdrojmi.
-Hlavný uzol je neustále v kontakte s jednotlivými strojmi, ktoré vykonávajú prácu. Hlavný uzol sa postará o klaster, tak ako sme ho nakonfigurovali.
+V hlavnom uzle nájdeme komponenty, ktoré riadia klaster spolu s údajmi o stave a konfigurácii klastra. Tieto základne komponenty pracujú, aby dokázali zabezpečiť, že kontajnery budú fungovať v dostatočnom počte a s potrebnými zdrojmi.
 
-
-
-\subsection*{Mikroslužby}
-Pre mikroslužby neexistuje presná definícia. Často sa používajú pri cloudových službách a aplikácii, ktoré sa nasadzujú pomocou kontajnerov.  
-
-\subsection*{Uzol}
-Uzol môže byt virtuálny stroj alebo fyzicky počítač, kde sú nasadené kontajnery. Za prijímanie a spúšťanie pracovných zaťažení a externých zdrojov sú zodpovedne uzly. Kubernetes spúšťa aplikácie a služby v kontajneroch na pomoc s izoláciou, správou a flexibilitou. Každý uzol musí mat modul tzv. runtime kontajnera. Uzol prijíma pracovne pokyny od hlavného uzla a podlá toho vytvára alebo ruší kontajnery a zároveň prispôsobuje pravidla sieťovej prevádzky.
-
-\subsection*{Pod}
-Pod je skupina jedného alebo viacerých kontajnerov so zdieľaným úložiskom, sieťou a špecifikáciou ako majú kontajnery fungovať. Pri necloudových sú spúšťane na rovnakom fyzickom alebo virtuálnom stroji a pri cloudových na rovnakom logickom hostiteľovi. Všetky kontajnery v pode môžu medzi sebou komunikovať aj sú na samostatných uzloch. Sú vytvorené na základe pracovného zaťaženia nazývanými ovládače, ktoré riadia vytváranie, kopírovanie a stav podov v klastri. Ak napríklad zlyhá uzol v klastri, ovládač zisti, že moduly v tomto uzle nereagujú a vytvorí náhradne moduly na iných uzloch.
-
-\subsection*{Klaster}
-V klastroch sa spúšťajú kontajnerové aplikácie, ktoré spravuje Kubernetes. Klaster je v podstate séria uzlov spojených dohromady. Spojením uzlov zhromažďujú svoje zdroje(CPU, RAM, atď.). Klaster je v tom prípade oveľa výkonnejší ako jednotlivé stroje. Kubernetes presúva pody po klastri, pri pridávaní alebo odstraňovaní uzlov.\cite{kubernetes2} Sú to navzájom prepojene počítače, ktoré vykonávajú určitú činnosť.
+Hlavný uzol je neustále v kontakte s jednotlivými strojmi, ktoré vykonávajú prácu a postará sa o klaster, ako sme ho nakonfigurovali.
 
 \subsection*{Kontajner}
 Kontajner je podobný virtuálnemu stroju ale kontajner je viac efektívnejší, podobne ako virtuálny stroj ma vlastný súborový systém, zdieľaný procesor, operačnú pamäť a ďalšie. Sú funkčne na rôznych operačných systémoch, pretože sa oddeľujú od základnej infraštruktúry.\cite{kubernetes}
 Výrazne zvyšujú efektivitu, vyžadujú menej systémových prostriedkov, pretože neobsahujú obraz operačného systému. Zabezpečujú lepší vývoj aplikácii a lepšiu prenosnosť.
 
+\subsection*{Mikroslužby}
+V mikroslužbách sa jedna aplikácia skladá z mnohých voľne prepojených nezávisle nasaditeľných menších komponentov alebo služieb. Najdôležitejšou charakteristikou mikroslužieb je to, že sú služby menšie a samostatne nasaditeľné. Nevyžaduje, aby sa menil riadok kódu alebo pridala nová funkcia do aplikácie. Vytvára určitý stupeň izolácie porúch, lepšiu odolnosť aplikácií a malá veľkosť služieb uľahčuje porozumieť základy kódu. V modeli mikroslužieb sú komponenty nasadené nezávisle a komunikujú cez určitú kombináciu REST, streamovania udalostí a sprostredkovateľov správ. Na základe toho je možné, aby bol zásobník každej jednotlivej služby optimalizovaný pre túto službu. Technológia sa neustále mení a aplikácia zložená z viacerých menších služieb je oveľa jednoduchšia a menej nákladná na vývoj pomocou vhodnejšej technológie, keď bude dostupná.\cite{microibm} Nie je vhodné vytvárať príliš veľa mikroslužieb, kvôli tomu, že môže dôjsť do väčších zložitosti. Je lepšie prikloniť sa k väčším službám a potom ich postupne rozdeľovať, keď začnú vykazovať kroky, ktoré mikroslužby majú riešiť. Následne sa dátový model stáva príliš zložitým. Často sa používajú pri cloudových službách a aplikácii, ktoré sa nasadzujú pomocou kontajnerov.
+
+\subsection*{Uzol}
+Uzol môže byt virtuálny stroj alebo fyzicky počítač, kde sú nasadené kontajnery. Za prijímanie a spúšťanie pracovných zaťažení a externých zdrojov sú zodpovedné uzly. Kubernetes spúšťa aplikácie a služby v kontajneroch na pomoc s izoláciou, správou a flexibilitou. Každý uzol musí mať modul tzv. runtime kontajnera. Uzol prijíma pracovné pokyny od hlavného uzla a podľa toho vytvára alebo ruší kontajnery a zároveň prispôsobuje pravidla sieťovej prevádzky.
+
+\subsection*{Pod}
+Pod je skupina jedného alebo viacerých kontajnerov so zdieľaným úložiskom, sieťou a špecifikáciou ako majú kontajnery fungovať. Môžeme mať dva typy spustenia a to je cloudové a necloudové. Pri necloudových, takzvanom lokálnom prostredí, sú spúšťané na rovnakom fyzickom alebo virtuálnom stroji a pri cloudových napríklad zdieľaných, vzdialených cloudoch na rovnakom logickom hostiteľovi. Všetky kontajnery v pode môžu medzi sebou komunikovať aj sú na samostatných uzloch. Sú vytvorené na základe pracovného zaťaženia nazývanými ovládače, ktoré riadia vytváranie, kopírovanie a stav podov v klastri. Ak napríklad zlyhá uzol v klastri, ovládač zisti, že moduly v tomto uzle nereagujú a vytvorí náhradne moduly na iných uzloch.
+
+\subsection*{Klaster}
+V klastroch sa spúšťajú kontajnerové aplikácie, ktoré spravuje Kubernetes. Klaster je v podstate séria uzlov spojených dohromady. Spojením uzlov zhromažďujú svoje zdroje (CPU, RAM, atď.). Klaster je v tom prípade oveľa výkonnejší ako jednotlivé stroje. Kubernetes presúva pody po klastri, pri pridávaní alebo odstraňovaní uzlov.\cite{kubernetes2} Sú to navzájom prepojene počítače, ktoré vykonávajú určitú činnosť.
+
 \subsection*{Kube-apiserver}
 Tento komponent odhaľuje API hlavnému uzlu. V podstate funguje ako frontend k informáciám o stave klastra a premosťuje API s inými objektmi Kubernetes, napríklad modulmi, radičmi a službami. Server API určuje, ci je požiadavka platná, a ak áno, spracuje ju. K API sa pristupuje prostredníctvom Rest, cez rozhranie príkazového riadka kubectl alebo prostredníctvom iných nástrojov napríklad kubeadm. Zabezpečuje všetku interakciu medzi komponentmi.\cite{kubeapiserver}
 
 \subsection*{Kube-controller-manager}
-Na hlavnom uzle riadi všetky ovládače. Každý ovládač je vlastne samostatný individuálny proces. Pre zjednodušenie správy klastrov sú však všetky skompilovane do jedného procesu, Za tuto kompiláciu je zodpovedný kube-controller-manager. Jeden ovládač konzultuje plánovač a uisťuje sa, že beží správny počet podov. Ak pod spadne, iný ovládač si to všimne a zareaguje. Ovládač pripája služby k podom, takže požiadavky smerujú do správneho koncového bodu. Existujú aj ovládače na vytváranie účtov a prístupových tokenov API.\cite{kubecontroler}
+Na hlavnom uzle riadi všetky ovládače. Každý ovládač je vlastne samostatný individuálny proces. Pre zjednodušenie správy klastrov sú však všetky skompilované do jedného procesu, Za túto kompiláciu je zodpovedný kube-controller-manager. Jeden ovládač konzultuje s plánovačom a uisťuje sa, že beží správny počet podov. Ak pod spadne, iný ovládač si to všimne a zareaguje. Ovládač pripája služby k podom, takže požiadavky smerujú do správneho koncového bodu. Existujú aj ovládače na vytváranie účtov a prístupových tokenov API.\cite{kubecontroler}
 
 \subsection*{Etcd}
-Ukladá informácie o konfigurácii pre veľké distribuovane systémy  Kubernetes teda používa etcd ako úložisko hodnôt jednotlivých kľúčov. Etcd modul musí byt stále dostupný, aby sa zabezpečilo správne fungovanie služieb. Údaje Etcd sú veľmi doležíte a odporúča sa vytvoriť si zálohu. 
+Názov je zložený z dvoch myšlienok. Z unix (/etc) priečinka a (d) ako distributed systems v preklade distribuovaných systémov. Ukladá informácie o konfigurácii pre veľké distribuované systémy. Kubernetes teda používa etcd ako úložisko hodnôt jednotlivých kľúčov. Etcd modul musí byt stále dostupný, aby sa zabezpečilo správne fungovanie služieb. Údaje Etcd sú veľmi dôležíté a odporúča sa vytvoriť si zálohu.
 
 \subsection*{Plánovač}
 Z názvu môžeme posúdiť, že slúži na plánovanie rozhodnutí pre novovytvorené pody. Keď je pod vytvorený, musí mu byť priradený uzol, na ktorom sa má spustiť. Plánovač prijíma informácie z API o požiadavkách a špecifikáciách podov a IT zdrojoch na dostupných uzloch. Potom priradí každý pod k príslušnému uzlu. Ak plánovač nemôže nájsť vhodný uzol, pod zostane nenaplánovaný a plánovač zopakuje proces, kým nebude dostupný uzol.
 
-\subsection*{}
-Komponent, ktorý sa nasadzuje ako prvý je takzvaný runtime kontajnera. Zvyčajne sa inštaluje spustením Dockera, ale dostupné sú aj alternatívy ako rkt a runc.
-Runtime kontajnera je zodpovedný za spustenie a správu kontajnerov, aplikácií zapuzdrených v relatívne izolovanom, ale ľahkom ako keby operačnom prostredí. 
+\subsection{Pracovný uzol (worker)}
 
-Každá jednotka práce v klastri je na svojej základnej úrovni implementovaná ako jeden alebo viac kontajnerov, ktoré je potrebné nasadiť. 
+V pracovnom uzle, komponent, ktorý sa nasadzuje ako prvý je takzvaný runtime kontajnera. Zvyčajne sa inštaluje spustením Dockera, ale dostupné sú aj alternatívy ako rkt a runc. Runtime kontajnera je zodpovedný za spustenie a správu kontajnerov, aplikácií zapuzdrených v relatívne izolovanom, ale ľahkom ako keby operačnom prostredí.
+
+Každá jednotka práce v klastri je na svojej základnej úrovni implementovaná ako jeden alebo viac kontajnerov, ktoré je potrebné nasadiť.
 
 \subsection*{Kubelet}
 Kubelet je agent, ktorý je spustený na každom pracovnom uzle v klastri. Je to dôležitý komponent, pretože prijíma inštrukcie z hlavného uzla. Kubelet v podstate riadi pody. Zabezpečuje, že všetky kontajnery bežia v pode a že tieto pody sú v poriadku a bežia v správnych časových intervaloch. Číže vytvára a odstraňuje moduly, na základe pokynov od hlavného uzla, ktoré moduly je potrebné pridať alebo odstrániť. Keď riadiaci uzol potrebuje, aby sa niečo vykonalo v uzle, kubelet vykoná tuto akciu.
@@ -73,14 +71,17 @@ Kubelet je agent, ktorý je spustený na každom pracovnom uzle v klastri. Je to
 \subsection*{Kube-proxy}
 Na správu jednotlivých hostiteľských podsietí a sprístupnenie služieb iným komponentom je na každom uzlovom serveri spustená malá proxy služba s názvom kube-proxy . Tento proces preposiela požiadavky správnym kontajnerom, môže vykonávať primitívne vyvažovanie záťaže a je vo všeobecnosti zodpovedný za zabezpečenie toho, aby bolo sieťové prostredie predvídateľné a dostupné, ale v prípade potreby izolované. Používa proxy UDP, TCP a SCTP, ale nerozumie HTTP.
 
-\subsection*{}
-Na obrázku môžeme vidieť jednotlivé komponenty:
-\begin{figure}[!ht]
-    \includegraphics[width=.9\textwidth]{figures/kubernetesarchi}
-    \caption{\ Architektúra kubernetes \cite{archkuber} \label{o:latex_friendly_zone}}
-\end{figure}
+\subsection{API}
 
-\subsection{Nástroje}
+API je front end (používateľské rozhranie) a je spôsob, akým používatelia interagujú s klastrom Kubernetes. Určuje, či je požiadavka platná a potom ju spracuje. V podstate API je rozhranie používané na správu, vytváranie a konfiguráciu klastrov. Každá akcia vykonaná v klastri prechádza cez API. Takto spolu komunikujú používatelia, externé komponenty a ostatné časti klastra. V strede riadiacej roviny (master) je server API a HTTP API, ktoré umožňujú komunikovať a manipulovať so stavom objektov Kubernetes.
+
+Komunikácia s API serverom prebieha cez rôznych klientov a to napríklad cez Ul (dashboard), použitím Kubernetes API alebo príkazovým riadkom nazývaným kubectl. V tejto časti sa nachádzajú informácie o jednotlivých klientoch.
+
+\subsection*{kubectl}
+
+Po vytvorení klastra Kubernetes je potrebné interagovať s týmto klastrom. Prvým krokom je vytvorenie podov v klastri a ostatných komponentov a na tieto interakcie slúži kubectl. Je najmocnejší, oficiálny nástroj rozhrania príkazového riadka Kubernetes na prácu s klastrom. S týmto príkazovým riadok je možné robiť mnoho veci. Ak kubectl odošle príkaz ako vytvoriť komponent, odstrániť komponent atď. API serveru, následne pracovné uzly zareagujú a vykonajú tieto príkazy. Je možne komunikovať s rôznym typom klastrom, či už je to lokálny, cloudový alebo hybridný klaster.
+
+\section{Nástroje}
 
 Nástroje slúžia na vytváranie lokálneho klastra a následne pracovanie s týmto klastrom. V tejto časti si porovnane nástroje aké majú odlišnosti a čo ponúkajú.
 \subsection*{minikube}
@@ -93,11 +94,11 @@ Pre nových používateľov Kubernetes, môže výrazne pomôcť dashboard, ktor
 
 \subsection*{kind}
 
-Ako už názov napovedá, presúva klaster do kontajnerov Docker. To vedie k výrazne vyššej rýchlosti spustenia v porovnaní s vytváraním virtualizácie.
+Presúva klaster do kontajnerov Docker. To vedie k výrazne vyššej rýchlosti spustenia v porovnaní s vytváraním virtualizácie.
 
 Vytvorenie klastra je veľmi podobné ako pri minikube. Použitím príkazu kind create cluster, vytvárame klaster. Použitím rôznych názvov  --name, kind umožňuje vytvárať viaceré inštancie paralelne.
 
-Jedna funkcia, ktorá sa mi osobne páči, je možnosť načítať obrazy kontajnerov priamo do klastra. To ušetrí niekoľko ďalších krokov pri nastavovaní registra a načítavaní môjho obrazu, keď chcem vyskúšať nejaké zmeny. S jednoduchým kind load docker-image my-app:latest je kontajnerový obraz k dispozícii na použitie v mojom klastri.
+Významnou funkciou, je možnosť načítať obrazy kontajnerov priamo do klastra. To ušetrí niekoľko ďalších krokov pri nastavovaní registra a načítavaní obrazu, keď treba vyskúšať nejaké zmeny. S jednoduchým kind load docker-image my-app:latest je kontajnerový obraz k dispozícii na použitie v klastri.
 
 \subsection*{k3s}
 
@@ -105,14 +106,12 @@ K3s je verzia Kubernetes vyvinutá spoločnosťou Rancher Labs. Odstránením po
 
 Aplikácia je rozdelená na server K3s a agenta. Prvý pôsobí ako manažér, zatiaľ čo druhý zodpovedá za zvládnutie skutočného pracovného zaťaženia. Upozorňujem, že pri spúšťaní na počítací môže dôjsť k výraznému neporiadku v lokálnom súborovom systéme. Namiesto toho sa vkladá k3s do kontajnera (napr. pomocou rancher/k3s), ktorý tiež umožňuje ľahko spustiť niekoľko nezávislých inštancií.
 
-Jedna funkcia, ktorá vyniká, sa nazýva automatické nasadenie. Umožňuje nasadiť manifesty Kubernetes a grafy Helm ich umiestnením do konkrétneho adresára. K3s sleduje zmeny a stará sa o ich aplikáciu bez akejkoľvek ďalšej interakcie. Je to užitočné najmä pre CI pipelines a zariadenia lot. Stačí vytvoriť/aktualizovať konfiguráciu a K3s sa postará o to, aby boli nasadenia (deployments) aktuálne.
+Jedna funkcia, ktorá vyniká, sa nazýva automatické nasadenie. Umožňuje nasadiť manifesty Kubernetes a grafy Helm ich umiestnením do konkrétneho adresára. Špecifikácie objektu Kubernetes API vo formáte JSON alebo YAML nazývame manifesty Kubernetes a grafy Helm sú manifesty Kubernetes YAML spojené do jedného balíka. K3s sleduje zmeny a stará sa o ich aplikáciu bez akejkoľvek ďalšej interakcie. Je to užitočné najmä pre CI pipelines a zariadenia IoT. CI pipelines sa vyznačujú sériou etáp a automatizovaných krokov, ktorými softvér prechádza a IoT značí moderné zariadenia, ktoré sú ovládateľné aj na diaľku cez internet. Stačí vytvoriť/aktualizovať konfiguráciu a K3s sa postará o to, aby boli nasadenia (deployments) aktuálne.
 
 \subsection*{MicroK8s}
 Sťahuje sa ako inštalačný balík, ktorý nainštaluje jednouzlový (samostatný) klaster K8s za menej ako 60 sekúnd. Da sa použiť aj na vytvorenie klastra s viacerými uzlami pomocou niekoľkých príkazov. MicroK8s má všetky základné komponenty Kubernetes, ako napríklad DNS a Dashboard, sú dostupné použitím jediného príkazu.
 
-MicroK8s je k dispozícii pre väčšinu populárnych distribúcií Linuxu a tiež pre pracovné stanice Windows a Mac prostredníctvom natívneho inštalátora pre oba operačné systémy. V systéme Windows je tiež možnosť získať MicroK8s na WSL.
-
-Používa snap packaging mechanizmus, čož je naozaj pohodlné, pretože prináša automatické aktualizácie. To znamená, že akonáhle bude k dispozícii nová stabilná verzia Kubernetes, váš klaster MicroK8s sa automaticky aktualizuje. Podobne sa získavajú všetky dostupné bezpečnostné záplaty pre Kubernetes.\cite{comparetool}
+MicroK8s je k dispozícii pre väčšinu populárnych distribúcií Linuxu a tiež pre pracovné stanice Windows a Mac prostredníctvom natívneho inštalátora pre oba operačné systémy. V systéme Windows je tiež možnosť získať MicroK8s na WSL.\cite{comparetool}
 
 \subsection*{}
 
@@ -128,22 +127,37 @@ Inštalácia microK8S na počítače so systémom Linux, ktoré nepodporujú bal
 
 
 \section{Kubeflow}
-Kubeflow ako platforma, je vhodná na nasadenie a vývoj strojového učenia. Primárne slúži pre inžinierov a vedcov, ktorý pracujú s dátami. Obsahuje viaceré komponenty, z ktorých si vývojári môžu vybrať, čo je pre ich používateľov najlepšie, čo znamená, že na nasadzovanie nie je potrebný každý jeden komponent.\cite{web}
-\subsection{Architektúra}
+Kubeflow ako platforma, je vhodná na nasadenie a vývoj strojového učenia. Primárne slúži pre inžinierov a vedcov, ktorý pracujú s dátami. Obsahuje viaceré komponenty, z ktorých si vývojári môžu vybrať, čo je pre ich používateľov najlepšie, čo znamená, že na nasadzovanie nie je potrebný každý jeden komponent.
+
+\subsection{Komponenty}
 
 Stavia na platforme Kubernetes ako systéme na nasadenie, škálovanie a správu zložitých systémov. Pomocou konfiguračných rozhraní Kubeflow, môžeme špecifikovať nástroje strojového učenia, potrebné pre náš pracovný postup. Potom môžeme nasadiť pracovný postup do rôznych cloudov, miestnych platforiem na experimentovanie a na produkčné použitie.\cite{web}
 
-Na nasledujúcom obrázku môžte vidieť architektúru Kubeflow.
+V tejto časti sú priblížené všetky sedem komponenty, ktoré tvoria Kubeflow.
 
-\begin{figure}[!ht]
-    \includegraphics[width=.9\textwidth]{figures/kubeflowaarch}
-    \caption{\ Architektúra kubeflow \cite{web} \label{o:latex_friendly_zone}}
-\end{figure}
+\subsection*{Rozhranie}
+
+Centrum riadenia komponentov, ktoré poskytuje používateľovi prístup k jednotlivým komponentom v klastri ako sú Pipelines, Notebooks, Katib, Artifact store a Multi-Tenancy.
+
+\subsection*{Pipelines}
+
+Pipelines sa používajú na vytváranie a nasadzovanie prenosných, škálovateľných, pracovných postupov strojového učenia založených na kontajneroch Docker. Pozostávajú z používateľského rozhrania na správu tréningových experimentov, úloh a chodov a z nástroja na plánovanie viackrokových pracovných postupov ML. Existujú aj dve súpravy SDK, jedna umožňuje definovať a manipulovať s kanálmi, zatiaľ čo druhá ponúka alternatívny spôsob interakcie Notebookov so systémom.\cite{pipe}
+
+\subsection*{Notebooks}
+
+Jupyter notebooks fungujú s Kubeflow veľmi dobre, pretože sa dajú ľahko integrovať s typickými mechanizmami overovania a kontroly prístupu. Používatelia môžu bezpečne a s istotou vytvárať notebookové moduly/servery priamo v klastri Kubeflow pomocou obrazov poskytnutých správcami a jednoducho odosielať úlohy s jedným uzlom v porovnaní s tým, že si musia všetko nakonfigurovať na svojom laptope.
+
+\subsection*{KFServing}
+TODO
+\subsection*{Katib}
+
+\subsection*{Training operators}
+
+\subsection*{Multi-Tenancy}
+
 
 \subsection{Pracovný postup}
-Postup pozostáva z viacerých krokov, taktiež z iterácie, ktorá je hlavným prvkom pri vyvíjaní sýtemu strojového učenia. Pri tomto postupe je potrebné vykonávať zmeny v parametroch aby sme dosiahli požadované výsledky.
-
-Následne si povieme niečo viac o týchto postupoch.
+Postup pozostáva z viacerých krokov, taktiež z iterácie, ktorá je hlavným prvkom pri vyvíjaní sýtemu strojového učenia. Pri tomto postupe je potrebné vykonávať zmeny v parametroch aby sme dosiahli požadované výsledky. Následne si povieme niečo viac o týchto postupoch.
 
 Ako prvé by sme mali vyvíjať model na základe predpokladov a testov. Môžeme ho opísať v nasledujúcich bodoch:\cite{web}
 
@@ -163,31 +177,19 @@ Ako prvé by sme mali vyvíjať model na základe predpokladov a testov. Môžem
 	\item Podanie modelu na online prevádzku.
 	\item Monitorovanie výsledkov na úpravu a zmenu modelu.
 \end{itemize}
-jkkjjkh
+
 \begin{figure}[!ht]
     \includegraphics[width=.9\textwidth]{figures/kubeflowwork}
     \caption{\ Pracovné postupy \label{o:latex_friendly_zone}}
 \end{figure}
-
-
-\clearpage
-\subsection{Rozhrania}
-
-dopisaaat neskoor
-
-\begin{figure}[!ht]
-    \includegraphics[width=.9\textwidth]{figures/Rozhranie}
-    \caption{\ Rozhranie \label{o:latex_friendly_zone}}
-\end{figure}
-
 \clearpage
 \section{Kontajnerizácia}
 
-Kontajnery predstavujú metódu virtualizácie operačného systému, ktorá vám umožňuje spúšťať aplikáciu a jej závislosti v procesoch izolovaných na zdrojoch. Kontajnery nám umožňujú jednoducho zbaliť kód aplikácie, konfigurácie do ľahko použiteľných stavebných blokov, ktoré poskytujú environmentálnu konzistentnosť, prevádzkovú efektivitu, produktivitu vývojárov a kontrolu verzií. Kontajnery môžu pomôcť zabezpečiť rýchle, spoľahlivé a konzistentné nasadenie aplikácií bez ohľadu na prostredie nasadenia. Kontajnery tiež poskytujú podrobnejšiu kontrolu nad zdrojmi, čo zvyšuje efektivitu vašej infraštruktúry.
+Kontajnery predstavujú metódu virtualizácie operačného systému, ktorá umožňuje spúšťať aplikáciu a jej závislosti v procesoch izolovaných na zdrojoch. Kontajnery umožňujú jednoducho zbaliť kód aplikácie, konfigurácie do ľahko použiteľných stavebných blokov, ktoré poskytujú environmentálnu konzistentnosť, prevádzkovú efektivitu, produktivitu vývojárov a kontrolu verzií. Kontajnery môžu pomôcť zabezpečiť rýchle, spoľahlivé a konzistentné nasadenie aplikácií bez ohľadu na prostredie nasadenia. Kontajnery tiež poskytujú podrobnejšiu kontrolu nad zdrojmi, čo zvyšuje efektivitu vašej infraštruktúry.
 
-V minulosti sa aplikácie spúšťali na fyzických serveroch. Neexistovala možnosť ako nastaviť hranice pre aplikácie na serveroch a to spôsobovalo problémy. Napríklad, ak viaceré aplikácie bežali na jednom serveri, tak existovali tam inštancie, ktoré využívali väčšinu výkonu servera a ďalšie, ktoré nemali dostatočný výkon na vykonávanie akcii. To samozrejme sa už v dnešných časoch veľmi nevyužíva, tato metóda bola príliš nákladná na údržbu mnohých fyzických serverov.
+V minulosti sa aplikácie spúšťali na fyzických serveroch. Neexistovala možnosť ako nastaviť hranice pre aplikácie na serveroch a to spôsobovalo problémy. Napríklad, ak viaceré aplikácie bežali na jednom serveri, tak existovali tam inštancie, ktoré využívali väčšinu výkonu servera a ďalšie, ktoré nemali dostatočný výkon na vykonávanie akcii. To sa už v dnešných časoch veľmi nevyužíva, tato metóda bola príliš nákladná na údržbu mnohých fyzických serverov.
 
-Nasadzovanie aplikácie na virtualizovaných serveroch bolo predstavené ako riešenie. Umožňuje spustiť viacero virtuálnych strojov na jeden fyzicky server. Virtualizácia umožňuje izolovať aplikácie od seba a zabezpečiť tak, zem k informáciám jednej aplikácie sa nedostane druha aplikácia. Virtualizácia umožňuje lepšie využitie výkonu na serveri, aplikáciu umožňuje pridať, aktualizovať a taktiež znížene náklady na hardvér.
+Nasadzovanie aplikácie na virtualizovaných serveroch bolo predstavené ako riešenie. Umožňuje spustiť viacero virtuálnych strojov na jeden fyzicky server. Virtualizácia umožňuje izolovať aplikácie od seba a zabezpečiť, že k informáciám jednej aplikácie sa nedostane druha aplikácia. Virtualizácia umožňuje lepšie využitie výkonu na serveri, aplikáciu umožňuje pridať, aktualizovať a taktiež znížene náklady na hardvér.
 
 Kontajnery sú podobné virtuálnym počítačom, ale majú uvoľnené izolačné vlastnosti na zdieľanie operačného systému medzi aplikáciami. Preto sa kontajnery považujú za jednoduchšie. Podobne ako virtualizácia, kontajner má svoj vlastný súborový systém, zdieľané CPU, pamäte, procesného priestoru a ďalšie. Keďže sú oddelené od základnej infraštruktúry, sú prenosné cez cloudy a distribúcie operačných systémov.
 
@@ -201,7 +203,7 @@ Stali sa obľúbenými, pretože poskytujú veľa výhod:
 	\item Menšia záťaž. Kontajnery vyžadujú menej systémových prostriedkov ako tradičné alebo hardvérové prostredia virtuálnych strojov, pretože nezahŕňajú operačne systémy.
 \end{itemize}
 
-\subsection{Kontajnerový obraz, runtime a orchestrácia}
+\subsection{Kontajnerový obraz, beh programu a orchestrácia}
 
 Súbory kontajnerového obrazu sú statické a spustiteľné verzie aplikácie alebo služby a líšia sa od jednej technológie k druhej. Obraz sa skladá z viacerých vrstiev, ktoré začínajú základným obrazom, ktorý obsahuje všetky závislosti potrebné na spustenie kódu v kontajneri. Každý obraz má na vrchu statických nemenných vrstiev čitateľnú a zapisovateľnú vrstvu. Pretože každý kontajner má svoju vlastnú špecifickú vrstvu kontajnera, ktorá prispôsobuje tento konkrétny kontajner, podkladové vrstvy obrazu možno uložiť a znova použiť vo viacerých kontajneroch. Pre otvorený kontajner sa obraz skladá z manifestu, vrstiev súborového systému a konfigurácií. Pre správne fungovanie kontajnera, musí mať runtime a špecifikáciu obrazu. Špecifikácie runtime predstavujú fungovanie súborového systému, čo sú súbory obsahujúce všetky potrebné údaje pre chod a runtime. Špecifikácia obrazu obsahuje informácie potrebné na spustenie aplikácie alebo služby v kontajneri.\cite{orchestrate}
 
@@ -219,11 +221,11 @@ Orchestrácia ma tieto privilégiá:
 	\item Zlepšuje bezpečnosť obmedzením prístupu medzi kontajnermi a externými systémami.
 \end{itemize}
 
-Príklady orchestrátorov sú napríklad Kubernetes, OpenShift, Kubeflow atď. 
+Príklady orchestrátorov sú napríklad Kubernetes, OpenShift, Kubeflow atď.
 
 \subsection{Architektúra mikroslužieb}
 
-Architektúra mikroslužieb rozdeľuje aplikáciu na viacero nezávislých služieb. Každý z nich má svoj vlastný kanál a môže byť nasadený do produkcie kedykoľvek, bez závislosti od iných mikroslužieb. 
+Architektúra mikroslužieb rozdeľuje aplikáciu na viacero nezávislých služieb. Každý z nich má svoj vlastný kanál a môže byť nasadený do produkcie kedykoľvek, bez závislosti od iných mikroslužieb.
 
 Bežný spôsob vytvárania a nasadenia mikroslužieb je v kontajneroch. Celá aplikácia mikroslužieb môže byť nasadená ako klaster pomocou kontajnerového orchestrátora. Existuje niekoľko výhod používania kontajnerov pre mikroslužby, na rozdiel od úplných virtuálnych strojov alebo fyzických počítačových serverov:
 
@@ -259,64 +261,9 @@ Aplikačné kontajnery, ako napríklad Docker, zapuzdrujú súbory a knižnice a
 
 Systémové kontajnery, sú technologicky podobné kontajnerom aplikácií aj virtuálnym strojom. Systémový kontajner môže spúšťať operačný systém, podobne ako by operačný systém bežal zapuzdrený na VM. Systémové kontajnery však neemulujú hardvér systému, namiesto toho fungujú podobne ako aplikačné kontajnery a používateľ si môže nainštalovať rôzne knižnice, jazyky a systémové databázy. \cite{systemvsapli}
 
-Takže všeobecne, keď chcete distribuovať aplikáciu ako komponenty, aplikačné kontajnery sú skvela voľba. Zatiaľ čo ak chcete iba operačný systém, do ktorého môžete nainštalovať rôzne knižnice, jazyky, databázy atď. vhodnejšie sú systémové kontajnery.
+Takže všeobecne, keď je potrebné distribuovať aplikáciu ako komponenty, aplikačné kontajnery sú skvelá voľba. Ak je iba operačný systém, do ktorého je treba nainštalovať rôzne knižnice, jazyky, databázy atď. vhodnejšie sú systémové kontajnery.
+
+
 
 
 \clearpage
-\begin{itemize}
-    \item v~knihe \cite{book} autor prezentuje naozaj odvážne myšlienky
-    \item nemenej zaujímavé výsledky publikuje ďalší autor v~článku \cite{article} 
-    \item v~konferenčnom príspevku \cite{conference} sú uvedené tiež zaujímavé veci
-    \item \LaTeX{}\footnote{\url{https://www.latex-project.org/}} je typografický jazyk
-\end{itemize}
-
-Given a set of numbers, there are elementary methods to compute its \acrlong{gcd}, which is abbreviated \acrshort{gcd}. This process is similar to that used for the \acrfull{lcm}.
-
-\subsection{Donec vehicula consequat}
-\blindtext
-
-
-
-\subsection{Nullam in mauris consectetur}
-\blindtext
-
-\begin{lstlisting}[language=C,caption={Program, ktorý pozdraví celý svet}]
-#include <stdio.h>
-int main() {
-    /* Print Hello, World! */
-    printf("Hello, World!\n");
-    return 0;
-}
-\end{lstlisting}
-
-
-\subsection{Vestibulum tristique elementum varius}
-\blindtext
-
-\begin{table}[!ht]
-	\caption{Country list}\label{t:1}
-	\smallskip
-	\centering
-
-	\begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|  }
-		\hline
-		\multicolumn{4}{|c|}{Country List} \\
-		\hline
-		Country Name or Area Name& ISO ALPHA 2 Code &ISO ALPHA 3 Code&ISO numeric Code\\
-		\hline
-		Afghanistan & AF & AFG & 004\\
-		Aland Islands & AX & ALA & 248\\
-		Albania & AL & ALB & 008\\
-		Algeria & DZ & DZA & 012\\
-		American Samoa & AS & ASM & 016\\
-		Andorra & AD & AND & 020\\
-		Angola & AO & AGO & 024\\
-		\hline
-	\end{tabular}
-\end{table}
-
-
-\section{Phasellus id pretium neque}
-\blindtext
-
-\blindtext
