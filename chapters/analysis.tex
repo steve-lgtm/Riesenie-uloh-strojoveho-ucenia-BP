@@ -81,9 +81,9 @@ Komunikácia s API serverom prebieha cez rôznych klientov a to napríklad cez U
 
 Po vytvorení klastra Kubernetes je potrebné interagovať s týmto klastrom. Prvým krokom je vytvorenie podov v klastri a ostatných komponentov a na tieto interakcie slúži kubectl. Je najmocnejší, oficiálny nástroj rozhrania príkazového riadka Kubernetes na prácu s klastrom. S týmto príkazovým riadok je možné robiť mnoho veci. Ak kubectl odošle príkaz ako vytvoriť komponent, odstrániť komponent atď. API serveru, následne pracovné uzly zareagujú a vykonajú tieto príkazy. Je možne komunikovať s rôznym typom klastrom, či už je to lokálny, cloudový alebo hybridný klaster.
 
-\section{Nástroje}
+\section{Nástroje na vytváranie klástrov}
 
-Nástroje slúžia na vytváranie lokálneho klastra a následne pracovanie s týmto klastrom. V tejto časti si porovnane nástroje aké majú odlišnosti a čo ponúkajú.
+Nástroje slúžia na vytváranie lokálneho klastra a následne pracovanie s týmto klastrom. V tejto časti sú porovnané nástroje aké majú odlišnosti a čo ponúkajú.
 \subsection*{minikube}
 
 Ide o spôsob vytvárania virtuálneho počítača, ktorý je v podstate klastrom Kubernetes s jedným uzlom. Vďaka podpore množstva hypervízorov ho možno použiť na všetkých hlavných operačných systémoch. To tiež umožňuje vytvárať viacero inštancií paralelne.
@@ -126,63 +126,7 @@ Na rozdiel od miniKube môže microK8S prevádzkovať viacero uzlov v lokálnom 
 Inštalácia microK8S na počítače so systémom Linux, ktoré nepodporujú balík snap, je náročná v porovnaní s inými nástrojmi v tomto zozname. microK8S používa balík snap vytvorený spoločnosťou canonical na inštaláciu strojového nástroja Linux, čo sťažuje spustenie na distribúciách Linuxu, ktoré ho nepodporujú. miniKube sa tiež inštaluje na viacero platforiem pomocou virtualizácie.
 
 
-\section{Kubeflow}
-Kubeflow ako platforma, je vhodná na nasadenie a vývoj strojového učenia. Primárne slúži pre inžinierov a vedcov, ktorý pracujú s dátami. Obsahuje viaceré komponenty, z ktorých si vývojári môžu vybrať, čo je pre ich používateľov najlepšie, čo znamená, že na nasadzovanie nie je potrebný každý jeden komponent.
 
-\subsection{Komponenty}
-
-Stavia na platforme Kubernetes ako systéme na nasadenie, škálovanie a správu zložitých systémov. Pomocou konfiguračných rozhraní Kubeflow, môžeme špecifikovať nástroje strojového učenia, potrebné pre náš pracovný postup. Potom môžeme nasadiť pracovný postup do rôznych cloudov, miestnych platforiem na experimentovanie a na produkčné použitie.\cite{web}
-
-V tejto časti sú priblížené všetky sedem komponenty, ktoré tvoria Kubeflow.
-
-\subsection*{Rozhranie}
-
-Centrum riadenia komponentov, ktoré poskytuje používateľovi prístup k jednotlivým komponentom v klastri ako sú Pipelines, Notebooks, Katib, Artifact store a Multi-Tenancy.
-
-\subsection*{Pipelines}
-
-Pipelines sa používajú na vytváranie a nasadzovanie prenosných, škálovateľných, pracovných postupov strojového učenia založených na kontajneroch Docker. Pozostávajú z používateľského rozhrania na správu tréningových experimentov, úloh a chodov a z nástroja na plánovanie viackrokových pracovných postupov ML. Existujú aj dve súpravy SDK, jedna umožňuje definovať a manipulovať s kanálmi, zatiaľ čo druhá ponúka alternatívny spôsob interakcie Notebookov so systémom.\cite{pipe}
-
-\subsection*{Notebooks}
-
-Jupyter notebooks fungujú s Kubeflow veľmi dobre, pretože sa dajú ľahko integrovať s typickými mechanizmami overovania a kontroly prístupu. Používatelia môžu bezpečne a s istotou vytvárať notebookové moduly/servery priamo v klastri Kubeflow pomocou obrazov poskytnutých správcami a jednoducho odosielať úlohy s jedným uzlom v porovnaní s tým, že si musia všetko nakonfigurovať na svojom laptope.
-
-\subsection*{KFServing}
-TODO
-\subsection*{Katib}
-
-\subsection*{Training operators}
-
-\subsection*{Multi-Tenancy}
-
-
-\subsection{Pracovný postup}
-Postup pozostáva z viacerých krokov, taktiež z iterácie, ktorá je hlavným prvkom pri vyvíjaní sýtemu strojového učenia. Pri tomto postupe je potrebné vykonávať zmeny v parametroch aby sme dosiahli požadované výsledky. Následne si povieme niečo viac o týchto postupoch.
-
-Ako prvé by sme mali vyvíjať model na základe predpokladov a testov. Môžeme ho opísať v nasledujúcich bodoch:\cite{web}
-
-\begin{itemize}
-    \item Identifikovanie problému, ktorý ma systém vyriešiť.
-    \item Zbieranie dát, ktoré potrebujeme na trénovanie modelu.
-    \item Vyberanie algoritmu a nakódovanie modelu.
-    \item Experiment s údajmi a trénovanie modelu.
-	\item Vyladenie parametrov.
-\end{itemize}
-
-Ďalej môžeme nasadiť systém, ktorý bude vykonávať tieto procesy:
-
-\begin{itemize}
-    \item Transformáciu údajov, ktoré náš systém potrebuje.
-	\item Trénovanie modelu.
-	\item Podanie modelu na online prevádzku.
-	\item Monitorovanie výsledkov na úpravu a zmenu modelu.
-\end{itemize}
-
-\begin{figure}[!ht]
-    \includegraphics[width=.9\textwidth]{figures/kubeflowwork}
-    \caption{\ Pracovné postupy \label{o:latex_friendly_zone}}
-\end{figure}
-\clearpage
 \section{Kontajnerizácia}
 
 Kontajnery predstavujú metódu virtualizácie operačného systému, ktorá umožňuje spúšťať aplikáciu a jej závislosti v procesoch izolovaných na zdrojoch. Kontajnery umožňujú jednoducho zbaliť kód aplikácie, konfigurácie do ľahko použiteľných stavebných blokov, ktoré poskytujú environmentálnu konzistentnosť, prevádzkovú efektivitu, produktivitu vývojárov a kontrolu verzií. Kontajnery môžu pomôcť zabezpečiť rýchle, spoľahlivé a konzistentné nasadenie aplikácií bez ohľadu na prostredie nasadenia. Kontajnery tiež poskytujú podrobnejšiu kontrolu nad zdrojmi, čo zvyšuje efektivitu vašej infraštruktúry.
