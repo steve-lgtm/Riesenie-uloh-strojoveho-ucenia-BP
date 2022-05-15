@@ -3,7 +3,7 @@
 \chapter{Využitie technologií v praxi}
 \label{methodology}
 
-Na vyriešenie problematiky nasadenia strojového učenia na platforme Kubernetes sú v tejto časti poskytnuté postupy na lokálne nasadenie na zariadeniach ako je laptop alebo stolný počítač. Jedna sa prevažne o platformu Kubeflow. Riešenia, ktoré sú poskytnuté sú mierne hardverovo záťažové, čo znamená, že sú vhodné pre zariadenia s lepším hardvérovým vybavením minimálne 8 GB veľkou operačnou pamäťou a s voľným priestorom na disku. Dodané postupy sú vhodné, či už pre slabšie zariadenia ale aj výkonovo silnejšie pre plné nasadenie platformy.
+Na vyriešenie problematiky nasadenia strojového učenia na platforme Kubernetes sú v tejto časti poskytnuté postupy na lokálne nasadenie na zariadeniach ako je laptop alebo stolný počítač. Jedna sa prevažne o platformu Kubeflow. Riešenia, ktoré sú poskytnuté sú mierne hardverovo záťažové, čo znamená, že sú vhodné pre zariadenia s hardvérovým vybavením minimálne 2 GB veľkou operačnou pamäťou a s voľným priestorom na disku. Dodané postupy sú vhodné, či už pre slabšie zariadenia ale aj výkonovo silnejšie pre plné nasadenie platformy.
 
 \section{Kubeflow}
 Kubeflow ako platforma, je vhodná na nasadenie a vývoj strojového učenia. Primárne slúži pre inžinierov a vedcov, ktorý pracujú s dátami. Obsahuje viaceré komponenty, z ktorých si vývojári môžu vybrať, čo je pre ich používateľov najlepšie, čo znamená, že na nasadzovanie nie je potrebný každý jeden komponent.
@@ -17,7 +17,7 @@ V tejto časti sú priblížené všetky šesť komponenty, ktoré tvoria Kubefl
 
 \subsection*{Pipelines}
 
-Pipelines sa používajú na vytváranie a nasadzovanie prenosných, škálovateľných, pracovných postupov strojového učenia založených na kontajneroch Docker. Pozostávajú z používateľského rozhrania na správu tréningových experimentov, úloh a chodov a z nástroja na plánovanie viackrokových pracovných postupov strojového učenia. Existujú aj dve súpravy SDK, jedna umožňuje definovať a manipulovať s kanálmi, zatiaľ čo druhá ponúka alternatívny spôsob interakcie Notebookov so systémom \cite{pipe}.
+Pipelines sa používajú na vytváranie a nasadzovanie prenosných, škálovateľných, pracovných postupov strojového učenia založených na kontajneroch Docker. Pozostávajú z používateľského rozhrania na správu tréningových experimentov, úloh a chodov a z nástroja na plánovanie viackrokových pracovných postupov strojového učenia. Existujú aj dve súpravy SDK, jedna umožňuje definovať a manipulovať s pipelines, zatiaľ čo druhá ponúka alternatívny spôsob interakcie Notebookov so systémom \cite{pipe}.
 
 \subsection*{Notebooks}
 
@@ -95,7 +95,7 @@ Druhým príkazom sa zapne virtuálny počítač a spustí sa konfiguračný sú
 \begin{lstlisting}[language=Bash]
     $ vagrant up
     \end{lstlisting}
-Kubeflow je poháňaný prostredníctvom Kubernetes na tomto virtuálnom počítací. Ak je virtuálny počítač pripravený spusti sa na ňom skript a následne je možné sa pripojiť cez internetový prehliadač na adrese 10.10.10.10 k danému počítaču, kde sa spustí nástroj, ktorý developuje serie softvérových balíčkov potrebné na spustenie Kubeflow. Po reštartovaní počítača sa dáta nestratia, stačí zopakovať postup a je možné sa vrátiť k začatej práci.
+Kubeflow je poháňaný prostredníctvom Kubernetes na tomto virtuálnom počítací. Ak je virtuálny počítač pripravený spusti sa na ňom skript a následne je možné sa pripojiť cez internetový prehliadač na adrese 10.10.10.10 k danému počítaču, kde sa spustí nástroj, ktorý developuje serie softvérových balíčkov potrebných na spustenie Kubeflow. Po reštartovaní počítača sa dáta nestratia, stačí zopakovať postup a je možné sa vrátiť k začatej práci.
 
 \section{Charmed}
 
@@ -114,7 +114,7 @@ Postup je odlišný len na základe operačných systémov v ktorých sa bude pr
 \begin{itemize}
     \item Každý uzol v klastri by mal mať aspoň 2GB pamäte RAM a 2 jadra procesora.
     \item Samozrejmosťou je verejné alebo súkromné sieťové pripojenie pre všetky stroje v klastri.
-    \item Názov hostiteľa a Mac adresa musia byt jedinečné.
+    \item Názov hostiteľa a MAC adresa musia byť jedinečné.
     \item Funkcia swap space, ktorá slúži na rozšírenie RAM pamäte na linuxových distribúciách musí byť vypnutá.
     \item Každý uzol vyžaduje svoje vlastné plne izolované prostredie - samostatný fyzický počítač, virtuálny stroj, kontajner alebo iný počítač v rovnakej sieti. V jednom prostredí nie je možné spustiť dve pracovné inštancie.
 \end{itemize}
@@ -140,7 +140,7 @@ Po pridaní uzla je možné hostiť pody na viacerých strojoch. Všetky dostupn
     $ microk8s kubectl get nodes
     \end{lstlisting}
 
-\subsection*{Windows}
+\subsection*{Windows Server 2019 alebo novší}
 
 Pre zlúčenie stroja s operačným systémom Windows je dôležitý Docker na správu kontajnerov a pripravený klaster s Calico CNI. Je to sieťovo kontajnerové rozhranie označované ako CNI, ktoré rieši množstvo sieťových požiadaviek napríklad komunikáciu medzi kontajnermi alebo externými službami. Zároveň sa vyžaduje aj inštalácia calicoctl, nástroj príkazového riadka pre spravovanie Calico a vykonávanie administratívnych funkcii.
 
@@ -148,6 +148,18 @@ Pre prístup do klastra sa vyžaduje kópia súboru kubeconfig. Pre pody na Wind
 
 Ďalším krokom je inštalácia komponentov na stroji s operačným systémom Windows pomocou prostredia PowerShell spustený ako správca. Inštalácia pozostáva z vytvorenia priečinka, do ktorého uložíme predošlú kópiu súboru kubeconfig, inštalácie systému Calico a spustenia služby Kubernetes.
 
+\subsection{Odpojenie stroja z klastra}
+
+Zmazanie stroja z klastra je jednoduché a uskutočňuje sa pomocou dvoch príkazov. Príkazy sa použijú na stroji, ktorý ma byť odstránení z klastra.
+
+Microk8s reštartuje riadiacu rovinu na uzle, ktorý sa ma vymazať. Tým obnoví operácie a stane sa osobitným klastrom. V pôvodnom klastri sa označí ako nedostupný a nebudú sa naň nasadávať nove operácie.
+\begin{lstlisting}[language=Bash]
+    $ microk8s leave
+    \end{lstlisting}
+Pre úplne vymazanie stroja zo zostávajúcich uzlov sa používa nasledujúci príkaz s jeho IP adresou:
+\begin{lstlisting}[language=Bash]
+    $ microk8s remove-node <node_IP>
+    \end{lstlisting}
 \subsection{Podpora grafickej karty}
 
 Implementovanie grafickej karty do klastra Kubernetes je veľkou výhodou najmä kvôli výraznému skráteniu času na riešenie náročno výpočtových operácií. Je veľkou výhodou pri strojovom učení. Pridanie grafickej karty vykonáme prostredníctvom tohto príkazu.
@@ -173,4 +185,78 @@ Ak je grafická karta povolená a pridaná do klastra niektoré pracovné úlohy
 
 Tento spôsob je vhodný, vtedy ak je žiadaná práca výhradne s Kubeflow pipelines. Cieľom je nasadiť pipelines na lokálnom klastri. Na nasadenie nie sú nutné žiadne virtualizačné programy a postup je v celku jednoduchý, pretože sú tým výnimočne. Kubeflow pipelines sú známe kontajnerizáciou, čo znamená, že bude sa používať Docker na vytváranie kontajnerov. Požiadavky na spustenie nie sú náročne, pre operačnú pamäť si vyžadujú minimálne 8 GB a 2 jadra procesora. Nástroj kind je kľúčový, slúži na vytvorenie lokálneho Kubernetes klastra využitím Dockera. Taktiež by bolo dobre poznamenať, že Docker vyžaduje Windows Subsystem for Linux (WSL), ktorý slúži pre natívny beh linuxových spustiteľných súborov v prostredí Windows. Pre správny postup inštalácie sa požaduje aj kubectl, ktorý sa používa na komunikáciu s klastrom vyžitím príkazového riadka a Git.
 
-Na začiatok je potrebné nainštalovať nástroj kind. Inštalácia na operačnom systéme Windows je veľmi jednoduchá a pozostáva z niekoľko príkazov, pripadne je možné použiť Chocolatey, ktorý je vhodný na inštaláciu balíčkov na systéme Windows. Ďalším krokom je vytvorenie klastra príkazom “kind create cluster”.  Kind spusti klaster Kubernetes pomocou vopred vytvoreného obrazu. Samozrejmosťou je použitie vlastného obrazu. Nasadenie pipelines sa vykoná spustením príkazov, ktoré stiahnu všetko potrebne z gitu a treba počkať niekoľko minút pokiaľ prebehne nasadenie všetkých komponentov potrebných pre pipelines a následne posledným krokom je presmerovanie portov. Po presmerovaní je Kubeflow dostupný otvorením internetového prehliadača na adrese „http://localhost:8080/“.
+Na začiatok je potrebné nainštalovať nástroj kind. Inštalácia na operačnom systéme Windows je veľmi jednoduchá a pozostáva z niekoľko príkazov, pripadne je možné použiť Chocolatey, ktorý je vhodný na inštaláciu balíčkov na systéme Windows. Ďalším krokom je vytvorenie klastra príkazom “kind create cluster”.  Kind spusti klaster Kubernetes pomocou vopred vytvoreného obrazu. Samozrejmosťou je použitie vlastného obrazu. Nasadenie pipelines sa vykoná spustením príkazov, ktoré stiahnu všetko potrebné z gitu a treba počkať niekoľko minút pokiaľ prebehne nasadenie všetkých komponentov potrebných pre pipelines a následne posledným krokom je presmerovanie portov. Po presmerovaní je Kubeflow dostupný otvorením internetového prehliadača na adrese „http://localhost:8080/“.
+
+\section{Kubeadm}
+
+Pri tomto postupe sa využíva nástroj Kubeadm, ktorý bol zavedený pre vytváranie Kubernetes klastrov. Je vyvíjaný oficiálnou komunitou Kubernetes. Poskytuje minimalisticky systém, veľmi dobru portabilitu a lokálne nasadenie na strojoch, ako sú napríklad notebook, Raspberry PI a podobne. Znižuje zložitosť a uľahčuje nasadenie použiteľného klastra Kubernetes. Minimálne požiadavky pre funkčný beh Kubernetes sú 2 GB operačnej pamäte a dve jadra procesora pre jeden stroj. V prípade riešeného problému tejto bakalárskej práce sa vyžaduje kvôli nasadeniu Kubeflow viac zdrojov. Záleží to od faktorov ako počet komponentov, ktoré sú požadované, koľko strojov je pripojených v klastri a s akými zdrojmi. Pre vytváranie kontajnerov nasadenie pozostáva aj z inštalácie vhodnej kontajnerovej služby ako je Docker.
+
+Inštalácia je vykonávaná na linuxovej distribúcii. Pred nastavením klastra prostredníctvom Kubeadm je potrebné povoliť prenos cez firewall prostredníctvom IPtables. Funkcia Swap je aj v tomto spôsobe zakázaná. Základnou požiadavkou je nejaký obraz kontajnera. Na výber sú viaceré služby ako containerd, CRI-O alebo Docker. Po úspešnom nastavení je dôležité povoliť služby využívajúce kontajnerizáciu v systéme. Nutné je konfigurovať Kubeadm, Kubelet a Kubectl na verziu 1.21, keďže Kubeflow je do tejto verzie podporovaný a musí sa striktne dodržať. Pre prevenciu, aby sa programy neaktualizovali sa musia označiť ako hold, čo zabraní samovoľnému aktualizovaniu na novšiu verziu. Nasleduje inicializácia klastra na počítací prostredníctvom Kubeadm, ktorý bude riadiacou rovinou v platforme Kubernetes. Po úspešnej inicializácii Kubeadm sa vypíše výstup s umiestnením súboru kubeconfig, ktorý využíva Kubectl na interakciu s klastrom a príkaz join s tokenom. Je dobré ho niekde uchovať alebo neskôr znova vypísať, pretože je potrebný pri pridávaní stroja. V predvolenom nastavení sa pody nenaplánujú na hlavnom uzle. Hlavný uzol sa môže použiť na nasadzovanie podov, ak sa označí ako pracovný uzol. Kubeadm nenakonfiguruje žiadny sieťový doplnok. Pre správne fungovanie sa nastavuje sieťový doplnok ako Calico.
+
+Ak je všetko dobre nastavené, overiť sa to da prostredníctvom príkazu Kubectl na vypísanie počítačov v klastri, či je daný poctiac pripravený. Počítač musí byť v stave Ready, čo znamená, že je pripravený na ďalšie kroky nasadzovania. Vhodné je aj nasadenie UI dashboardu pre lepšiu interakciu používateľa s platformou.
+
+Spustenie Kubeflow platformy sa realizuje manuálnou inštaláciou manifestov. Existujú aj rôzni distribútori ako Google, Amazon alebo IBM. Ich služby a ich realizácia je jednoduchšia, sú však spoplatnené. Kubeflow vyžaduje nastavenie Kubernetes s prednastaveným StorageClass a nástroja Kustomize, ktorý slúži na prispôsobovanie objektov pomocou jeho Kustomize súborov. Kubeflow s verziou 1.5 zatiaľ nie je kompatibilný s najnovšou verziou Kustomize, preto musí byť verzia 3.2. Do počítača si naklonujeme oficiálny git repozitár od spoločnosti Kubeflow. Sú dva spôsoby implementovania manifestov použitím jedného, kde sa použijú všetky existujúce komponenty alebo pomocou viacerých príkazov a to vlastným výberom komponentov, ktoré sa vyžadujú. Po niekoľkých minútach sú všetky komponenty pripravené. A posledným krokom ostáva zapnutie Dashboardu, kde používateľ môže naplno využívať komponenty.
+
+\subsection{Pripojenie strojov do klastra}
+
+Implementácia a požiadavky sú podobné ako pri predchádzajúcom pripájaní strojov do klastra využitím Charmed Kubeflow nasadenia.
+
+\subsection*{Linux/Ubuntu}
+
+Pre pripojenie linuxového stroja je nutné na ňom zopakovať niektoré inštalačné postupy, ktoré boli vykonané pri konfigurácii Kubernetes klastra:
+
+\begin{itemize}
+    \item Povolit prenos cez Firewall pomocou IPtables
+    \item Zákaz funkcie Swap
+    \item Docker
+    \item Kubeadm, Kubelet, kubectl
+\end{itemize}
+
+Po týchto krokoch je možné použiť hore spomínaný príkaz join na pripojenie stroja do klastra.
+
+\subsection*{Windows Server 2019 alebo novší}
+
+Spustenie a spojazdnenie komponentov pre platformu Kubernetes na Windowse je obťažnejšie a môže byt problémové. Pre pridanie stroja s operačným systémom Windows do klastra, ktorý beží na Linuxe je na ňom treba vykonať doplnkové akcie.
+
+Na stroji, ktorý nesie označenie hlavnej roviny sa stiahne Flannel manifest, v~ktorom sa upravia čísla portov, aby Linux spolupracoval s Flannelom v systéme Windows. Flannel sa používa na priraďovanie IP adries kontajnerom a pre komunikáciu medzi nimi. Editovanú konfiguráciu je možné aplikovať do klastra. Treba však aj tu poznamenať dodržanie verzii, aby súladili s verziou Kubernetes spustenej na klastri. Po chvíli sa vytvoria sieťové Flannelové moduly.
+
+Na stroji s Windowsom, ktorý sa pridáva do klastra vykonáme inštaláciu Dockera s verziou Engine Enterprise a povolenie funkcie Hyper-V. Na rade sú Wins, Kubelet a Kubeadm, ktoré musia mať rovnakú verziu ako klaster Kubernetes. Ako posledná akcia, ktorá by sa mala vykonať je použitie príkazu join.
+
+\subsection{Odpojenie stroja z klastra}
+
+Odstránenie prebieha pomocou nástroja kubectl, použitím nasledovných príkazov na riadiacej rovine.
+
+Označenie stroja ako neplánovateľný, aby sa zamedzilo pridávaniu nových podov.
+
+\begin{lstlisting}[language=Bash]
+    $ kubectl cordon <node_ID>
+    \end{lstlisting}
+
+Bezpečné odstránenie všetkých podov z uzla pred odstránením. Vysťahovanie kontajnerov, aby sa mohli ukončiť pody na stroji, ktorý sa odstraňuje. Ak všetko prebehne v poriadku, znamená to, že všetky pody boli bezpečne odstránené alebo presunuté.
+
+\begin{lstlisting}[language=Bash]
+    $ kubectl drain <node_ID>
+    \end{lstlisting}
+
+Následne je možné prejsť k odstráneniu všetkých údajov o danom stroji z klastra.
+
+\begin{lstlisting}[language=Bash]
+    $ kubectl delete node cmp<node_ID>
+    \end{lstlisting}
+
+\subsection{Podpora grafickej karty}
+
+Pridanie grafickej karty sa sprostredkuje prostredníctvom grafických kariet od spoločnosti NVDIA a AMD. Podmienkou je mať nainštalované ovládače od grafických kariet.
+Operácia aplikovania grafickej karty je vykonaná prostredníctvom príkazu s manifestom vo forme YAML súboru podľa toho o akú grafickú kartu ide.
+
+\begin{lstlisting}[language=Bash]
+    $ kubectl create -f <manifest>
+    \end{lstlisting}
+
+Ak sa jedná o grafickú kartu spoločnosti NVIDIA je nutné spraviť dodatočné opatrenia:
+
+\begin{itemize}
+    \item Vopred nainštalovaný nástroj pre kontajnery nvidia-docker s verziou 2.0.
+    \item Kubelet musí používať Docker ako svoj kontajnerový obraz.
+    \item Nvidia-container-runtime nakonfigurovaný ako predvolený runtime pre Docker namiesto runc.
+\end{itemize}
