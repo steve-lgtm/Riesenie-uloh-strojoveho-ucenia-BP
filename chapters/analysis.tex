@@ -5,7 +5,7 @@
 
 Pri \glslink{class diagram}{diagrame tried}, \acrfull{gcd} strojovom učení a experimentoch je niekedy potreba na krátku dobu vyšší výkon. Pravidelné migrovanie medzi strojmi by bolo veľmi zdĺhavé. Tento problém vie veľmi ľahko vyriešiť platforma Kubernetes.
 
-Kubernetes je platforma, ktorá je veľmi robustná v nasadení, správe a orchestrácií kontajnerov. Kontajnery slúžia na zabalenie aplikácie alebo služby a obsahujú všetko potrebné na to, aby fungovali bez ohľadu v akom prostredí a zariadení sa nachádzajú. O kontajneroch je viacej opísané v časti architektúra Kubernetes.
+Kubernetes je platforma, ktorá je veľmi robustná v nasadení, správe a orchestrácií kontajnerov. Kontajnery slúžia na zabalenie aplikácie alebo služby a obsahujú všetko potrebné na to, aby fungovali bez ohľadu v akom prostredí a zariadení sa nachádzajú. O kontajneroch je viacej opísané v časti s názvom kontajnerizácia.
 
 Dokáže rozdeliť súčasne záťaž medzi jednotlivými strojmi. Tato platforma v súčasnosti vytlačila predošle platformy a stala sa už štandardom. Automatizuje manuálne procesy, poskytuje mnoho doplnkových služieb, orchestráciu úložiska, vysokú škálovateľnosť, spustiteľnosť, dokáže spravovať viac klastrov súčasne a mnoho iných vlastnosti, ktoré sú spomínané v tejto sekcií \cite{vlastnostikub}. Nasadenie Kubernetes je najefektívnejšie, aj keď existuje dnes veľa podobných technológii a mnoho významných poskytovateľov ponúka klastre Kubernetes.
 
@@ -17,13 +17,13 @@ Ako orchestrátor sa stará o prácu s plánovaním kontajnerov v klastri a tie�
 Táto platforma je vhodná na riešenie úloh strojového učenia, aj keď priamo na to je vyvinutý Kubeflow. Je najrýchlejšie rastúcim projektom z Open Source softvéru. Kubernetes je vhodný na riešenie hlavne kvôli výhodám, ktoré sú spomenuté v nasledujúcich podsekciách.
 
 \subsection*{Prenosnosť}
-Ponúka prenosnosť, rýchlejšie a jednoduchšie nasadenie. To znamená, že v prípade potreby dokáže využívať výhody viacerých cloudov alebo serverov a môžu sa rýchlo rozvíjať bez toho aby sa musela meniť infraštruktúru.
+Ponúka prenosnosť, rýchlejšie a jednoduchšie nasadenie. To znamená, že v prípade potreby dokáže využívať výhody viacerých cloudov alebo serverov a môžu sa rýchlo rozvíjať bez toho, aby sa musela meniť infraštruktúra.
 
 \subsection*{Škálovateľnosť}
 Má schopnosť spúšťať kontajnery na jednom alebo viacerých verejných cloudových prostrediach, vo virtuálnych strojoch, čiže je ho možné nasadiť takmer kdekoľvek. Kubernetes zásadne zmenil spôsob vývoja a nasadzovania, je možné škálovať oveľa rýchlejšie, než v minulosti.
 
 \subsection*{Dostupnosť}
-Rieši vysokú dostupnosť na úrovni aplikácie aj infraštruktúry. Pridanie spoľahlivej úložnej vrstvy do Kubernetes zaisťuje vysokú dostupnosť úloh vykonávaných na jednotlivých inštanciách. Okrem toho môžu byť hlavné komponenty klastra nakonfigurované na multi-node replikáciu (multi-master), čo tiež zabezpečuje vyššiu dostupnosť.
+Rieši vysokú dostupnosť na úrovni aplikácie aj infraštruktúry. Pridanie spoľahlivej úložnej vrstvy do Kubernetes zaisťuje vysokú dostupnosť úloh vykonávaných na jednotlivých inštanciách. Okrem toho môžu byť hlavné komponenty klastra nakonfigurované na multi-node (multi-master), čo tiež zabezpečuje vyššiu dostupnosť.
 
 \section{Architektúra}
 Samotnú architektúru Kubernetes tvoria pracovné uzly (worker), hlavný uzol (master) a rozhranie pre programovanie aplikácií oznacované skratkou API. V tejto časti je opísaná architektúra ako tieto uzly fungujú a načo slúži API. Jednotlivé uzly sú zložené z niekoľkých častí, ktoré sú potrebné pre ich správne fungovanie a efektivitu. Pre správne pochopenie ako Kubernetes funguje je treba sa zoznámiť najmä s niektorými termínmi.
@@ -113,12 +113,9 @@ Jedna funkcia, ktorá vyniká, sa nazýva automatické nasadenie. Umožňuje nas
 
 \subsection*{MicroK8s}
 Sťahuje sa ako inštalačný balík, ktorý nainštaluje jednouzlový (samostatný) klaster K8s za menej ako 60 sekúnd. Da sa použiť aj na vytvorenie klastra s viacerými uzlami pomocou niekoľkých príkazov. MicroK8s má všetky základné komponenty Kubernetes, ako napríklad DNS a Dashboard, sú dostupné použitím jediného príkazu. Je k dispozícii pre väčšinu populárnych distribúcií Linuxu a tiež pre pracovné stanice Windows a Mac prostredníctvom natívneho inštalátora pre oba operačné systémy. V systéme Windows je tiež možnosť získať MicroK8s na WSL \cite{comparetool}.
-
-\subsection*{}
-
+\newline
+\newline
 Každý z týchto nástrojov poskytuje ľahko použiteľné prostredie Kubernetes pre viacero platforiem, no odlišujú ich niekoľko faktorov. K3s napríklad ponúka prostredie Kubernetes založené na virtualizácii. Pre nastavenie viacero serverov Kubernetes, je potreba manuálne nakonfigurovať ďalšie virtuálne stroje alebo uzly, čo môže byť dosť náročné. Je však navrhnutý na použitie pri nasadzovaní, čo z neho robí jednu z najlepších možností na lokálne simulovanie skutočného nasadzovacieho prostredia. Aj keď je minikube vo všeobecnosti skvelou voľbou pre lokálne spúšťanie Kubernetes, jednou z hlavných nevýhod je, že môže spustiť iba jeden uzol v miestnom klastri, čo zas vyúsťuje k tomu, že je o niečo ďalej k produkčnému multiuzlovému prostrediu. Na rozdiel od miniKube môže microK8S prevádzkovať viacero uzlov v lokálnom klastri. Inštalácia microK8S na počítače so systémom Linux, ktoré nepodporujú balík snap, je náročná v porovnaní s inými nástrojmi v tomto zozname. microK8S používa balík snap vytvorený spoločnosťou Canonical na inštaláciu strojového nástroja Linux, čo sťažuje spustenie na distribúciách Linuxu, ktoré ho nepodporujú. MiniKube sa tiež inštaluje na viacero platforiem pomocou virtualizácie.
-
-
 
 \section{Kontajnerizácia}
 
@@ -183,10 +180,12 @@ Kontajnery tiež znižujú riadenie, pretože zdieľajú spoločný operačný s
 
 Virtuálne stroje a kontajnery sa líšia niekoľkými spôsobmi, ale hlavný rozdiel je v tom, že kontajnery poskytujú spôsob virtualizácie operačného systému, takže na jednej inštancii operačného systému môže bežať viacero pracovných zaťažení. V prípade virtuálnych počítačov sa hardvér virtualizuje, aby bolo možné spustiť viacero inštancií operačného systému. Rýchlosť, svižnosť a prenosnosť kontajnerov z nich robí ďalší nástroj, ktorý pomáha zefektívniť vývoj softvéru. Porovnanie je zdôraznené aj na obrázku nižšie pre lepší prehľad.
 
-\begin{figure}[!ht]
-    \includegraphics[width=.9\textwidth]{figures/containervsvirtual}
-    \caption{\ Porovnanie infraštruktúry kontajnera a virtualizácie \cite{containervsvirtual} \label{o:latex_friendly_zone}}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/containervsvirtual}
+    \caption{Porovnanie infraštruktúry kontajnera a virtualizácie \cite{containervsvirtual}}
 \end{figure}
+
 
 \subsection{Systemový a aplikačný kontajner}
 

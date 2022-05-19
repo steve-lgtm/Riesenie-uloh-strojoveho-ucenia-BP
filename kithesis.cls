@@ -169,7 +169,6 @@
 %%%%%
 
 \def\br{\\}
-
 % DOCVAR: thesisspec (The list of thesis specifications)
 \newcommand{\@thesisspec}{
     \thispagestyle{empty}
@@ -178,15 +177,15 @@
     \iflanguage{slovak}{
         Tu vložte zadávací list pomocou príkazu\\
         {\tt{\textbackslash{}thesisspec\{cesta/k/suboru/so/zadavacim.listom\}}}\\
-        v preambule dokumentu. 
-        
+        v preambule dokumentu.
+
         Kópiu zadávacieho listu skenujte čiernobielo (v odtieňoch sivej) na $200$ až $300$ DPI!
         Nezabudnite do jednej práce vložiť originál zadávacieho listu!
     }{
         Here insert the assignment statement using the command\\
         {\tt{\textbackslash{}thesisspec\{path/to/the/filw/with/assignment.statement\}}}\\
         in the preamble of the document.
-        
+
         Copy of the assignment statement should be scanned black\&white (grayscale) using DPI from $200$ to $300$!
         Don't forget to insert the original assignment statement into one of the theses copies.
     }
@@ -285,7 +284,7 @@
 
 % DOCVAR: declaration text
 \newcommand{\@declaration@en}{I hereby declare that this thesis is my own work and effort. Where other sources of information have been used, they have been acknowledged.}
-\newcommand{\@declaration@sk}{Vyhlasujem, že som záverečnú prácu vypracoval(a) samostatne s~použitím uvedenej odbornej literatúry.}
+\newcommand{\@declaration@sk}{Vyhlasujem, že som záverečnú prácu vypracoval samostatne s~použitím uvedenej odbornej literatúry.}
 \newcommand{\@declaration}{\@declaration@en}
 \newcommand{\declaration}[1]{
     \renewcommand{\@declaration@en}{#1}
@@ -505,7 +504,7 @@
     \subsection*{\abstractname}
 
     \@abstract
-    
+
     \subsection*{\keywordsname}
 
     \@keywords
@@ -516,7 +515,7 @@
         \begin{otherlanguage}{english}
             \@abstract
         \end{otherlanguage}
-        
+
         \subsection*{\secondkeywordsname}
 
         \begin{otherlanguage}{english}
@@ -528,7 +527,7 @@
         \begin{otherlanguage}{slovak}
             \@abstract
         \end{otherlanguage}
-        
+
         \subsection*{\secondkeywordsname}
 
         \begin{otherlanguage}{slovak}
