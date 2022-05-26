@@ -4,7 +4,7 @@
 
 \section{Funkcia platforiem}
 
-popis
+Platformy nasadené v rámci bakalárskej práce sú určené na nasadenie úloh strojového učenia zdrojových kódov Python. Pre ich správnu funkčnosť je nutné správne implementovať tieto platformy a pripojiť ďalšie stroje. Riadiaca rovina Kubernetes sa postará o viacero aspektov. Plánovanie týchto úloh a na ktorom pracovnom stroji sa daná úloha bude riešiť a za akých podmienok. Kubeflow ma schopnosť návrhu zdrojových kódov a konvertovanie týchto kódov pre pipelines, aby bolo možné ich nasadenie na systém Kubernetes.
 
 \section{Inštalácia riadiacej roviny Kubernetes}
 
@@ -333,4 +333,102 @@ Vykonané sú príkazy prostredníctvom riadiacej roviny v nasledovnom poradí:
         do echo "Retrying to apply resources"; sleep 10; done
     \end{lstlisting}}
 \item{\noindent Po niekoľkých minútach, ak sú všetky pody spustené, je možné sa pripojiť prostredníctvom prehliadača na adrese\footnote{\url{http://localhost:8080}}. Predvolená prihlasovacia emailová adresa je \textbf{user@example} a heslo \textbf{12341234}.}
+\end{enumerate}
+
+\chapter{Používateľská príručka}
+
+\section{Funkcie platforiem}
+\subsection*{Požiadavky}
+
+Na použitie tejto príručky sú nutné požiadavky ako:
+
+\begin{itemize}
+    \item Spustený Kubernetes a implementovaný Kubeflow
+    \item Pripojenie na internet
+    \item Webový prehliadač
+\end{itemize}
+
+\subsection*{Inštalácia}
+
+Spočíva vo vykonaní postupnosti krokov, ktoré sa nachádzajú v systémovej príručke.
+
+\section{Použitie platforiem}
+
+\subsection*{Vytvorenie a spustenie vývojového prostredia}
+
+Vykonanie tohto kroku je sprostredkované vďaka komponentu Notebooks. Používateľ klikne na rozhraní Kubeflow sekciu \textbf{Notebooks}. Zobrazia sa vytvorené prostredia, kde je znázornený ich status, aký obraz je nasadení, hardvérové využitie a tlačidla pre vypnutie, vymazanie alebo pripojenie k danému vývojovému prostrediu. Možno ich vidieť na obrázku \ref{notebook}.
+
+Vytvorenie nového prostredia je uskutočnené stlačením tlačidla \textbf{New Notebook}, kde používateľ vyplní polia na základe svojich potrieb. Na výber je napríklad obraz, ktorý sa má spustiť na prostredí, veľkosť operačnej pamäte a úložiska. Nové prostredie sa vytvorí po kliknutí na tlačidlo \textbf{Launch}. Ak nové prostredie zmení svoj stav na \textbf{Running}, je možné sa pripojiť do daného prostredia a začať nasadzovať Python zdrojové kódy.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/1.png}
+    \caption{Pracovné prostredia - Notebooks}
+    \label{notebook}
+\end{figure}
+
+\subsection*{Zostavenie pipelines z Python zdrojových kódov}
+
+Pipelines sa zostavujú v pracovnom prostredí podobnému ako JupyterLab. Tento proces je nevyhnutný pre ďalší krok, kde sa nahráva pipeline do platformy Kubeflow. Na zostavenie je treba preformátovať Python funkcie na komponenty, aby boli pre Kubeflow zrozumiteľné. Formátovanie prebieha deklarovaním typu každého parametra pre funkcie, namiesto vrátenia objektu využívame objekt OutputhPath() a vytvorenie pipeline, kde popisuje postupnosť komponentov, ktoré sa majú volať, a parametre na ich odovzdanie. Nakoniec sa vykonáva konvertovanie Python pipeline do súboru YAML prostredníctvom nasledovného príkazu na JupyterLab pracovnom prostredí.
+
+\begin{lstlisting}[basicstyle=\footnotesize]
+
+    dsl-compile --py test_pipeline.py --output test_pipeline.yaml
+    \end{lstlisting}
+
+\subsection*{Implementovanie pipeline do Kubeflow}
+
+Používateľ vyberie možnosť \textbf{Pipelines}. Na tejto obrazovke sa nachádzajú všetky nahraté pipelines s ich názvom a krátkym opisom. Vyberie možnosť \textbf{Upload pipeline}, kde vyplní názov, opis a nahrá samotnú pipeline v YAML formáte. Po nahratí sa začlení medzi ostatné a je možné ju spustiť na platforme. Kliknutím na jednu z pipelines sa zobrazí grafické znázornenie komponentov a postup krokov, ktoré sú znázornené na obrázku \ref{pipa}.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/7.png}
+    \caption{Grafické znázornenie súčtu a súčinu čísel}
+    \label{pipa}
+\end{figure}
+
+\subsection*{Vytvorenie experimentu a chodu programu}
+
+Pre vytvorenie experimentu sa musí používateľ presunúť do sekcie \textbf{Experiments (KFP)}. Následne klikne na tlačidlo \textbf{Create experiment}, kde zadá názov experimentu a pripadne aj opis. V ďalšom kroku je vytvorenie chodu programu vybranej pipeline. Na výber je chod programov, ktoré sa opakujú zadaným počtom opakovaní, alebo v určitom čase, alebo jednotný chod, ktorý sa spusti len raz. Po vytvorení experimentu je vidieť jednotlivé chody programov týchto pipelines vo vytvorenom experimente pre rozdelenie do logických skupín. Znázornené sú chody týchto programov, ich status a čas trvania na nasledujúcom obrázku \ref{exp}.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/10.png}
+    \caption{Experiment a chod programov súčtu a súčinu čísel}
+    \label{exp}
+\end{figure}
+
+\subsection*{Zobrazenie chodu programu a výstupných údajov}
+
+Po kliknutí na daný chod programu sa zobrazí postupnosť krokov. Každý krok môže obsahovať nejaký vstup a výstup. Možnosťou je daný beh programu archivovať, zrušiť alebo naklonovať s upravenými vstupnými parametrami pre rýchle nasadenie. Tieto možnosti sú na obrázku \ref{run}. Všetky výstupy sa nachádzajú v časti s názvom \textbf{Artifacts}.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/11.png}
+    \caption{Vstupy a výstupy komponentov}
+    \label{run}
+\end{figure}
+
+\section{Príklad použitia}
+
+V tejto kapitole sa nachádza séria pokynov na nasadenie ukážkového Python zdrojového kódu na výpočet súčtu a súčinu čísel v nasledujúcom postupe krokov:
+
+\begin{enumerate}
+\item Vytvorenie pracovného prostredia kliknutím na sekciu \textbf{Notebooks} a následne \textbf{New Notebook}.
+\item Zadanie názvu a výberu JupyterLab obrazu. Ostatné preferencie sú na potrebách používateľa. A kliknutie na \textbf{LAUNCH} nižšie.
+\item Pripojenie k vytvorenému prostrediu kliknutím na tlačidlo \textbf{CONNECT}.
+\item Nahranie súboru \textbf{product-sum.ipynb} priloženého na CD stlačením tlačidla \textbf{A} a spustenie celého nahratého Jupyter Notebook súboru spustením tlačidla \textbf{B} naznaceným na obrázku \ref{tu}.
+\item {Stiahnutie vygenerovaného súboru kliknutím pravým tlačidlom myši na \textbf{product-sum.yaml} a výberom možnosti \textbf{Download}, tak ako je to znázornené na obrázku \ref{tu}.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/4.png}
+    \caption{Prostredie JupyterLab}
+    \label{tu}
+\end{figure}}
+\item Prechod do sekcie \textbf{Pipelines} a kliknutie tlačidla \textbf{Upload pipeline}.
+\item Vypísanie názvu, nahranie stiahnutého súboru \textbf{product-sum.yaml} a stlačenie tlačidla \textbf{CREATE}.
+\item Vytvorenie experimentu kliknutím na \textbf{Create experiment}.
+\item Zadanie názvu Experimentu, stlačením \textbf{Next}.
+\item Presunutím nižšie, zadaním ľubovoľných parametrov na sučet a súčin čísel a spustením \textbf{Start}.
+\item Otvorenie vytvoreného chodu programu a vybratie ľubovoľného komponentu kliknutím, kde sa zobrazí vstup a výstup.
 \end{enumerate}
