@@ -4,7 +4,7 @@
 
 \section{Funkcia platforiem}
 
-Platformy nasadené v rámci bakalárskej práce sú určené na nasadenie úloh strojového učenia zdrojových kódov Python. Pre ich správnu funkčnosť je nutné správne implementovať tieto platformy a pripojiť ďalšie stroje. Riadiaca rovina Kubernetes sa postará o viacero aspektov. Plánovanie týchto úloh a na ktorom pracovnom stroji sa daná úloha bude riešiť a za akých podmienok. Kubeflow ma schopnosť návrhu zdrojových kódov a konvertovanie týchto kódov pre pipelines, aby bolo možné ich nasadenie na systém Kubernetes.
+Platformy nasadené v rámci bakalárskej práce sú určené na nasadenie úloh strojového učenia zdrojových kódov Python. Pre správnu funkčnosť je nutné správne implementovať tieto platformy a pripojiť ďalšie stroje. Riadiaca rovina Kubernetes sa postará o viacero aspektov. Plánovanie týchto úloh a na ktorom pracovnom stroji sa daná úloha bude riešiť a za akých podmienok. Kubeflow ma schopnosť návrhu zdrojových kódov a konvertovanie týchto kódov pre pipelines, aby bolo možné ich nasadenie na systém Kubernetes.
 
 \section{Inštalácia riadiacej roviny Kubernetes}
 
@@ -15,8 +15,8 @@ Na inštaláciu platformy Kubernetes ako riadiací uzol je náležitosťou, aby 
 \begin{itemize}
     \item Operačný systém: \textbf{Ubuntu 18.04 LTS a vyšší}
 	\item Počet jadier procesora: \textbf{2}
-    \item Veľkosť operačnej pamäte RAM: \textbf{12 GB}
-    \item Veľkosť pamäťového úložiska: \textbf{50 GB}
+    \item Veľkosť operačnej pamäte RAM: \textbf{12GB}
+    \item Veľkosť pamäťového úložiska: \textbf{50GB}
 \end{itemize}
 
 \subsection*{Postup inštalácie}
@@ -51,7 +51,7 @@ Inštalácia je vykonávaná v terminály Ubuntu v nasledovnom poradí:
     sudo apt-get install -y apt-transport-https ca-certificates \
         curl gnupg lsb-release
     \end{lstlisting}}
-    \item{\noindent Pridanie kľúča Docker GPG a apt repozitára.
+    \item{\noindent Pridanie kľúča Docker GPG a \acrshort{apt} repozitára.
 \begin{lstlisting}[language=Bash,basicstyle=\footnotesize]
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
         sudo gpg --dearmor -o /usr/share/keyrings/\
@@ -97,7 +97,7 @@ Inštalácia je vykonávaná v terminály Ubuntu v nasledovnom poradí:
         /usr/share/keyrings/kubernetes-archive-keyring.gpg \
         https://packages.cloud.google.com/apt/doc/apt-key.gpg
 \end{lstlisting}}
-\item{\noindent Pridanie kľúča GPG a repozitára apt pre Kubeadm.
+\item{\noindent Pridanie kľúča GPG a repozitára \acrshort{apt} pre Kubeadm.
 \begin{lstlisting}[language=Bash,basicstyle=\footnotesize]
     echo "deb \
         [signed-by=/usr/share/keyrings/\
@@ -212,7 +212,7 @@ Inštalácia je vykonávaná v terminály Ubuntu v nasledovnom poradí:
 \begin{itemize}
     \item Operačný systém: \textbf{Ubuntu 18.04 LTS a vyšší alebo Windows server 2019 a vyšší}
 	\item Počet jadier procesora: \textbf{2}
-    \item Veľkosť operačnej pamäte RAM: \textbf{2 GB}
+    \item Veľkosť operačnej pamäte RAM: \textbf{2GB}
 \end{itemize}
 
 \subsection*{Linux/Ubuntu}
@@ -337,7 +337,7 @@ Vykonané sú príkazy prostredníctvom riadiacej roviny v nasledovnom poradí:
 
 \chapter{Používateľská príručka}
 
-\section{Funkcie platforiem}
+\section{Funkcia platforiem}
 \subsection*{Požiadavky}
 
 Na použitie tejto príručky sú nutné požiadavky ako:
